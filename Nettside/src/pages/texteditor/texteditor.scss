@@ -1,0 +1,108 @@
+
+
+
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.toolbar {
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    flex: 0 0 auto ;
+    margin: 0 15px;
+    & > * {
+        background-color: rgb(40, 202, 7);
+        margin: 0 15px 0 0;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding: 0 10px;
+        border-radius: 0 0 4px 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        padding: 0 15px;
+        width: 100%;
+    }
+
+}
+
+.dropdown-menu {
+    background-color: #15314b;
+    color: #fff;
+    height: 100%;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 0 15px;
+    width: 100%;
+    transition: .2s background-color;
+    border-radius: 0 0 4px 4px;
+    ul{
+        min-width: 100%;
+        position: absolute;
+        left: 0;
+        top: 110%;
+        color: #fff;
+        border-radius: 4px;
+        overflow: hidden;
+        transform: scale(0);
+        opacity: 0;
+        transition: transform .2s,opacity .2s;
+        transform-origin: 50% 0;
+        z-index: 9010;
+        max-height: 400px;
+        overflow: auto;
+        padding: 0;
+    }
+}
+
+
+
+
+
+
+
+
+.editor{
+    padding: 15px;
+    flex: 1 1 100%;
+    // overflow: hidden;
+}
+
+.reflex-splitter {
+    &.vertical{
+        width: 15px !important;
+    }
+    &.horizontal {
+        height: 15px !important;
+    }
+    border: none ;
+    margin: 0 ;
+    opacity: 1 ;
+    border-radius: 4px;
+    &:hover{
+        background-color: aqua !important;
+    }
+}
+
+
+.boxes {
+    background-color: darkgreen; 
+    overflow: hidden;
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
+}
+
