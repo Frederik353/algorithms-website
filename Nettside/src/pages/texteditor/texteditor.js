@@ -13,6 +13,8 @@ import {
 import "../../helpers/screen-size";
 import { useDetectOutsideClick } from "../../components/dropdown/dropdown";
 
+import Test  from "../../components/code_editor/test";
+
 
 
 
@@ -63,7 +65,7 @@ export const texteditor = () => {
                         <ReflexContainer    ReflexContainer  orientation="horizontal">
                             <ReflexElement  minSize="20" >
                                 <div class="boxes">
-
+                                   {/* upper left */}
                                 </div>
 
                             </ReflexElement>
@@ -72,7 +74,7 @@ export const texteditor = () => {
 
                             <ReflexElement minSize="20">
                                 <div class="boxes">
-                                        
+                                        {/* lower left */}
                                 </div>
                             </ReflexElement>
 
@@ -88,7 +90,8 @@ export const texteditor = () => {
 
                             <ReflexElement minSize="20">
                                 <div class="boxes">
-                                        
+                                        {/* upper right */}
+                                        <Test ></Test>
                                 </div>
                             </ReflexElement>
 
@@ -96,7 +99,7 @@ export const texteditor = () => {
 
                             <ReflexElement minSize="20" >
                                 <div class="boxes">
-                                        
+                                        {/* lower right */}
                                 </div>
                             </ReflexElement>
 

@@ -22,7 +22,7 @@ def compile(file,lang):
         return 404
 
 def run(file,input,timeout,lang):
-    cmd='sudo -u judge '
+    cmd='sudo -u judge '  
     if lang == 'java':
         cmd += 'java main'
     elif lang=='c' or lang=='cpp':
@@ -31,7 +31,7 @@ def run(file,input,timeout,lang):
         cmd += 'python3 '+ file
 
     r = os.system('timeout '+timeout+' '+cmd+' < '+input + ' > '+testout)
-
+    
     if r==0:
         return 200
     elif r==31744:

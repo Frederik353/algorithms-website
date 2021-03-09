@@ -2,7 +2,7 @@ const fs  = require('fs');
 const amqp = require('amqp-connection-manager');
 const redis = require('redis');
 const bail = require('bail');
-const rimraf=require("rimraf");
+const rimraf = require("rimraf");
 
 const client = redis.createClient({
     host: 'redis-server',
@@ -61,7 +61,7 @@ function runCode(apiBody,ch,msg)
                 rimraf("../temp/"+apiBody.folder,function(err){
                     if(err)
                     console.log(err);
-                     else
+                    else
                     console.log("DELETED TEMP FOLDER");
                 });
 
