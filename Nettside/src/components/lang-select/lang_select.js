@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 
 // Styles
-import "./code_editor.scss";
+// import "prismjs/themes/prism-solarizedlight.css"
+import "./lang_select.scss";
 
 // Components
-import CodeEditor from "./code_editor";
+import CodeEditor from "../code_editor/code_editor";
 
-export default function App() {
+export default function Lang_Select() {
     const [editorLanguage, setEditorLanguage] = useState("javascript");
 
     return (
-        <div className="App">
+        <div className="Lang_Select">
 
             <fieldset>
                 <legend>Choose language:</legend>
@@ -25,13 +26,13 @@ export default function App() {
                 <label htmlFor="javascript">JavaScript</label>
                 <input
                     type="radio"
-                    id="xml"
+                    id="python"
                     name="language"
-                    value="markup"
-                    checked={editorLanguage === "markup"}
-                    onChange={() => setEditorLanguage("markup")}
+                    value="python"
+                    checked={editorLanguage === "python"}
+                    onChange={() => setEditorLanguage("python")}
                 />
-                <label htmlFor="xml">XML</label>
+                <label htmlFor="python">python</label>
                 <input
                         type="radio"
                         id="css"

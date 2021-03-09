@@ -40,5 +40,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "babel": {
+    "plugins": [
+      ["prismjs", {
+          "languages": ["javascript", "css", "markup", "python"],
+          "plugins": ["line-numbers"],
+          "theme": "coy",
+          "css": true
+      }]
+    ]
   }
 }

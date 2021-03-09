@@ -13,7 +13,7 @@ import {
 import "../../helpers/screen-size";
 import { useDetectOutsideClick } from "../../components/dropdown/dropdown";
 
-import Test  from "../../components/code_editor/test";
+import Test  from "../../components/lang-select/lang_select";
 
 
 

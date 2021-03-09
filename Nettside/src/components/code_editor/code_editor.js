@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Prism from "prismjs";
+// import "prismjs/themes/prism-solarizedlight.css"
+
 
 const CodeEditor = (props) => {
     const [content, setContent] = useState(props.content);
@@ -22,7 +24,7 @@ const CodeEditor = (props) => {
 
         setContent(value);
     }
-};
+  };
 
   useEffect(() => {
     Prism.highlightAll();
