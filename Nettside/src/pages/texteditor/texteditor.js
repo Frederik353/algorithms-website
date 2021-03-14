@@ -2,6 +2,7 @@ import React from "react";
 
 import { Route, Switch, Link } from "react-router-dom";
 import "./texteditor.scss";
+import "../../components/code_editor/code_editor";
 import "react-reflex/styles.css";
 
 import {
@@ -12,10 +13,12 @@ import {
 } from "react-reflex"
 import "../../helpers/screen-size";
 import { useDetectOutsideClick } from "../../components/dropdown/dropdown";
+import CodeEditor from "../../components/code_editor/code_editor";
+import { Settings } from "../../components/code_editor/code_editor";
 
-import Test  from "../../components/lang-select/lang_select";
+// import Test  from "../../components/lang-select/lang_select";
 
-
+import { Editor_Settings } from "../../components/code_editor/code_editor";
 
 
 
@@ -23,40 +26,7 @@ export const texteditor = () => {
     return (
         <div class="wrapper">
             <div class="toolbar">
-                {/* <div className="menu-container">
-        <button onClick={ onClick } className="menu-trigger">
-          <span>User</span>
-          <img
-            src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/df/df7789f313571604c0e4fb82154f7ee93d9989c6.jpg"
-            alt="User avatar"
-          />
-        </button>
-        <nav
-          ref={dropdownRef}
-          className={`menu ${isActive ? "active" : "inactive"}`}
-        >
-          <ul>
-            <li>
-              <a href="#">Messages</a>
-            </li>
-            <li>
-              <a href="#">Trips</a>
-            </li>
-            <li>
-              <a href="#">Saved</a>
-            </li>
-          </ul>
-        </nav>
-      </div> */}
-                <p>kljsfjmeklf</p>
-                <p>kljsfjmeklf</p>
-                <p>kljsfjmeklf</p>
-                <p>kljsfjmeklf</p>
-                <p>kljsfjmeklf</p>
-                <p>kljsfjmeklf</p>
-                <p>kljsfjmeklf</p>
-                <p>kljsfjmeklf</p>
-                <p>kljsfjmeklf</p>
+              <Editor_Settings></Editor_Settings>
             </div>
             <div class="editor">
                 {/* venstre */}
@@ -91,7 +61,8 @@ export const texteditor = () => {
                             <ReflexElement minSize="20">
                                 <div class="boxes">
                                         {/* upper right */}
-                                        <Test ></Test>
+                                        <CodeEditor></CodeEditor>
+                                        
                                 </div>
                             </ReflexElement>
 
