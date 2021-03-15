@@ -10,7 +10,7 @@ function resizeFn() {
     var width = parseInt(window.innerWidth);
     console.log(width)
     var element = document.getElementsByClassName("change-orientation");
-    
+
     if (width <= 500) {
         for(var i = 0; i < element.length; i++){
                 element[i].classList.add("horizontal");
@@ -27,7 +27,11 @@ function resizeFn() {
 }
 
 
+
+
 window.onload = resizeFn();
 
 
-window.onresize = resizeFn;
+window.onresize = resizeFn();
+
+
