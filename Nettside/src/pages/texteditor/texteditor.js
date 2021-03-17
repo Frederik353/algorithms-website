@@ -1,15 +1,15 @@
-import React, { useState, useContext, Component } from "react";
+import React, { useState, useContext, Component, useEffect } from "react";
 import ReactDOM from "react-dom";
 import AceEditor from "react-ace";
 
 import { Route, Switch, Link } from "react-router-dom";
 import "./texteditor.scss";
 import "react-reflex/styles.css";
-
+import "../../helpers/screen-size"
 
 import "ace-builds/src-noconflict/mode-java";
-import "ace-builds/src-noconflict/theme-github";
-
+// import "ace-builds/src-noconflict/theme-github";
+import "ace-builds/src-noconflict/ext-language_tools.js"
 import "ace-builds/src-noconflict/mode-jsx";
 
 import {
@@ -19,14 +19,13 @@ import {
 } from "react-reflex"
 import "../../helpers/screen-size";
 
-// import Test  from "../../components/lang-select/lang_select";
 
 // Create context container in a global scope so it can be visible by every component
 const ContextContainer = React.createContext(null);
 
 const initialAppState = {
     placeholder: "Write some code",
-    theme: "solarized_dark",
+    theme: "monokai",
     mode: "python",
     enableBasicAutocompletion: false,
     enableLiveAutocompletion: true,
@@ -57,6 +56,7 @@ export function Texteditor() {
                             <ReflexElement  minSize="20" >
                                 <div class="boxes">
                                    {/* upper left */}
+                                    {/* < PostRequestHooks ></PostRequestHooks> */}
                                 </div>
 
                             </ReflexElement>
@@ -279,3 +279,63 @@ function Editor_Settings() {
 
 
 
+
+// function () {
+//     const {settings, set_settings } = useContext(ContextContainer);
+//     const [postId, setPostId] = useState(null);
+//     useEffect(() => {
+//         const requestOptions = {
+//             method: "POST",
+//             headers: {},
+//             body: {"src": settings.value,
+//                     "stdin":"",
+//                     "lang":"python3",
+//                     "timeout":5
+//             }
+//         };
+
+//         console.log(requestOptions)
+//         fetch("http://127.0.0.1:7000/submit", requestOptions)
+//             .then(response => response.json())
+//             .then(data => setPostId(data.id));
+//         }, []);
+
+//     return (
+//         <div>
+//             sldskl: {postId}
+//         </div>
+//     );
+// }
+
+
+
+
+// export function PostRequestHooks() {
+//     const [postId, setPostId] = useState(null);
+//     const {settings, set_settings } = useContext(ContextContainer);
+//     console.log(JSON.stringify(settings.value))
+//     useEffect(() => {
+//         // POST request using fetch inside useEffect React hook
+//         const requestOptions = {
+//             method: 'POST',
+//             headers: { 'Content-Type': 'application/json' },
+//             body: JSON.stringify({"src": JSON.stringify(settings.value),
+//                                     "stdin":"",
+//                                     "lang":"python3",
+//                                     "timeout":5})
+//         };
+//         fetch("http://127.0.0.1:7000/submit", requestOptions)
+//             .then(response => response.json())
+//             .then(data => setPostId((data));
+
+//     }, []);
+
+//     return (
+//         <div className="card text-center m-3">
+//             <h5 className="card-header">POST Request with React Hooks</h5>
+//             <div className="card-body">
+//                 Returned Id: {postId}
+//             </div>
+//         </div>
+//     );
+// }

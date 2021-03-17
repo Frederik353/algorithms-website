@@ -29,8 +29,7 @@ function resizeFn() {
 
 
 
-window.onload = resizeFn();
-
+window.onload = resizeFn;
 
 window.onresize = resizeFn();
 

@@ -29,9 +29,11 @@ def run(file,input,timeout,lang):
         cmd += './a.out'
     elif lang=='python3':
         cmd += 'python3 '+ file
+    elif lang=='javascript':
+        cmd += 'node'+ file
 
     r = os.system('timeout '+timeout+' '+cmd+' < '+input + ' > '+testout)
-    
+    print(r)
     if r==0:
         return 200
     elif r==31744:
