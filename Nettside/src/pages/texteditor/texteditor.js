@@ -12,6 +12,9 @@ import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/ext-language_tools.js"
 import "ace-builds/src-noconflict/mode-jsx";
 
+// darkmode
+import { Darkmode }  from "../../components/darkmode/darkmode"
+
 import {
     ReflexContainer,
     ReflexSplitter,
@@ -51,19 +54,19 @@ export function Texteditor() {
             <div class="editor">
                 {/* venstre */}
                 <ReflexContainer className="change-orientation"   ReflexContainer  orientation="vertical" >
-                    <ReflexElement  className="change-orientation" minSize="20">
+                    <ReflexElement  className="change-orientation" minSize="100">
                         <ReflexContainer    ReflexContainer  orientation="horizontal">
-                            <ReflexElement  minSize="20" >
+                            <ReflexElement  minSize="100" >
                                 <div class="boxes">
                                    {/* upper left */}
-                                    {/* < PostRequestHooks ></PostRequestHooks> */}
+                                    < PostRequestHooks ></PostRequestHooks>
                                 </div>
 
                             </ReflexElement>
 
                             <ReflexSplitter className="horizontal" ></ReflexSplitter>
 
-                            <ReflexElement minSize="20">
+                            <ReflexElement minSize="100">
                                 <div class="boxes">
                                         {/* lower left */}
                                 </div>
@@ -76,10 +79,10 @@ export function Texteditor() {
                     <ReflexSplitter className="change-orientation vertical" ></ReflexSplitter>
 
                     {/* høyre */}
-                    <ReflexElement className="change-orientation" minSize="20">
+                    <ReflexElement className="change-orientation" minSize="100">
                         <ReflexContainer ReflexContainer  orientation="horizontal">
 
-                            <ReflexElement minSize="20">
+                            <ReflexElement minSize="100">
                                 <div class="boxes">
                                         {/* upper right */}
                                         <CodeEditor></CodeEditor>
@@ -89,9 +92,15 @@ export function Texteditor() {
 
                             <ReflexSplitter className="horizontal"></ReflexSplitter>
 
-                            <ReflexElement minSize="20" >
+                            <ReflexElement minSize="100" >
+                                <div class="box-nav">
+                                    <button>ygysefgy</button>
+                                    <button>ygysefgy</button>
+                                    <button>ygysefgy</button>
+                                </div>
                                 <div class="boxes">
                                         {/* lower right */}
+                                        <p class="before-submit">Click submit code when you are ready</p>
                                 </div>
                             </ReflexElement>
 
@@ -217,7 +226,6 @@ function Editor_Settings() {
     return(
         <div class="toolbar" >
                     <div className="field">
-                        <p className="control">
                             <span className="select">
                                 <select
                                     name="mode"
@@ -231,11 +239,9 @@ function Editor_Settings() {
                                     ))}
                                 </select>
                             </span>
-                        </p>
                     </div>
 
                     <div  iv className="field">
-                        <p className="control">
                             <span className="select">
                                 <select
                                     name="Theme"
@@ -249,11 +255,9 @@ function Editor_Settings() {
                                     ))}
                                 </select>
                             </span>
-                        </p>
                     </div>
 
                     <div className="field">
-                        <p className="control">
                             <span className="select">
                                 <select
                                     name="Font Size"
@@ -267,8 +271,12 @@ function Editor_Settings() {
                                     ))}
                                 </select>
                             </span>
-                        </p>
                     </div>
+                    <Darkmode></Darkmode>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
 
                 </div>
         )
@@ -280,62 +288,33 @@ function Editor_Settings() {
 
 
 
-// function () {
-//     const {settings, set_settings } = useContext(ContextContainer);
-//     const [postId, setPostId] = useState(null);
-//     useEffect(() => {
-//         const requestOptions = {
-//             method: "POST",
-//             headers: {},
-//             body: {"src": settings.value,
-//                     "stdin":"",
-//                     "lang":"python3",
-//                     "timeout":5
-//             }
-//         };
-
-//         console.log(requestOptions)
-//         fetch("http://127.0.0.1:7000/submit", requestOptions)
-//             .then(response => response.json())
-//             .then(data => setPostId(data.id));
-//         }, []);
-
-//     return (
-//         <div>
-//             sldskl: {postId}
-//         </div>
-//     );
-// }
 
 
 
 
-// export function PostRequestHooks() {
-//     const [postId, setPostId] = useState(null);
-//     const {settings, set_settings } = useContext(ContextContainer);
-//     console.log(JSON.stringify(settings.value))
-//     useEffect(() => {
-//         // POST request using fetch inside useEffect React hook
-//         const requestOptions = {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify({"src": JSON.stringify(settings.value),
-//                                     "stdin":"",
-//                                     "lang":"python3",
-//                                     "timeout":5})
-//         };
-//         fetch("http://127.0.0.1:7000/submit", requestOptions)
-//             .then(response => response.json())
-//             .then(data => setPostId((data));
+export function PostRequestHooks() {
+    const [postId, setPostId] = useState(null);
+    const {settings, set_settings } = useContext(ContextContainer);
+    // console.log(JSON.stringify(settings.value))
+    useEffect(() => {
+        // POST request using fetch inside useEffect React hook
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({"src": JSON.stringify(settings.value),
+                                    "stdin":"",
+                                    "lang":"python3",
+                                    "timeout":5})
+        };
+        fetch("http://127.0.0.1:7000/submit", requestOptions)
+            .then(response => response.json())
+            .then(data => setPostId(data));
 
-//     }, []);
+    }, []);
 
-//     return (
-//         <div className="card text-center m-3">
-//             <h5 className="card-header">POST Request with React Hooks</h5>
-//             <div className="card-body">
-//                 Returned Id: {postId}
-//             </div>
-//         </div>
-//     );
-// }
+    return (
+        <div className="card text-center m-3">
+                Returned Id: {postId}
+        </div>
+    );
+}
