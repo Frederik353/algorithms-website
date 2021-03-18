@@ -93,14 +93,15 @@ export function Texteditor() {
                             <ReflexSplitter className="horizontal"></ReflexSplitter>
 
                             <ReflexElement minSize="100" >
-                                <div class="box-nav">
-                                    <button>ygysefgy</button>
-                                    <button>ygysefgy</button>
-                                    <button>ygysefgy</button>
-                                </div>
                                 <div class="boxes">
-                                        {/* lower right */}
-                                        <p class="before-submit">Click submit code when you are ready</p>
+                                    <div class="nav">
+                                        <button>ygysefgy</button>
+                                        <button>ygysefgy</button>
+                                        <button>ygysefgy</button>
+                                    </div>
+                                    
+                                    {/* lower right */}
+                                    <p class="before-submit">Click submit code when you are ready</p>
                                 </div>
                             </ReflexElement>
 
