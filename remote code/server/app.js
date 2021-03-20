@@ -8,6 +8,9 @@ const cors = require('cors')
 const redis = require('redis');
 const amqp = require('amqp-connection-manager');
 
+const cors = require('cors');
+app.use(cors())
+
 app.use(cors())
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + '/public'));

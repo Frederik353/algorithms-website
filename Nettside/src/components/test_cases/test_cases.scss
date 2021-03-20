@@ -1,0 +1,21 @@
+
+
+
+.test{
+    width: 100%;
+    height: 100px;
+    .ace_editor{
+        border-radius: var(--border-radius);
+        background-color: var(--test-case-boxcolor) !important;
+        .ace_gutter{
+            background-color: var(--gutter) !important;
+            color: var(--text-color)
+        }
+        .ace_gutter-active-line{
+            background-color: var(--active-gutter) !important;
+        }
+        .ace_active-line{
+            background-color: var(--active-line) !important;
+        }
+    }
+}

@@ -1,0 +1,44 @@
+
+
+
+
+.question{
+    padding-bottom: 20px;
+    flex: 1 1 auto;
+    p > *{
+        padding-bottom: 10px;
+    }
+    .info-box{
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        margin: 0 0 10px 0;
+        flex-wrap: wrap;
+        .info{
+            margin-right: 20px;
+            font-weight: bolder;
+            & > *{
+                margin-right: 10px;
+            }
+            .difficulty{
+                width: 17px;
+                height: 17px;
+                border-radius: 4px;
+                display: inline-block;
+                box-shadow: 0 2px 5px -1px #000;
+            }
+            .easy{
+                background-image: var(--easy);
+            }
+            .medium{
+                background-image: var(--medium);
+            }
+            .hard{
+                background-image: var(--hard);
+            }
+            .very-hard{
+                background-image: var(--very-hard);
+            }
+        }
+    }
+}

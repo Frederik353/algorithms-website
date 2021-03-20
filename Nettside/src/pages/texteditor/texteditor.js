@@ -1,27 +1,29 @@
 import React, { useState, useContext, Component, useEffect } from "react";
-import ReactDOM from "react-dom";
 import AceEditor from "react-ace";
+// reflex
+import {
+    ReflexContainer,
+    ReflexSplitter,
+    ReflexElement
+} from "react-reflex"
 
 import { Route, Switch, Link } from "react-router-dom";
 import "./texteditor.scss";
 import "react-reflex/styles.css";
 import "../../helpers/screen-size"
 
-import "ace-builds/src-noconflict/mode-java";
-// import "ace-builds/src-noconflict/theme-github";
-import "ace-builds/src-noconflict/ext-language_tools.js"
-import "ace-builds/src-noconflict/mode-jsx";
+// import "ace-builds/src-noconflict/mode-java";
+// // import "ace-builds/src-noconflict/theme-github";
+// import "ace-builds/src-noconflict/ext-language_tools.js"
+// import "ace-builds/src-noconflict/mode-jsx";
 
 // darkmode
 import { Darkmode }  from "../../components/darkmode/darkmode"
 
-import {
-    ReflexContainer,
-    ReflexSplitter,
-    ReflexElement
-} from "react-reflex"
 import "../../helpers/screen-size";
-
+import{ Question } from "../../components/question/question"
+import{ Test_cases } from "../../components/test_cases/test_cases"
+import{ Timer } from "../../components/timer/timer"
 
 // Create context container in a global scope so it can be visible by every component
 const ContextContainer = React.createContext(null);
@@ -46,29 +48,48 @@ const initialAppState = {
 export function Texteditor() {
     const [settings, set_settings] = useState(initialAppState)
 
+    function resize_editor() {
+        AceEditor.insert("Something cool");
+    }
+
     return (
         <div class="wrapper">
             <ContextContainer.Provider value={{ settings, set_settings }}>
                 <Editor_Settings set_settings={ set_settings } ></Editor_Settings>
 
-            <div class="editor">
+            <div class="modules">
                 {/* venstre */}
                 <ReflexContainer className="change-orientation"   ReflexContainer  orientation="vertical" >
                     <ReflexElement  className="change-orientation" minSize="100">
                         <ReflexContainer    ReflexContainer  orientation="horizontal">
                             <ReflexElement  minSize="100" >
                                 <div class="boxes">
-                                   {/* upper left */}
-                                    < PostRequestHooks ></PostRequestHooks>
+                                    <div class="nav">
+                                        <button>ygysefgy</button>
+                                        <button>ygysefgy</button>
+                                        <button>ygysefgy</button>
+                                    </div>
+                                    <div class="box-content">
+                                        <Question></Question>
+                                    </div>
+                                    {/* upper left */}
+                                    {/* < PostRequestHooks ></PostRequestHooks> */}
                                 </div>
-
                             </ReflexElement>
 
                             <ReflexSplitter className="horizontal" ></ReflexSplitter>
 
                             <ReflexElement minSize="100">
                                 <div class="boxes">
-                                        {/* lower left */}
+                                    <div class="nav">
+                                        <button>ygysefgy</button>
+                                        <button>ygysefgy</button>
+                                        <button>ygysefgy</button>
+                                    </div>
+                                    <div class="box-content">
+                                        <Test_cases></Test_cases>
+                                    </div>
+                                    {/* lower left */}
                                 </div>
                             </ReflexElement>
 
@@ -83,10 +104,18 @@ export function Texteditor() {
                         <ReflexContainer ReflexContainer  orientation="horizontal">
 
                             <ReflexElement minSize="100">
-                                <div class="boxes">
-                                        {/* upper right */}
+                                <div class="boxes"  onresize={resize_editor}>
+                                    <div class="nav">
+                                        <button class="active">ygysefgy</button>
+                                        <button>ygysefgy</button>
+                                        <div class="nav_spacer"></div>
+                                        <button class="submit">Submit code</button>
+                                    </div>
+                                    <div class="box-content editor">
                                         <CodeEditor></CodeEditor>
+                                    </div>
 
+                                        {/* upper right */}
                                 </div>
                             </ReflexElement>
 
@@ -99,9 +128,12 @@ export function Texteditor() {
                                         <button>ygysefgy</button>
                                         <button>ygysefgy</button>
                                     </div>
-                                    
                                     {/* lower right */}
-                                    <p class="before-submit">Click submit code when you are ready</p>
+                                    <div class="box-content">
+                                        <div class="center">
+                                            <p class="before-submit">Click submit code when you are ready</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </ReflexElement>
 
@@ -158,17 +190,17 @@ function CodeEditor() {
     }
 
     function onSelectionChange(newValue, event) {
-        console.log("select-change", newValue);
-        console.log("select-change-event", event);
+        // console.log("select-change", newValue);
+        // console.log("select-change-event", event);
     }
 
     function onCursorChange(newValue, event) {
-        console.log("cursor-change", newValue);
-        console.log("cursor-change-event", event);
+        // console.log("cursor-change", newValue);
+        // console.log("cursor-change-event", event);
     }
 
     function onValidate(annotations) {
-        console.log("onValidate", annotations);
+        // console.log("onValidate", annotations);
     }
 
     function setPlaceholder(e) {
@@ -215,7 +247,7 @@ function Editor_Settings() {
     }
 
     function setFontSize(e) {
-        set_settings({ ...settings, fontSize: e.target.value });
+        set_settings({ ...settings, fontSize: JSON.parse(e.target.value) });
     }
 
     function setMode(e) {
@@ -225,7 +257,9 @@ function Editor_Settings() {
     }
 
     return(
+
         <div class="toolbar" >
+            <Link to="/">Back</Link>
                     <div className="field">
                             <span className="select">
                                 <select
@@ -274,11 +308,8 @@ function Editor_Settings() {
                             </span>
                     </div>
                     <Darkmode></Darkmode>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-
+                    <div class="nav_spacer"></div>
+                    <Timer></Timer>
                 </div>
         )
 }

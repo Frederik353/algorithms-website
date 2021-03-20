@@ -1,6 +1,20 @@
 
-
-
-.toggle-theme{
-    // background: url(./moon.svg) no-repeat top left;
+.btn_wrapper{
+    padding: 0;
+    .btn-darkmode{
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 38px 100%;
+        width: calc(50px + (2 * 15px));
+        height: 40px;
+        border: none;
+        z-index: 10;
+        background-color: #0000;
+        &.dark_svg{
+            background-image: url(./moon.svg);
+        }
+        &.light_svg{
+            background-image: url(./sun.svg);
+        }
+    }
 }
