@@ -1,0 +1,19 @@
+
+
+
+
+
+
+.section-skew{
+    padding: 200px 0;
+    &:not(.header){
+        background-color: #33ce62;
+    }
+    margin-top: -200px;
+    transform: skew(0deg, -10deg);
+    .section-content{
+        min-height: 50vh;
+        transform: skew(0deg, 10deg);
+        text-align: center;
+    }
+}
