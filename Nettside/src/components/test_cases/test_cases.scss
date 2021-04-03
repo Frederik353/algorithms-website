@@ -12,10 +12,16 @@
             color: var(--text-color)
         }
         .ace_gutter-active-line{
-            background-color: var(--active-gutter) !important;
+            // background-color: var(--active-gutter) !important;
+            background-color: transparent !important;
         }
         .ace_active-line{
-            background-color: var(--active-line) !important;
+            // background-color: var(--active-line) !important;
+            background-color: transparent !important;
+        }
+        
+        .ace_cursor{
+            display: none !important;
         }
     }
 }

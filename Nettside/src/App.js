@@ -1,4 +1,4 @@
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch} from 'react-router-dom';
 import { Landing_page } from './pages/landing_page/landing_page.js';
 import { Texteditor } from "./pages/texteditor/texteditor"
 import About from './pages/About';

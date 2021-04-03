@@ -15,7 +15,7 @@ export function Question() {
                 </div>
                 <div class="info">
                     <span>Category:</span>
-                    <span>Depth-first Search</span>
+                    <span>Recursion</span>
                 </div>
             </div>
             <h1>Fibonacci Numbers</h1>

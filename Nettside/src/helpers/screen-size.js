@@ -19,7 +19,7 @@ function resizeFn() {
         // document.getElementById("horizontal").classList.remove("vertical")
     }
     else if(width > 500) {
-        for(var i = 0; i < element.length; i++){
+        for( i = 0; i < element.length; i++){
                 element[i].classList.remove("horizontal");
                 element[i].classList.add("vertical");
         }

@@ -6,7 +6,7 @@ import "./gradient_canvas.scss";
 
 
 
-export function Gradient_canvas() {
+export function GradientCanvas() {
     useEffect(() => {
 
         const canvas = document.getElementById("canvas");
@@ -21,7 +21,7 @@ export function Gradient_canvas() {
                     color(x, y, R(x, y, time), G(x, y, time), B(x, y, time));
                 }
             }
-            time = time + 0.01;
+            time = time + 0.02;
             window.requestAnimationFrame(startAnimation);
         }
 
@@ -31,21 +31,21 @@ export function Gradient_canvas() {
         }
 
         const R = function (x, y, time) {
-            return (Math.floor(150 + 64 * Math.cos((x * x - y * y) / 300 + time)));
+            return (Math.floor(150 +106 * Math.cos((x * x - y * y) / 300 + time)));
         }
 
         const G = function (x, y, time) {
-            return (Math.floor(150 + 64 * Math.sin((x * x * Math.cos(time / 4) + y * y * Math.sin(time / 3)) / 300)));
-        }
+            return (Math.floor(150 +106 * Math.sin((x * x * Math.cos(time / 4) + y * y * Math.sin(time / 3)) / 300)));
+        }   
 
         const B = function (x, y, time) {
-           return (Math.floor(150 + 64 * Math.sin(5 * Math.sin(time / 9) + ((x - 100) * (x - 100) + (y - 100) * (y - 100)) / 1100)));
+           return (Math.floor(150 +106 * Math.sin(5 * Math.sin(time / 9) + ((x - 100) * (x - 100) + (y - 100) * (y - 100)) / 1100)));
         }
         startAnimation();
     });
 
     return (
-        <canvas id="canvas" width="30" height="10"></canvas>
+        <canvas className="section-skew canvas header" id="canvas" width="30" height="30"></canvas>
     );
 }
 

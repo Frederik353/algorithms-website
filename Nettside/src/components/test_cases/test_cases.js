@@ -5,11 +5,14 @@ import "ace-builds/src-noconflict/ext-language_tools.js"
 import "ace-builds/src-noconflict/mode-jsx";
 
 
-export function Test_cases(){
+export function TestCases(){
     return(
         <div class="test">
             <h2>Test case 1</h2>
-            <Editor value= "def Fibonacci(n): \n    if n<0:\n   elif n==1:\n        return 0\n  elif n==2:\n        return 1\n  else:\n     return Fibonacci(n-1)+Fibonacci(n-2)\nprint(Fibonacci(9)) " ></Editor>
+            <Editor value= "{
+                    Input: [ 0, 1, 1, 2, 3, 5, 13, 18, 31, 49],
+                    Output: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                }"></Editor>
         </div>
     )
 }
@@ -23,7 +26,6 @@ function Editor(props) {
             theme="monokai"
             name="sefokp"
             className="test-case"
-            className=""
             value={props.value}
             fontSize={18}
             showPrintMargin={false}

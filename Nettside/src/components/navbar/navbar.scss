@@ -1,22 +1,17 @@
 
-
-.content {
-  height: 200vh;
-  background-image: url(//unsplash.it/1000/1000);
-  background-color: #333;
-  background-blend-mode: multiply;
-  background-size: cover;
-  display: grid;
-  place-items: center;
-}
-
 /* navigation styles start here */
 
-header {
-  background: var(--navbackground);
+
+
+.navbar-header {
+  // background: var(--navbackground);
   text-align: center;
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   // z-index: 999;
+
   width: 100%;
 }
 
@@ -28,9 +23,6 @@ header {
   left: -9999px !important;
 }
 
-.nav-toggle:focus ~ .nav-toggle-label {
-  outline: 3px solid rgba(lightblue, .75);
-}
 
 .nav-toggle-label {
   position: absolute;
@@ -67,40 +59,76 @@ header {
   top: 7px;
 }
 
+
 nav {
   position: absolute;
   text-align: left;
   top: 100%;
-  left: 0;
-  background: var(--background);
+  right: 0;
   width: 100%;
   transform: scale(1, 0);
   transform-origin: top;
   transition: transform 400ms ease-in-out;
-}
+  ul {
+    position: relative;
+    width: 6rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: #fff;
+    border-radius: var(--border-radius);
+    li {
+      padding: .5em;
+    }
+  }
 
-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
+  .sign-in-button{
+      cursor: pointer;
+      background-color: #fff;
+      padding: 7.5px;
+      display: inline-block;
+      position: relative;
+      top: -20px;
+      border-radius: var(--border-radius);
+      &:hover{
+        
+      }
+      &::after{
+        background: #fff0;
+      }
+  }
 
-nav li {
-  margin-bottom: 1em;
-  margin-left: 1em;
-}
+  
+  a {
+    color: #0a2540;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    // text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+    &:hover {
+      color: #0a2540;
+      // color: rgba(255, 255, 255, 0.7);
+    }
+    &::after{
+      content: '';
+      display: block;
+      height: 2px;
+      background: #0a2540;
+      position: relative;
+      bottom: -.15em;
+      left: 0;
+      right: 0;
+      transform: scale(0, 1);
+      transition: transform ease-in-out 250ms;
+    }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  opacity: 0;
-  transition: opacity 150ms ease-in-out;
-}
-
-nav a:hover {
-  color: #000;
+    &:hover::after, .active::after{
+      transform: scale(1,1);
+    }
+  
+  }
 }
 
 .nav-toggle:checked ~ nav {
@@ -112,18 +140,23 @@ nav a:hover {
   transition: opacity 250ms ease-in-out 250ms;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 768px) {
   .nav-toggle-label {
     display: none;
   }
 
-  header {
-    display: grid;
-    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+  .navbar-header {
+    // display: grid;
+    // grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+    display: flex;
+    justify-content: space-between;
   }
-  
-  .logo {
+
+  .navbar-logo {
     grid-column: 2 / 3;
+    &:hover{
+      opacity: 0.7;
+    }
   }
   
   nav {
@@ -141,39 +174,49 @@ nav a:hover {
     
     grid-column: 3 / 4;
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
+
+    ul {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff0;
+    }
+    li {
+      margin-left: 3em;
+      margin-bottom: 0;
+    }
+
+    .sign-in-button{
+      border-radius: 16px;
+      // background-color: rgba(255, 255, 255, 0.5);
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      white-space: nowrap;
+      height: 50%;
+      padding: 3px 10px;
+      position: relative;
+      top: 0;
+      
+      &:hover{
+        background-color: rgba(255, 255, 255, 0.35);
+      }
+      &::after{
+        background: #fff0;
+      }
   }
-  
-  nav ul {
-    display: flex;
-  }
-  
-  nav li {
-    margin-left: 3em;
-    margin-bottom: 0;
-  }
-  
-  nav a {
-    opacity: 1;
-    position: relative;
-  }
-  
-  nav a::before {
-    content: '';
-    display: block;
-    height: 5px;
-    background: black;
-    position: absolute;
-    top: -.75em;
-    left: 0;
-    right: 0;
-    transform: scale(0, 1);
-    transition: transform ease-in-out 250ms;
-  }
-  
-  nav a:hover::before {
-    transform: scale(1,1);
+
+    a {
+      opacity: 1;
+      color: #fff;
+      &:hover{
+        color: #ffffffb3
+      }
+
+      &::after{
+        background: #fff;
+      }
+    }
   }
 }
 

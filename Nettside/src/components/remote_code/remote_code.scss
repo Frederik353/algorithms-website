@@ -1,0 +1,21 @@
+
+
+
+
+.center{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        .before-submit{
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--light-text);
+        }
+        .api-error{
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--red)
+        }
+    }
