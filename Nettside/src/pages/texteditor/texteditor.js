@@ -19,7 +19,7 @@ import { CodeEditor } from "../../components/ace_editor/ace_editor"
 
 
 import "../../helpers/screen-size";
-import{ Question } from "../../components/question/question"
+import{ Question } from "../../components/promt/promt"
 import{ TestCases } from "../../components/test_cases/test_cases"
 
 

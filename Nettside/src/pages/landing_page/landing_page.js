@@ -4,6 +4,9 @@ import { NavBar } from '../../components/navbar/navbar.js';
 import "./landing_page.scss";
 import { GradientCanvas } from "../../components/gradient_canvas/gradient_canvas";
 import { Link } from 'react-router-dom';
+import { Texteditor } from "../texteditor/texteditor"
+import { Footer } from "../../components/footer/footer"
+
 
 // languages
 import Python from './logos/python.svg';
@@ -18,6 +21,7 @@ import C from './logos/c.svg';
 // concepts
 import Graph from './concepts/graph.svg';
 import LinkedList from './concepts/linked-list.svg';
+import Array from './concepts/array.svg';
 import Matrix from './concepts/matrix.svg';
 import Recursion from './concepts/recursion.svg';
 import Search from './concepts/search.svg';
@@ -25,16 +29,16 @@ import Sort from './concepts/sort.svg';
 import Stack from './concepts/stack.svg';
 import Tree from './concepts/tree.svg';
 
-import DynamicProgramming from './concepts/tree.svg';
-import Heap from './concepts/tree.svg';
-import Queue from './concepts/tree.svg';
+import DynamicProgramming from './concepts/dynamic programming.svg';
+import HashTable from './concepts/hash table.svg';
+import Queue from './concepts/queue.svg';
 
 
 
 export function Landing_page(){
     
     return(
-    <div className="landingpage-wrapper">
+    <div className="wrapper">
         <div className="section-skew header">
             <div className="section-content-wrapper">
 
@@ -96,7 +100,7 @@ export function Landing_page(){
                 </div>
             </div>
         </div>
-        <div className="section-three">
+        <div className="section-three flex-column">
             <div className="box">
                 <h1>Suported languages</h1>
                 <p  >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea excepturi tenetur amet iusto, cumque autem inventore non error consectetur repudiandae? Quam sint maiores magni obcaecati voluptatibus, veritatis eveniet qui tenetur esse.</p>
@@ -150,62 +154,228 @@ export function Landing_page(){
         <div className="section-skew ">
             <div className="section-content-wrapper">
                 <div className="section-content">
-                    <div className="secondary-color-section section-four">
+                    <div className="secondary-color-section section-four flex-column">
                         <h1>Concepts</h1>
+
+
                         <div className="boxgrid">
-                            <div className="box">
-                                <img src={ Graph } alt=""></img>
-                                <h2>Graphs</h2>
+                            <div className="flip">
+                                <div className="test">
+                                    <div className="front">
+                                        <div className="box">
+                                            <img src={ Graph } alt=""></img>
+                                            <h2>Graphs</h2>
+                                        </div>
+                                    </div>
+                                    <div className="back ">
+                                        <div className="box">
+                                            <h2>Graphs</h2>
+                                            <p >Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="box">
-                                <img src={ Tree } alt=""></img>
-                                <h2>Tree's</h2>
+                            <div className="flip">
+                                <div className="test">
+                                    <div className="front">
+                                        <div className="box">
+                                            <img src={ Tree } alt=""></img>
+                                            <h2>Tree's</h2>
+                                        </div>
+                                    </div>
+                                    <div className="back ">
+                                        <div className="box">
+                                            <h2>Tree's</h2>
+                                            <p >Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="box">
-                                <img src={ LinkedList } alt=""></img>
-                                <h2>Linked List's</h2>
+                            <div className="flip">
+                                <div className="test">
+                                    <div className="front">
+                                        <div className="box">
+                                            <img src={ LinkedList } alt=""></img>
+                                            <h2>Linked List's</h2>
+                                        </div>
+                                    </div>
+                                    <div className="back ">
+                                        <div className="box">
+                                            <h2>Linked List's</h2>
+                                            <p >Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="box">
-                                <img src={ Array } alt=""></img>
-                                <h2>Arrays</h2>
+                            <div className="flip">
+                                <div className="test">
+                                    <div className="front">
+                                        <div className="box">
+                                            <img src={ Array } alt=""></img>
+                                            <h2>Arrays</h2>
+                                        </div>
+                                    </div>
+                                    <div className="back ">
+                                        <div className="box">
+                                            <h2>Arrays</h2>
+                                            <p >Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="box">
-                                <img src={ Recursion } alt=""></img>
-                                <h2>Recursion</h2>
+                            <div className="flip">
+                                <div className="test">
+                                    <div className="front">
+                                        <div className="box">
+                                            <img src={ Recursion } alt=""></img>
+                                            <h2>Recursion</h2>
+                                        </div>
+                                    </div>
+                                    <div className="back ">
+                                        <div className="box">
+                                            <h2>Recursion</h2>
+                                            <p >Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="box">
-                                <img src={ DynamicProgramming } alt=""></img>
-                                <h2>DynamicProgramming</h2>
+                            <div className="flip">
+                                <div className="test">
+                                    <div className="front">
+                                        <div className="box">
+                                            <img src={ DynamicProgramming } alt=""></img>
+                                            <h2>Dynamic Programming</h2>
+                                        </div>
+                                    </div>
+                                    <div className="back ">
+                                        <div className="box">
+                                            <h2>Dynamic Programming</h2>
+                                            <p >Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="box">
-                                <img src={ Heap } alt=""></img>
-                                <h2>Heaps</h2>
+                            <div className="flip">
+                                <div className="test">
+                                    <div className="front">
+                                        <div className="box">
+                                            <img src={ HashTable } alt=""></img>
+                                            <h2>Hash table</h2>
+                                        </div>
+                                    </div>
+                                    <div className="back ">
+                                        <div className="box">
+                                            <h2>HashTable</h2>
+                                            <p >Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="box">
-                                <img src={ Stack } alt=""></img>
-                                <h2>Stacks</h2>
+                            <div className="flip">
+                                <div className="test">
+                                    <div className="front">
+                                        <div className="box">
+                                            <img src={ Stack } alt=""></img>
+                                            <h2>Stacks</h2>
+                                        </div>
+                                    </div>
+                                    <div className="back ">
+                                        <div className="box">
+                                            <h2>Stacks</h2>
+                                            <p >Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="box">
-                                <img src={ Queue } alt=""></img>
-                                <h2>Queues</h2>
+                            <div className="flip">
+                                <div className="test">
+                                    <div className="front">
+                                        <div className="box">
+                                            <img src={ Queue } alt=""></img>
+                                            <h2>Queues</h2>
+                                        </div>
+                                    </div>
+                                    <div className="back ">
+                                        <div className="box">
+                                            <h2>Queues</h2>
+                                            <p >Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="box">
-                                <img src={ Matrix } alt=""></img>
-                                <h2>Matrix</h2>
+                            <div className="flip">
+                                <div className="test">
+                                    <div className="front">
+                                        <div className="box">
+                                            <img src={ Matrix } alt=""></img>
+                                            <h2>Matrix</h2>
+                                        </div>
+                                    </div>
+                                    <div className="back ">
+                                        <div className="box">
+                                            <h2>Matrix</h2>
+                                            <p >Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="box">
-                                <img src={ Sort } alt=""></img>
-                                <h2>Sorting</h2>
+                            <div className="flip">
+                                <div className="test">
+                                    <div className="front">
+                                        <div className="box">
+                                            <img src={ Sort } alt=""></img>
+                                            <h2>Sorting</h2>
+                                        </div>
+                                    </div>
+                                    <div className="back ">
+                                        <div className="box">
+                                            <h2>Sorting</h2>
+                                            <p >Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="box">
-                                <img src={ Search } alt=""></img>
-                                <h2>Searching</h2>
+                            <div className="flip">
+                                <div className="test">
+                                    <div className="front">
+                                        <div className="box">
+                                            <img src={ Search } alt=""></img>
+                                            <h2>Searching</h2>
+                                        </div>
+                                    </div>
+                                    <div className="back ">
+                                        <div className="box">
+                                            <h2>Tree's</h2>
+                                            <p >Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div className="section-five flex-column">
+            <h1>Suported languages</h1>
+                <p  className="landing-page-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea excepturi tenetur amet iusto, cumque autem inventore non error consectetur repudiandae? Quam sint maiores magni obcaecati voluptatibus, veritatis eveniet qui tenetur esse.</p>
+                <p  className="landing-page-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea excepturi tenetur amet iusto, cumque autem inventore non error consectetur repudiandae? Quam sint maiores magni obcaecati voluptatibus, veritatis eveniet qui tenetur esse.</p>
+                <Link className="landingpage-button" to="/questions">Questions ➜</Link>
+        </div>
+        <div className="section-skew ">
+            <div className="section-content-wrapper">
+                <div className="section-content">
+                    <div className="secondary-color-section section-six flex-column">
+                        <Texteditor></Texteditor>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div className="section-seven flex-column">
+            <h1>Reviews</h1>
+                <p  className="landing-page-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea excepturi tenetur amet iusto, cumque autem inventore non error consectetur repudiandae? Quam sint maiores magni obcaecati voluptatibus, veritatis eveniet qui tenetur esse.</p>
+        </div>
+        <Footer></Footer>
     </div>
 )};
 

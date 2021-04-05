@@ -15,6 +15,7 @@
   width: 100%;
 }
 
+
 /* changed this from the tutorial video to
    allow it to gain focus, making it tabbable */
 .nav-toggle {
@@ -152,13 +153,6 @@ nav {
     justify-content: space-between;
   }
 
-  .navbar-logo {
-    grid-column: 2 / 3;
-    &:hover{
-      opacity: 0.7;
-    }
-  }
-  
   nav {
     // all: unset; /* this causes issues with Edge, since it's unsupported */
     

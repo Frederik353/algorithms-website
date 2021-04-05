@@ -1,4 +1,4 @@
-import "./question.scss"
+import "./promt.scss"
 
 
 export function Question() {

@@ -47,6 +47,7 @@ body {
   --larger-font-size: 18px;
   --large-line-height: 1.5em;
   --border-radius: 4px;
+  --questions-border-radius: 25px;
   --titleFontSize: 94px;
   --titleLetterSpacing: -0.04em;
   --content-width: 1080px;
@@ -60,8 +61,10 @@ body {
   // #0a2540;
   --landingpage-secondary-text-color: #adbdcc;
   --angle: 10deg;
+  --navbar-angle: 5deg;
   --topography-opacity: 0.002;
-  --box-size: 45vh;
+  --box-size: 15vw;
+  --box-min-size: 200px;
 }
 
 @media only screen and (max-width: 1080px) {
