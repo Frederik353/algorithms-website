@@ -35,24 +35,25 @@ export function RemoteCodeApiRequest() {
                             fetch(data, {method: "GET"})
                                 .then(response => response.text())
                                 .then(data => JSON.parse(data))
-                                .then(data => {
+                                // .then(data => {
                                     
-                                    if (data.status === "Processing"){
-                                        set_apiResponse(data.status);
-                                    }
-                                    else if (data.output === ""){
-                                        set_apiResponse(data.stderr);
-                                    }
-                                    else{
-                                        set_apiResponse(data.output);
-                                    }
                                     
-                                });
+                                    
+                                // });
                             }, 100 * i^2);
                         
-                    } while(((apiResponse === "Processing") && (apiResponse !== "timeout\n"))  && (i < 100)
-                    );
-                set_apiResponse(data.output);
+                    } while(((apiResponse === "Processing") && (apiResponse !== "timeout\n"))  && (i < 100));
+                if (data.status === "Processing"){
+                    set_apiResponse(data.status);
+                }
+                else if (data.output === ""){
+                    set_apiResponse(data.stderr);
+                }
+                else{
+                    set_apiResponse(data.output);
+                }
+
+                // set_apiResponse(data.output);
             });
         }
     }, [settings.compile]);
@@ -75,7 +76,7 @@ export function RemoteCodeApiRequest() {
     else{
         
         return (
-            <div className="center">
+            <div>
                 {apiResponse}
             </div>
         );

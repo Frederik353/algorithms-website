@@ -85,14 +85,14 @@
     letter-spacing: var(--titleLetterSpacing);
     opacity: 0.3;
     margin: 120px 0 0;
-    width: 100%
+    // width: 100%
+    width: calc(100% / 2);
 }
 
 .Hero_Header_overlay{
     position: absolute;
     left: 0;
     top: 0;
-    width: calc(100% / 2);
     z-index: 2;
     color: #3a3a3a;
 }

@@ -1,6 +1,9 @@
 FROM ubuntu:16.04
 RUN apt-get update -y
+
+# c++ og c 
 RUN apt-get install curl vim sudo build-essential -y
+
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
 RUN apt-get install nodejs -y
 RUN node -v
@@ -13,3 +16,10 @@ RUN chmod 755 -R temp/
 RUN adduser --disabled-password --gecos "" judge
 RUN cd app && npm install
 CMD cd app &&  npm start 
+
+
+
+
+# sudo apt search golang-go
+# sudo apt search gccgo-go
+# sudo apt install golang-go 
