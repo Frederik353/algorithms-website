@@ -231,6 +231,8 @@ h1,h2,h3,p{
         perspective: 1000px;
         position: relative;
         margin: 20px;
+        min-height: var(--box-min-size);
+        min-width: var(--box-min-size);
         .test{
             position: relative;
             width: 100%;

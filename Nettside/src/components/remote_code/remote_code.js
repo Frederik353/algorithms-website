@@ -3,12 +3,21 @@ import "./remote_code.scss"
 import React, { useState, useContext, useEffect } from "react";
 import { EditorContext } from "../../pages/texteditor/texteditor"
 
+
+const initialApiState = {
+    statusCode: undefined,
+    apiStatus: undefined,
+    apiOutput: undefined,
+    apiStderr: undefined
+};
+
 export function RemoteCodeApiRequest() {
-    const [apiResponse, set_apiResponse] = useState();
+    const [apiState, set_apiState] = useState(initialApiState);
+
     const { settings } = useContext(EditorContext);
     
     useEffect(() => {
-        console.log(settings.compile)
+        // console.log(settings.compile)
         if (settings.compile !== 0){
             
             // POST request using fetch inside useEffect React hook
@@ -28,56 +37,70 @@ export function RemoteCodeApiRequest() {
                 .then(response => response.text())
                 .then(data => {
                     let i = 0;
-                    
-                    do{
-                        i++
-                        setTimeout(function () {
-                            fetch(data, {method: "GET"})
-                                .then(response => response.text())
-                                .then(data => JSON.parse(data))
-                                // .then(data => {
-                                    
-                                    
-                                    
-                                // });
-                            }, 100 * i^2);
-                        
-                    } while(((apiResponse === "Processing") && (apiResponse !== "timeout\n"))  && (i < 100));
-                if (data.status === "Processing"){
-                    set_apiResponse(data.status);
-                }
-                else if (data.output === ""){
-                    set_apiResponse(data.stderr);
-                }
-                else{
-                    set_apiResponse(data.output);
-                }
+                        var interval = setInterval(function () {
+                            i++
+                            if (( apiState.statusCode !== 200)  && (i < 10)){
+                                fetch(data, {method: "GET"})
+                                    .then(response => {
+                                        set_apiState({statusCode: response.status});
+                                        return response.text()
+                                    })
+                                    .then(data => JSON.parse(data))
+                                    .then(data => {
+                                        // set_apiResponse(data.output);
+                                        set_apiState({apiStatus: data.status});
+                                        set_apiState({apiOutput: data.output});
+                                        
+                                        // if (data.status === "Processing"){
+                                        //     set_apiResponse(data.status);
+                                        //     reponse = data.status
+                                        // }
+                                        // else if (data.output === ""){
+                                        //     set_apiResponse(data.stderr);
+                                        //     reponse = data.stderr
+                                        // }
+                                        // else{
+                                        //     set_apiResponse(data.output);
+                                        //     reponse = data.output
+                                        // }
+                                    });
+                                    console.log(apiState.apiStatus, apiState.apiStderr, apiState.statusCode)
+                                    console.log((( apiState.statusCode !== 200)  && (i < 100)))
+                                } else{
+                                    clearInterval(interval);
+                                    console.log("cleared inteval")
+                                }
 
-                // set_apiResponse(data.output);
+                            }, 1000);
+                            
+                            // } while(((apiStatus !== "success\n"))  && (i < 100));
+                        // } while((( apiState.apiStatus !== 200)  && (i < 100)));
+                // console.log(response)
+                // set_apiResponse(response);
             });
         }
     }, [settings.compile]);
 
 
-    if (apiResponse === undefined){
+    if (apiState.apiOutput === undefined){
         return(
         <div class="center">
             <p class="before-submit">Click submit code when you are ready</p>
         </div>
         );
     }
-    else if (apiResponse === "Processing"){
-        return(
-            <div class="center">
-                <p class="api-error">Somthing went wrong :(</p>
-            </div>
-        );
-    }
+    // else if (apiResponse === "Processing"){
+    //     return(
+    //         <div class="center">
+    //             <p class="api-error">Somthing went wrong :(</p>
+    //         </div>
+    //     );
+    // }
     else{
         
         return (
             <div>
-                {apiResponse}
+                {apiState.apiOutput}
             </div>
         );
     }
