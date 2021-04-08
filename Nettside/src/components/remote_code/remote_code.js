@@ -5,22 +5,22 @@ import { EditorContext } from "../../pages/texteditor/texteditor"
 
 
 const initialApiState = {
-    statusCode: undefined,
     apiStatus: undefined,
     apiOutput: undefined,
-    apiStderr: undefined
+    apiStderr: undefined,
+    responseStatus: undefined,
+    // render: "not_been_run",
 };
 
 export function RemoteCodeApiRequest() {
-    const [apiState, set_apiState] = useState(initialApiState);
+    const  [apiState, set_apiState ] = useState(initialApiState);
+    const  [render, set_render ] = useState("not_been_run");
 
     const { settings } = useContext(EditorContext);
-    
     useEffect(() => {
-        // console.log(settings.compile)
-        if (settings.compile !== 0){
-            
-            // POST request using fetch inside useEffect React hook
+        // if (settings.compile !== 0){
+
+            set_render("loading")
             const requestOptions = {
                 method: 'POST',
                 headers: {
@@ -30,77 +30,81 @@ export function RemoteCodeApiRequest() {
 	                "src": settings.value,
 	                "stdin":"",
 	                "lang":"python3",
-	                "timeout":10
+	                "timeout":5
                 })
             };
             fetch("http://127.0.0.1:7000/submit", requestOptions)
                 .then(response => response.text())
                 .then(data => {
                     let i = 0;
+                    let foo = 0;
                         var interval = setInterval(function () {
                             i++
-                            if (( apiState.statusCode !== 200)  && (i < 10)){
+                            if ((( foo !== 200))  && (i < 100)){
                                 fetch(data, {method: "GET"})
                                     .then(response => {
-                                        set_apiState({statusCode: response.status});
+                                        foo = response.status;
                                         return response.text()
                                     })
                                     .then(data => JSON.parse(data))
                                     .then(data => {
-                                        // set_apiResponse(data.output);
-                                        set_apiState({apiStatus: data.status});
-                                        set_apiState({apiOutput: data.output});
-                                        
-                                        // if (data.status === "Processing"){
-                                        //     set_apiResponse(data.status);
-                                        //     reponse = data.status
-                                        // }
-                                        // else if (data.output === ""){
-                                        //     set_apiResponse(data.stderr);
-                                        //     reponse = data.stderr
-                                        // }
-                                        // else{
-                                        //     set_apiResponse(data.output);
-                                        //     reponse = data.output
-                                        // }
+                                        set_apiState({...apiState, apiStatus: data.status, apiOutput: data.output, apiStderr: data.stderr, responseStatus: foo})
                                     });
-                                    console.log(apiState.apiStatus, apiState.apiStderr, apiState.statusCode)
-                                    console.log((( apiState.statusCode !== 200)  && (i < 100)))
-                                } else{
-                                    clearInterval(interval);
-                                    console.log("cleared inteval")
-                                }
+                            } else{
+                                clearInterval(interval);
+                                // console.log("cleared inteval")
+                            }
+                        }, 10000);
+                    })
+                    .then(render => {
+                        // if ( apiState.responseStatus !== 200 ){
+                        //     set_render("gone_wrong")
+                        // }
+                        // else if ( apiState.apiOutput !== (undefined || "" )){
+                        //     set_render("result")
+                        //     console.log( apiState.responseStatus, apiState.apiOutput )
+                        // }
+                        // else if ( apiState.apiStderr !== (undefined || "") ){
+                        //     set_render("error")
+                        // }
+                    })
+                // }
+            }, [settings.compile]);
 
-                            }, 1000);
-                            
-                            // } while(((apiStatus !== "success\n"))  && (i < 100));
-                        // } while((( apiState.apiStatus !== 200)  && (i < 100)));
-                // console.log(response)
-                // set_apiResponse(response);
-            });
-        }
-    }, [settings.compile]);
-
-
-    if (apiState.apiOutput === undefined){
+    if (render === "not_been_run"){
         return(
         <div class="center">
             <p class="before-submit">Click submit code when you are ready</p>
         </div>
         );
     }
-    // else if (apiResponse === "Processing"){
-    //     return(
-    //         <div class="center">
-    //             <p class="api-error">Somthing went wrong :(</p>
-    //         </div>
-    //     );
-    // }
-    else{
-        
+    else if (render === "loading"){
+        return(
+            <div class="center">
+                <div className="loader-wrapper center">
+                    <div class="loader">Loading...</div>
+                </div>
+            </div>
+        );
+    }
+    else if (render === "gone_wrong"){
+        return(
+            <div class="center">
+                <p class="api-error">Somthing went wrong</p>
+            </div>
+        );
+    }
+    else if (render === "result"){
         return (
             <div>
                 {apiState.apiOutput}
+            </div>
+        );
+    }
+    else if (render === "error"){
+        return (
+            <div>
+                {apiState.apiStderr}
             </div>
         );
     }
