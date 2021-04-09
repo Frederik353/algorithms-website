@@ -2,6 +2,7 @@ import { Route, Switch} from 'react-router-dom';
 import { Landing_page } from './pages/landing_page/landing_page.js';
 import { Texteditor } from "./pages/texteditor/texteditor"
 import { Questions } from "./pages/questions/questions"
+import { SignIn } from "./pages/signIn/signIn"
 import About from './pages/About';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
 
 		{/* link til alle nettsider */}
 			<Switch>
+				<Route path="/signIn" component={ SignIn } />
 				<Route path="/questions" component={ Questions } />
 				<Route path="/texteditor" component={ Texteditor } />
 				<Route path="/about" component={ About } />
