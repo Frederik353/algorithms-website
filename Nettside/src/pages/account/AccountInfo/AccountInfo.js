@@ -17,21 +17,27 @@ export function AccountInfo() {
             setError("Failed to log out")
         }
     }
-
+    
+    const Foo = () => {
+        const foo = JSON.stringyfy({currentUser})
+        return (
+            <div>
+                {foo}
+            </div>
+        );
+    }
     return (
         <>
-            <div>
-                <h2>Profile</h2>
-                {error && <div variant="danger">{error}</div>}
-                <strong>Email:</strong> {currentUser.email}
-                <Link to="/update-profile">
-                    Update Profile
-                </Link>
-            </div>
-            <button variant="link" onClick={handleLogout}>
-                Log Out
-            </button>
-            <div>
+            <div className="login-wrapper">
+                <div className="login-container" id="login-container">
+                    <div className="form-container ">
+                        <h2>Profile</h2>
+                        {error && <div variant="danger">{error}</div>}
+                        <strong>Email:</strong> { Foo }
+                        <Link to="/update-profile">Update Profile</Link>
+                        <button variant="link" onClick={handleLogout}>Log Out</button>
+                    </div>
+                </div>
             </div>
         </>
     )
