@@ -36,7 +36,7 @@
 }
 
 body {
-  // background: rgb(0, 0, 0);
+  background: rgb(0, 0, 0);
   overflow-x: hidden;
   margin: 0;
   padding: 0;
@@ -47,6 +47,7 @@ body {
   --larger-font-size: 18px;
   --large-line-height: 1.5em;
   --border-radius: 4px;
+  --big-button-border-radius: 20px;
   --questions-border-radius: 25px;
   --titleFontSize: 94px;
   --titleLetterSpacing: -0.04em;
@@ -65,6 +66,7 @@ body {
   --topography-opacity: 0.002;
   --box-size: 15vw;
   --box-min-size: 200px;
+  --input-autofill: #1d8bf8d9;
 }
 
 @media only screen and (max-width: 1080px) {

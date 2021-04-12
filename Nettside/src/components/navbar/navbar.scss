@@ -125,7 +125,8 @@ nav {
       transition: transform ease-in-out 250ms;
     }
 
-    &:hover::after, .active::after{
+    &:hover::after,
+    &.active::after {
       transform: scale(1,1);
     }
   

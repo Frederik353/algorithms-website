@@ -36,7 +36,6 @@ import Queue from './concepts/queue.svg';
 
 
 export function Landing_page(){
-    
     return(
     <div className="wrapper">
         <div className="section-skew header">
@@ -45,7 +44,6 @@ export function Landing_page(){
                 <div className="section-content">
 
                     <NavBar />
-                    
                     <div className="header">
                         <div className="header-wrap">
                             <h1 class="Hero_Header" data-js-target-list="HomepageHeroHeader.title">
@@ -112,43 +110,36 @@ export function Landing_page(){
                     <h2>Python</h2>
                     <p>Lorem ipsum dolor sit amet.</p>
                 </div>
-                
                 <div className="box">
                     <img src={ Javascript } alt=""></img>
                     <h2>Javascript</h2>
                     <p>Lorem ipsum dolor sit amet.</p>
                 </div>
-                
                 <div className="box">
                     <img src={ Go } alt=""></img>
                     <h2>Go</h2>
                     <p>Lorem ipsum dolor sit amet.</p>
                 </div>
-                
                 <div className="box">
                     <img src={ Java } alt=""></img>
                     <h2>Java</h2>
                     <p>Lorem ipsum dolor sit amet.</p>
                 </div>
-                
                 <div className="box">
                     <img src={ Typescript } alt=""></img>
                     <h2>Typescript</h2>
                     <p>Lorem ipsum dolor sit amet.</p>
                 </div>
-                
                 <div className="box">
                     <img src={ Cpp } alt=""></img>
                     <h2>C++</h2>
                     <p>Lorem ipsum dolor sit amet.</p>
                 </div>
-                
                 <div className="box">
                     <img src={ C } alt=""></img>
                     <h2>C</h2>
                     <p>Lorem ipsum dolor sit amet.</p>
                 </div>
-                
             </div>
         </div>
         <div className="section-skew ">
@@ -363,7 +354,7 @@ export function Landing_page(){
                 <Link className="landingpage-button" to="/questions">Questions ➜</Link>
         </div>
         <div className="section-skew ">
-            <div className="section-content-wrapper">
+            <div className="section-content-wrapper texteditor">
                 <div className="section-content">
                     <div className="secondary-color-section section-six flex-column">
                         <Texteditor></Texteditor>
