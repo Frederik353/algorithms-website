@@ -1,0 +1,18 @@
+{
+"questions":{
+    "title": "string",
+    "difficulty": "string",
+    "category": "string",
+    "question": "string",
+    "hints": {
+        "hint": "string"
+        },
+    "funtions": {
+        "function": "string"
+        },
+    "testCases": {
+        "test": "string"
+        },
+    "complexity": "string"
+    }
+}

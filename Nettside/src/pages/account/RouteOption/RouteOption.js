@@ -15,3 +15,15 @@ export function PrivateRoute({ component: Component, ...rest }) {
         ></Route>
     )
 }
+
+export function PublicRoute({ component: Component, ...rest }) {
+    const { currentUser } = useAuth()
+    return (
+        <Route
+            {...rest}
+            render={props => {
+                return currentUser ? <Redirect to="/questions"/> :  <Component {...props} />
+            }}
+        ></Route>
+    )
+}
