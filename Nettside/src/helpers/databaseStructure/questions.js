@@ -1,3 +1,4 @@
+import { languages } from "../../pages/texteditor/texteditor"
 
 
 export default {
@@ -12,7 +13,7 @@ export default {
         "python": "def sortList(self, head):",
         "javascript": "var sortList = function(head) {\n\n};"
 },
-    "testCases": {  
+    "testCases": {
         "test": "Input: head = [4,2,1,3]\nOutput: [1,2,3,4]",
         "test": "Input: head = [-1,5,3,4,0]\nOutput: [-1,0,3,4,5]",
         },
@@ -24,3 +25,16 @@ export default {
             }
         }
     }
+
+
+// languages
+    // lang
+        // langname
+        // soulution
+        // starting kode
+
+// store difficulty as int
+// supported langs
+// submision stats
+    // correct count
+    // failiures

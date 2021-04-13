@@ -84,6 +84,7 @@
 input {
     background-color: #eee;
     border: none;
+    outline: none;
     padding: 12px 15px;
     margin: 8px 0;
     width: 225px;
@@ -99,7 +100,7 @@ input {
 .login-container {
     background-color: #fff;
     border-radius: var(--big-button-border-radius);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 5px 10px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--box-shadow-3d);
     position: relative;
     overflow: hidden;
     max-width: 100%;
@@ -301,6 +302,8 @@ input {
         }
     }
 }
+
+
 
 
 

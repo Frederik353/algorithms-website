@@ -1,5 +1,6 @@
 
 :root{
+  --link: #1890ff;
   --blue: #5e72e4;
   --indigo: #5603ad;
   --purple: #8965e0;
@@ -25,7 +26,6 @@
   --light: #adb5bd;
   --dark: #212529;
   --white: #fff;
-  --neutral: #fff;
   --darker: #000;
   --navbackground: rgba(0, 214, 170, .85);
   --navbar-height: 40px;
@@ -36,7 +36,7 @@
 }
 
 body {
-//   background: rgb(0, 0, 0);
+//   background: var(--landingpage-secondary-color);
   overflow-x: hidden;
   margin: 0;
   padding: 0;
@@ -58,6 +58,7 @@ body {
   --large-screen: 1200px;
   --landingpage-text-color: #425466;
   --landingpage-secondary-color: #1e1e2f; 
+  --lighter-background: #4f4ffab4;
   // #004E9C;  
   // #0a2540;
   --landingpage-secondary-text-color: #adbdcc;
@@ -67,6 +68,8 @@ body {
   --box-size: 15vw;
   --box-min-size: 200px;
   --input-autofill: #1d8bf8d9;
+  --box-shadow-3d: 0 15px 30px rgba(0, 0, 0, 0.3),
+  5px 10px 10px rgba(0, 0, 0, 0.3);
 }
 
 @media only screen and (max-width: 1080px) {

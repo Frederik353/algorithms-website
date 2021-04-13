@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, Fragment } from "react";
-
+import ReactParticles from "react-particles-js";
+import particlesConfig from '../../helpers/ParticlesConfig';
 import { Footer } from "../../components/footer/footer"
 import { NavBar } from "../../components/navbar/navbar"
 
@@ -19,23 +20,70 @@ export function Questions(){
                 </div>
             </div>
         </div>
-        <div className="temp flex-column">
-            <h1>Questions</h1>
-            {/* <div className="questions"> */}
-                <Pagination/>
-
-
-                {/* <div className="question">
-                    <div class="info-box">
-                        <div class="info">
-                            <span>Difficulty:</span>
-                            <span class="difficulty easy"></span>
+        <div className="spacer"></div>
+        <div className="section-skew questions-background">
+            <Particles>
+                <div className="section-content-wrapper ">
+                    <div className="section-content">
+                        <div className="questions-info">
+                            <h1>Questions</h1>
+                            <div className="difficulty-info">
+                                <h3>Easy: <span class="difficulty easy large"></span></h3>
+                                <h3>Medium: <span class="difficulty medium large"></span></h3>
+                                <h3>Hard: <span class="difficulty hard large"></span></h3>
+                                <h3>Very Hard: <span class="difficulty very-hard large"></span></h3>
+                            </div>
+                            <div className="questions-filters">
+                                <input type="text" id="search-bar" placeholder="Search question titles"></input>
+                            </div>
+                        </div>
+                            {/* <Pagination/> */}
+                        <div className="questions">
+                                <a href="#" className="question questions-header" >
+                                    {/* <h4>Title</h4> */}
+                                    <p>Title</p>
+                                    <p>Category</p>
+                                    <p>Acceptance</p>
+                                    <p>difficulty</p>
+                                </a>
+                                <a href="#" className="question" >
+                                    <h4>Merge Sorted Array</h4>
+                                    <p>Divide and conquer</p>
+                                    <p>74%</p>
+                                    <span class="difficulty easy large"></span>
+                                </a>
+                                <a href="#" className="question" >
+                                    <h4>Merge Sorted Array</h4>
+                                    <p>Divide and conquer</p>
+                                    <p>74%</p>
+                                    <span class="difficulty easy large"></span>
+                                </a>
+                                <a href="#" className="question" >
+                                    <h4>Merge Sorted Array</h4>
+                                    <p>Divide and conquer</p>
+                                    <p>74%</p>
+                                    <span class="difficulty easy large"></span>
+                                </a>
+                                <a href="#" className="question" >
+                                    <h4>Merge Sorted Array</h4>
+                                    <p>Divide and conquer</p>
+                                    <p>74%</p>
+                                    <span class="difficulty easy large"></span>
+                                </a>
+                                <a href="#" className="question" >
+                                    <h4>Merge Sorted Array</h4>
+                                    <p>Divide and conquer</p>
+                                    <p>74%</p>
+                                    <span class="difficulty easy large"></span>
+                                </a>
                         </div>
                     </div>
-                </div> */}
-            {/* </div> */}
-            </div>
-        <Footer />
+                </div>
+            </Particles>
+        </div>
+        <div className="questions-footer">
+        <Footer/>
+        </div>
     </div>
 )};
 
@@ -64,28 +112,28 @@ export function Pagination() {
     //         };
     //     fetchPosts();
     // }, []);
-    useEffect(() => {
-        const fetchPosts = async () => {
-            setLoading(true);
-            // var title = await database.ref("questions").orderByChild("difficulty").equalTo("medium");
-            var title = await database.ref("questions");
-            title.on('value', (snapshot) => {
-                const data = () => {
-                    const data = snapshot.val();
-                    // var result = [];
-                        // console.log(i)
-                    for(let i = 0; i < 50; i++) {
-                        console.log(i);
-                        // database.ref("questions").push(Question);
-                    }
+    // useEffect(() => {
+    //     const fetchPosts = async () => {
+    //         setLoading(true);
+    //         // var title = await database.ref("questions").orderByChild("difficulty").equalTo("medium");
+    //         var title = await database.ref("questions");
+    //         title.on('value', (snapshot) => {
+    //             const data = () => {
+    //                 const data = snapshot.val();
+    //                 // var result = [];
+    //                     // console.log(i)
+    //                 for(let i = 0; i < 50; i++) {
+    //                     console.log(i);
+    //                     // database.ref("questions").push(Question);
+    //                 }
                 
-                    setPosts(data);
-                };
-            });
-            setLoading(false);
-        };
-        fetchPosts();
-    }, []);
+    //                 setPosts(data);
+    //             };
+    //         });
+    //         setLoading(false);
+    //     };
+    //     fetchPosts();
+    // }, []);
     // seEffect(() => {
     //     const fetchPosts = async () => {
     //         setLoading(true);
@@ -160,3 +208,22 @@ const Posts = ({ posts, loading }) => {
 };
 
 
+
+function Particles({ children }) {
+    return (
+        <div style={{ position: 'relative' }}>
+            <ReactParticles
+                params={particlesConfig}
+                style={{
+                    position: 'absolute',
+                    zIndex: -100,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    top: 0,
+                }}
+            />
+            {children && <div   className="temp flex-column"  style={{ position: 'relative' }}>{children}</div>}
+        </div>
+    );
+}

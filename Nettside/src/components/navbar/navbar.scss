@@ -4,214 +4,216 @@
 
 
 .navbar-header {
-  // background: var(--navbackground);
-  text-align: center;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  // z-index: 999;
-
-  width: 100%;
+    // background: var(--navbackground);
+    text-align: center;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    width: 100%;
 }
 
 
 /* changed this from the tutorial video to
-   allow it to gain focus, making it tabbable */
+     allow it to gain focus, making it tabbable */
 .nav-toggle {
-  position: absolute !important;
-  top: -9999px !important;
-  left: -9999px !important;
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
 }
 
 
 .nav-toggle-label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin-left: 1em;
-  height: 100%;
-  display: flex;
-  align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 1em;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .nav-toggle-label span,
 .nav-toggle-label span::before,
 .nav-toggle-label span::after {
-  display: block;
-  background: white;
-  height: 2px;
-  width: 2em;
-  border-radius: 2px;
-  position: relative;
+    display: block;
+    background: white;
+    height: 2px;
+    width: 2em;
+    border-radius: 2px;
+    position: relative;
 }
 
 .nav-toggle-label span::before,
 .nav-toggle-label span::after {
-  content: '';
-  position: absolute;
+    content: '';
+    position: absolute;
 }
 
 .nav-toggle-label span::before {
-  bottom: 7px;
+    bottom: 7px;
 }
 
 .nav-toggle-label span::after {
-  top: 7px;
+    top: 7px;
 }
 
 
 nav {
-  position: absolute;
-  text-align: left;
-  top: 100%;
-  right: 0;
-  width: 100%;
-  transform: scale(1, 0);
-  transform-origin: top;
-  transition: transform 400ms ease-in-out;
-  ul {
-    position: relative;
-    width: 6rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    background: #fff;
-    border-radius: var(--border-radius);
-    li {
-      padding: .5em;
-    }
-  }
-
-  .sign-in-button{
-      cursor: pointer;
-      background-color: #fff;
-      padding: 7.5px;
-      display: inline-block;
-      position: relative;
-      top: -20px;
-      border-radius: var(--border-radius);
-      &:hover{
-        
-      }
-      &::after{
-        background: #fff0;
-      }
-  }
-
-  
-  a {
-    color: #0a2540;
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: bold;
-    // text-transform: uppercase;
-    opacity: 0;
-    transition: opacity 150ms ease-in-out;
-    &:hover {
-      color: #0a2540;
-      // color: rgba(255, 255, 255, 0.7);
-    }
-    &::after{
-      content: '';
-      display: block;
-      height: 2px;
-      background: #0a2540;
-      position: relative;
-      bottom: -.15em;
-      left: 0;
-      right: 0;
-      transform: scale(0, 1);
-      transition: transform ease-in-out 250ms;
-    }
-
-    &:hover::after,
-    &.active::after {
-      transform: scale(1,1);
-    }
-  
-  }
-}
-
-.nav-toggle:checked ~ nav {
-  transform: scale(1,1);
-}
-
-.nav-toggle:checked ~ nav a {
-  opacity: 1;
-  transition: opacity 250ms ease-in-out 250ms;
-}
-
-@media screen and (min-width: 768px) {
-  .nav-toggle-label {
-    display: none;
-  }
-
-  .navbar-header {
-    // display: grid;
-    // grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  nav {
-    // all: unset; /* this causes issues with Edge, since it's unsupported */
-    
-    /* the following lines are not from my video, but add Edge support */
-    position: relative;
+    position: absolute;
     text-align: left;
-    transition: none;
-    transform: scale(1,1);
-    background: none;
-    top: initial;
-    left: initial;
-    /* end Edge support stuff */
-    
-    grid-column: 3 / 4;
-    display: flex;
-
+    top: 100%;
+    right: 0;
+    width: 100%;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 400ms ease-in-out;
     ul {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #fff0;
-    }
-    li {
-      margin-left: 3em;
-      margin-bottom: 0;
+        position: relative;
+        width: 6rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        background: #fff;
+        border-radius: var(--border-radius);
+        li {
+            padding: .5em;
+        }
     }
 
     .sign-in-button{
-      border-radius: 16px;
-      // background-color: rgba(255, 255, 255, 0.5);
-      background-color: rgba(255, 255, 255, 0.2);
-      color: #fff;
-      white-space: nowrap;
-      height: 50%;
-      padding: 3px 10px;
-      position: relative;
-      top: 0;
-      
-      &:hover{
-        background-color: rgba(255, 255, 255, 0.35);
-      }
-      &::after{
-        background: #fff0;
-      }
-  }
-
-    a {
-      opacity: 1;
-      color: #fff;
-      &:hover{
-        color: #ffffffb3
-      }
-
-      &::after{
-        background: #fff;
-      }
+            cursor: pointer;
+            background-color: #fff;
+            padding: 7.5px;
+            display: inline-block;
+            position: relative;
+            top: -20px;
+            border-radius: var(--border-radius);
+            &::after{
+                background: #fff0;
+            }
     }
-  }
+    a {
+        color: #0a2540;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: bold;
+        // text-transform: uppercase;
+        opacity: 0;
+        transition: opacity 150ms ease-in-out;
+        &:hover {
+            color: #0a2540;
+            // color: rgba(255, 255, 255, 0.7);
+        }
+        &::after{
+            content: '';
+            display: block;
+            height: 2px;
+            background: #0a2540;
+            position: relative;
+            bottom: -.15em;
+            left: 0;
+            right: 0;
+            transform: scale(0, 1);
+            transition: transform ease-in-out 250ms;
+        }
+
+        &:hover::after,
+        &.active::after {
+            transform: scale(1,1);
+        }
+    
+    }
 }
 
+.nav-toggle:checked ~ nav {
+    transform: scale(1,1);
+}
+
+.nav-toggle:checked ~ nav a {
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 250ms;
+}
+
+@media screen and (min-width: 768px) {
+    .nav-toggle-label {
+        display: none;
+    }
+
+    .navbar-header {
+        // display: grid;
+        // grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    nav {
+        // all: unset; /* this causes issues with Edge, since it's unsupported */
+        
+        /* the following lines are not from my video, but add Edge support */
+        position: relative;
+        text-align: left;
+        transition: none;
+        transform: scale(1,1);
+        background: none;
+        top: initial;
+        left: initial;
+        /* end Edge support stuff */
+        
+        grid-column: 3 / 4;
+        display: flex;
+
+        ul {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff0;
+        }
+        li {
+            margin-left: 3em;
+            margin-bottom: 0;
+        }
+
+        .sign-in-button{
+            border-radius: 16px;
+            // background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 3px 10px;
+            position: relative;
+            top: 0;
+            
+            &:hover{
+                background-color: rgba(255, 255, 255, 0.35);
+            }
+            &::after{
+                background: #fff0;
+            }
+    }
+
+        a {
+            opacity: 1;
+            color: #fff;
+            &:hover{
+                color: #ffffffb3
+            }
+
+            &::after{
+                background: #fff;
+            }
+        }
+    }
+}
+
+
+.account-img {
+    width: 35px;
+    margin-right: 10px;
+    border-radius: 50%;
+}

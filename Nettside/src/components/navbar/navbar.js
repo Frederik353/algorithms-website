@@ -38,8 +38,21 @@ function SignInButton() {
     return (
         <Route
             render={props => {
-                return currentUser ? <NavLink className="sign-in-button" to="/account">Account ➜</NavLink> : <NavLink className="sign-in-button" to="/signIn">Sign in ➜</NavLink>;
+                return currentUser ? <AccountButton/> : <NavLink className="sign-in-button" to="/signIn">Sign in ➜</NavLink>;
             }}
         ></Route>
     )
 }
+
+
+
+function AccountButton() {
+    const { currentUser } = useAuth()
+
+    return (
+        <div>
+            <NavLink className="sign-in-button" to="/account"><img src={currentUser.photoURL} className="account-img"></img>Account ➜</NavLink>
+        </div>
+    )
+}
+
