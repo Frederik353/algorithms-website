@@ -13,6 +13,12 @@
     "testCases": {
         "test": "string"
         },
-    "complexity": "string"
+    "complexity": "string",
+    "posts": {
+        "post": {
+            "sender": "userid",
+            "content": "userid"
+            }
+        }
     }
 }

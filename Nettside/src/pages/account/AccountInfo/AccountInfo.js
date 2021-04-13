@@ -18,14 +18,7 @@ export function AccountInfo() {
         }
     }
     
-    const Foo = () => {
-        const foo = JSON.stringyfy({currentUser})
-        return (
-            <div>
-                {foo}
-            </div>
-        );
-    }
+        // const foo =  JSON.stringyfy({currentUser})
     return (
         <>
             <div className="login-wrapper">
@@ -33,7 +26,7 @@ export function AccountInfo() {
                     <div className="form-container ">
                         <h2>Profile</h2>
                         {error && <div variant="danger">{error}</div>}
-                        <strong>Email:</strong> { Foo }
+                        <strong>Email:</strong>
                         <Link to="/update-profile">Update Profile</Link>
                         <button variant="link" onClick={handleLogout}>Log Out</button>
                     </div>

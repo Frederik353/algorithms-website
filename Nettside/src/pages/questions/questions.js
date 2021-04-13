@@ -6,15 +6,8 @@ import { NavBar } from "../../components/navbar/navbar"
 
 import "./questions.scss"
 import { useAuth } from "../../helpers/authentication-context"
-import { database } from "../../helpers/config"
-
-
-
-
-
-
-
-
+import { database } from "../../helpers/config";
+import  Question  from "../../helpers/databaseStructure/questions"
 
 export function Questions(){
     return(
@@ -40,7 +33,7 @@ export function Questions(){
                         </div>
                     </div>
                 </div> */}
-        {/* </div> */}
+            {/* </div> */}
             </div>
         <Footer />
     </div>
@@ -59,64 +52,50 @@ export function Pagination() {
     const [postsPerPage] = useState(10);
     // const { currentUser, logout } = useAuth();
 
-// Make the request
-// useEffect(() => {
-//     const fetchPosts = async () => {
-//         setLoading(true);
-//             await database.ref("questions").push({
-//                         "title": "Merge Sorted Array",
-//     "difficulty": "medium",
-//     "category": "Arrays",
-//     "question": "Given the head of a linked list, return the list after sorting it in ascending order.",
-//     "hints": {
-//         "hint": "divide-and-conquer"
-//         },
-//     "funtions": {
-//         "python": "def sortList(self, head):",
-//         "javascript": "var sortList = function(head) {\n};"
-// },
-//     "testCases": { 
-//         "test": "Input: head = [4,2,1,3]\nOutput: [1,2,3,4]",
-//         "test": "Input: head = [-1,5,3,4,0]\nOutput: [-1,0,3,4,5]",
-//         },
-//     "complexity": "O(n logn) time and O(1) memory/constant space"
-//             });
-
-    //         database.ref("").on("value", snapshot => {
-    //             let chats = [];
-    //             snapshot.forEach((snap) => {
-    //                 chats.push(snap.val());
-    //             });
-    //         })
-    //         setLoading(false);
-    //     }
-    //     fetchPosts();
-
-    // }, []);
+    // fill test db
     // useEffect(() => {
     //     const fetchPosts = async () => {
     //         setLoading(true);
-    //         var title = database.ref("questions/-MY6j_OrrxMCVCBbpERY");
-    //         title.on('value', (snapshot) => {
-    //             const data = snapshot.val();
-    //             data = data.json()
-    //             setPosts(data.json());
-    //         });
+    //         for(let i = 0; i < 50; i++) {
+    //             // console.log(i);
+    //             database.ref("questions").push(Question);
+    //         }
     //         setLoading(false);
-    //     };
-
+    //         };
     //     fetchPosts();
     // }, []);
     useEffect(() => {
         const fetchPosts = async () => {
             setLoading(true);
-            await fetch("https://jsonplaceholder.typicode.com/posts")
-                .then(response => response.json())
-                .then(data => setPosts(data));
+            // var title = await database.ref("questions").orderByChild("difficulty").equalTo("medium");
+            var title = await database.ref("questions");
+            title.on('value', (snapshot) => {
+                const data = () => {
+                    const data = snapshot.val();
+                    // var result = [];
+                        // console.log(i)
+                    for(let i = 0; i < 50; i++) {
+                        console.log(i);
+                        // database.ref("questions").push(Question);
+                    }
+                
+                    setPosts(data);
+                };
+            });
             setLoading(false);
         };
         fetchPosts();
     }, []);
+    // seEffect(() => {
+    //     const fetchPosts = async () => {
+    //         setLoading(true);
+    //         await fetch("https://jsonplaceholder.typicode.com/posts")
+    //             .then(response => response.json())
+    //             .then(data => console.log(data));
+    //         setLoading(false);
+    //     };
+    //     fetchPosts();
+    // }, []);u
 
     // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
