@@ -34,14 +34,15 @@
     width: 100%;
     background: #fff;
     margin: 20px;
-    color: var(--landingpage-secondary-color);
+    color: #000;
     font-weight: 700;
     border-radius: var(--questions-border-radius);
     overflow: hidden;
     box-shadow: var(--box-shadow-3d);
 
     .questions-header {
-        color: #000;
+        color: #000 !important;
+        cursor: default;
         opacity: 1;
         background-color: var(--lighter-background) !important;
         -webkit-box-shadow: 0px 1px 0px 0px #00000080;
@@ -77,6 +78,7 @@
         & > *{
             margin: 0 10px;
         }
+
         &::before{
             color: var(--landingpage-secondary-text-color);
             content: counter(number)" ";

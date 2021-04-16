@@ -37,7 +37,6 @@ export function Questions(){
                                 <input type="text" id="search-bar" placeholder="Search question titles"></input>
                             </div>
                         </div>
-                            {/* <Pagination/> */}
                         <div className="questions">
                                 <a href="#" className="question questions-header" >
                                     {/* <h4>Title</h4> */}
@@ -46,35 +45,30 @@ export function Questions(){
                                     <p>Acceptance</p>
                                     <p>difficulty</p>
                                 </a>
+                                {/* <Pagination/> */}
                                 <a href="#" className="question" >
-                                    <h4>Merge Sorted Array</h4>
-                                    <p>Divide and conquer</p>
-                                    <p>74%</p>
+                                    <h4>Remove Duplicates from Sorted Array    </h4>
+                                    <p>pointers</p>
+                                    <p>89%</p>
                                     <span class="difficulty easy large"></span>
                                 </a>
                                 <a href="#" className="question" >
                                     <h4>Merge Sorted Array</h4>
                                     <p>Divide and conquer</p>
                                     <p>74%</p>
-                                    <span class="difficulty easy large"></span>
+                                    <span class="difficulty very-hard large"></span>
                                 </a>
                                 <a href="#" className="question" >
-                                    <h4>Merge Sorted Array</h4>
-                                    <p>Divide and conquer</p>
-                                    <p>74%</p>
-                                    <span class="difficulty easy large"></span>
+                                    <h4>Merge k Sorted Lists</h4>
+                                    <p>Priority Queue</p>
+                                    <p>11%</p>
+                                    <span class="difficulty hard large"></span>
                                 </a>
                                 <a href="#" className="question" >
-                                    <h4>Merge Sorted Array</h4>
-                                    <p>Divide and conquer</p>
-                                    <p>74%</p>
-                                    <span class="difficulty easy large"></span>
-                                </a>
-                                <a href="#" className="question" >
-                                    <h4>Merge Sorted Array</h4>
-                                    <p>Divide and conquer</p>
-                                    <p>74%</p>
-                                    <span class="difficulty easy large"></span>
+                                    <h4>Median of Two Sorted Arrays    </h4>
+                                    <p>Recursion</p>
+                                    <p>34%</p>
+                                    <span class="difficulty medium large"></span>
                                 </a>
                         </div>
                     </div>
@@ -112,28 +106,28 @@ export function Pagination() {
     //         };
     //     fetchPosts();
     // }, []);
-    // useEffect(() => {
-    //     const fetchPosts = async () => {
-    //         setLoading(true);
-    //         // var title = await database.ref("questions").orderByChild("difficulty").equalTo("medium");
-    //         var title = await database.ref("questions");
-    //         title.on('value', (snapshot) => {
-    //             const data = () => {
-    //                 const data = snapshot.val();
-    //                 // var result = [];
-    //                     // console.log(i)
-    //                 for(let i = 0; i < 50; i++) {
-    //                     console.log(i);
-    //                     // database.ref("questions").push(Question);
-    //                 }
+    useEffect(() => {
+        const fetchPosts = async () => {
+            setLoading(true);
+            // var title = await database.ref("questions").orderByChild("difficulty").equalTo("medium");
+            var title = await database.ref("questions");
+            title.on('value', (snapshot) => {
+                const data = () => {
+                    const data = snapshot.val();
+                    var result = [];
+                    console.log(data);
+                    for(let i = 0; i < 50; i++) {
+                        console.log(i);
+                        
+                    }
                 
-    //                 setPosts(data);
-    //             };
-    //         });
-    //         setLoading(false);
-    //     };
-    //     fetchPosts();
-    // }, []);
+                    setPosts(data);
+                };
+            });
+            setLoading(false);
+        };
+        fetchPosts();
+    }, []);
     // seEffect(() => {
     //     const fetchPosts = async () => {
     //         setLoading(true);
@@ -143,7 +137,7 @@ export function Pagination() {
     //         setLoading(false);
     //     };
     //     fetchPosts();
-    // }, []);u
+    // }, []);
 
     // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;

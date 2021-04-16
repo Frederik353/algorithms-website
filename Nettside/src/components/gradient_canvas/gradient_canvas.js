@@ -3,8 +3,7 @@ import React, { useEffect } from "react";
 import "./gradient_canvas.scss";
 
 
-
-
+let speed = 0.02;
 
 export function GradientCanvas() {
     useEffect(() => {
@@ -21,7 +20,7 @@ export function GradientCanvas() {
                     color(x, y, R(x, y, time), G(x, y, time), B(x, y, time));
                 }
             }
-            time = time + 0.02;
+            time = time + speed;
             window.requestAnimationFrame(startAnimation);
         }
 

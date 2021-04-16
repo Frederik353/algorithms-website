@@ -53,7 +53,7 @@ export default {
             },
             "move": {
                 "enable": true,
-                "speed": 3,
+                "speed": 0.5,
                 "direction": "none",
                 "random": false,
                 "straight": false,
