@@ -1,5 +1,5 @@
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import AceEditor from "react-ace";
 import { EditorContext } from "../../pages/texteditor/texteditor"
 
@@ -33,6 +33,11 @@ export function CodeEditor() {
     //     set_settings({ ...settings, placeholder: e.target.value });
     // }
 
+
+    // bug callback
+    useEffect(() => {
+        set_settings({ ...settings, value: settings.currentQuestion.funtions.[settings.mode] });
+    },[settings.mode])
         return (
 
             <AceEditor

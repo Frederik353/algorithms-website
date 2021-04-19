@@ -13,7 +13,7 @@ export function NavBar(){
         <header className="navbar-header">
             <h1 class="navbar-logo">Logo</h1>
             <input type="checkbox" id="nav-toggle" class="nav-toggle"></input>
-            <nav>
+            <nav className="main-nav">
                 <ul>
                     <li><NavLink activeClassName="active" exact to="/">Home</NavLink></li>
                     <li><NavLink activeClassName="active" exact to="/about">About</NavLink></li>

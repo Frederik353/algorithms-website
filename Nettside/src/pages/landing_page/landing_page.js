@@ -357,7 +357,7 @@ export function Landing_page(){
             <div className="section-content-wrapper texteditor">
                 <div className="section-content">
                     <div className="secondary-color-section section-six flex-column">
-                        <Texteditor></Texteditor>
+                        <Texteditor randomQuestion={true}></Texteditor>
                     </div>
                 </div>
             </div>

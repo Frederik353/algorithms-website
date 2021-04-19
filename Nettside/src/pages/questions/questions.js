@@ -3,6 +3,7 @@ import ReactParticles from "react-particles-js";
 import particlesConfig from '../../helpers/ParticlesConfig';
 import { Footer } from "../../components/footer/footer"
 import { NavBar } from "../../components/navbar/navbar"
+import { Link } from "react-router-dom"
 
 
 import "./questions.scss"
@@ -45,31 +46,8 @@ export function Questions(){
                                     <p>Acceptance</p>
                                     <p>difficulty</p>
                                 </a>
-                                {/* <Pagination/> */}
-                                <a href="#" className="question" >
-                                    <h4>Remove Duplicates from Sorted Array    </h4>
-                                    <p>pointers</p>
-                                    <p>89%</p>
-                                    <span class="difficulty easy large"></span>
-                                </a>
-                                <a href="#" className="question" >
-                                    <h4>Merge Sorted Array</h4>
-                                    <p>Divide and conquer</p>
-                                    <p>74%</p>
-                                    <span class="difficulty very-hard large"></span>
-                                </a>
-                                <a href="#" className="question" >
-                                    <h4>Merge k Sorted Lists</h4>
-                                    <p>Priority Queue</p>
-                                    <p>11%</p>
-                                    <span class="difficulty hard large"></span>
-                                </a>
-                                <a href="#" className="question" >
-                                    <h4>Median of Two Sorted Arrays    </h4>
-                                    <p>Recursion</p>
-                                    <p>34%</p>
-                                    <span class="difficulty medium large"></span>
-                                </a>
+                                <Pagination/>
+
                         </div>
                     </div>
                 </div>
@@ -110,35 +88,20 @@ export function Pagination() {
         const fetchPosts = async () => {
             setLoading(true);
             // var title = await database.ref("questions").orderByChild("difficulty").equalTo("medium");
-            var title = await database.ref("questions");
-            title.on('value', (snapshot) => {
-                const data = () => {
-                    const data = snapshot.val();
+            var title = await database.ref("questions/");
+                title.on("value", (snapshot) => {
                     var result = [];
-                    console.log(data);
-                    for(let i = 0; i < 50; i++) {
-                        console.log(i);
-                        
+                    const data = snapshot.val();
+                    for (let i in data){
+                        result.push(data[i]);
                     }
-                
-                    setPosts(data);
-                };
+                    console.log(result)
+                    setPosts(result);
             });
             setLoading(false);
         };
         fetchPosts();
     }, []);
-    // seEffect(() => {
-    //     const fetchPosts = async () => {
-    //         setLoading(true);
-    //         await fetch("https://jsonplaceholder.typicode.com/posts")
-    //             .then(response => response.json())
-    //             .then(data => console.log(data));
-    //         setLoading(false);
-    //     };
-    //     fetchPosts();
-    // }, []);
-
     // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -148,14 +111,14 @@ export function Pagination() {
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
-        <div className="dark-text">
-            <Posts posts={currentPosts} loading={loading} />
+        <>
+            <Posts posts={currentPosts} offset={indexOfFirstPost} loading={loading} />
             <PaginationLine
                 postsPerPage={postsPerPage}
                 totalPosts={posts.length}
                 paginate={paginate}
             />
-        </div>
+        </>
     );
 }
 
@@ -168,11 +131,12 @@ const PaginationLine = ({ postsPerPage, totalPosts, paginate }) => {
     }
 
     return (
-        <nav>
+        <nav className="pagination-nav">
+            <div>number of rows</div>
             <ul className="pagination">
                 {pageNumbers.map(number => (
                     <li key={number} className="page-item">
-                        <a href="#" className="page-link dark-text" onClick={() => paginate(number)}>
+                        <a href="#" className="page-link" onClick={() => paginate(number)}>
                             {number}
                         </a>
                     </li>
@@ -183,23 +147,30 @@ const PaginationLine = ({ postsPerPage, totalPosts, paginate }) => {
 };
 
 
-const Posts = ({ posts, loading }) => {
+const Posts = ({ posts, loading, offset}) => {
     if (loading) {
         return <h2>Loading...</h2>;
     }
-
     return (
-        <div className="questions">
+        <>
             {posts.map(post => (
-                <div key={post} className="question" >
+                <Link key={post} className="question" to={{pathname: `/texteditor/${post.title}`, state: {question: post}}}>
+                    <p>{offset++}</p>
                     <h4>{post.title}</h4>
-                    <h4>{post.category}</h4>
-                    <p>{post.difficulty}</p>
-                </div>
+                    <p>{post.category}</p>
+                    <p>74%</p>
+                    <div className="difficulty large">
+                        <span className={post.difficulty}  ></span>
+                    </div>
+                </Link>
             ))}
-        </div>
+        </>
     );
 };
+
+
+
+
 
 
 
@@ -221,3 +192,5 @@ function Particles({ children }) {
         </div>
     );
 }
+
+
