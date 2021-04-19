@@ -77,7 +77,7 @@ const initialTexteditorSettings = {
     compile: 0,
     value: "def Fibonacci(n):\n  if n<0:\n    return\n  elif n==1:\n    return 0\n  elif n==2:\n        return 1\n  else:\n    return Fibonacci(n-1)+Fibonacci(n-2)\n\nprint(Fibonacci(30))",
     currentQuestion: initialQuestionState,
-    currentQuestionURl: "",
+    currentQuestionURl: "fuck",
     UpperLeft: 0,
     UpperLeftActive: 0,
 };
@@ -89,11 +89,15 @@ export function Texteditor(props) {
     const location = useLocation();
 
     useEffect(() => {
+        console.log(settings.currentQuestionURl)
+    }, [settings.currentQuestionURl])
+
+
+    useEffect(() => {
         setLoading(true);
         let fetchQuestion = async () => {
             if (props.randomQuestion){
                     let questionId = props.questionId
-                    console.log(questionId)
                     var title = database.ref("questions/");
                         title.on("value", (snapshot) => {
                             const data = snapshot.val();
@@ -114,9 +118,10 @@ export function Texteditor(props) {
                 const questionUrl = location.pathname.substring(location.pathname.lastIndexOf('/') + 1)
                 console.log(questionUrl)
                 var title = database.ref("questions/").orderByChild("title").equalTo(questionUrl);
-                    title.on("value", (snapshot) => {
+                title.on("value", (snapshot) => {
+                        let foo
                         snapshot.forEach(function(childSnapshot) {
-                            set_settings({...settings, currentQuestionURl: childSnapshot.key })
+                            foo = childSnapshot.key;
                         });
                         const data = snapshot.val();
                         let result = [];
@@ -124,7 +129,7 @@ export function Texteditor(props) {
                             result.push(data[i]);
                             break;
                         }
-                        set_settings({...settings, currentQuestion: result[0] })
+                        set_settings({...settings, currentQuestion: result[0], currentQuestionURl: foo })
                     });
             }
         }
@@ -138,7 +143,7 @@ export function Texteditor(props) {
 
     function BoxNavChange(quadrant,index,e) {
         e.preventDefault();
-        console.log(quadrant)
+        // console.log(quadrant)
         if (quadrant === 2){
             set_settings({ ...settings, UpperLeft: index });
         }
@@ -248,7 +253,7 @@ export function Texteditor(props) {
 
 
 function BoxNav(props) {
-    console.log(props.listen)
+    // console.log(props.listen)
     // useEffect(() => {
         if (props.listen === 0){
             return props.firstChild;
