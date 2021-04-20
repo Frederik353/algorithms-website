@@ -19,12 +19,14 @@
     transform: skew(0deg, var(--navbar-angle)) !important;
 }
 
+.tsparticles-canvas-el {
+    margin-top: -10px;
+    background-color: #1e1e2f;
+    z-index: 2;
+}
 
-#particles-js {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    padding: 1;
+.questions-page {
+    z-index: 3;
 }
 
 .questions{
@@ -154,7 +156,7 @@
 }
 
 .questions-info {
-    color: var(--landingpage-secondary-color);
+    color: #fff;
     margin: 100px 40px 0;
 
     .difficulty-info {

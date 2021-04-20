@@ -24,7 +24,7 @@ export function Questions(){
         <div className="spacer"></div>
         <div className="section-skew questions-background">
             <Particles>
-                <div className="section-content-wrapper ">
+                <div className="section-content-wrapper questions-page">
                     <div className="section-content">
                         <div className="questions-info">
                             <h1>Questions</h1>
@@ -181,14 +181,13 @@ function Particles({ children }) {
                 params={particlesConfig}
                 style={{
                     position: 'absolute',
-                    zIndex: -100,
                     left: 0,
                     right: 0,
                     bottom: 0,
                     top: 0,
                 }}
             />
-            {children && <div   className="temp flex-column"  style={{ position: 'relative' }}>{children}</div>}
+            {children && <div   className="flex-column"  style={{ position: 'relative' }}>{children}</div>}
         </div>
     );
 }

@@ -12,13 +12,13 @@ export default {
                 }
             },
             "color": {
-                "value": "#4f4ffab4"
+                "value": "#1d8bf8d9"
             },
             "shape": {
                 "type": "circle",
                 "stroke": {
                     "width": 0,
-                    "color": "#4f4ffab4"
+                    "color": "#1d8bf8d9"
                 },
                 "polygon": {
                     "nb_sides": 5
@@ -47,7 +47,7 @@ export default {
             "line_linked": {
                 "enable": true,
                 "distance": 150,
-                "color": "#4f4ffab4",
+                "color": "#1d8bf8d9",
                 "opacity": 0.4,
                 "width": 2
             },
@@ -64,7 +64,8 @@ export default {
             "detect_on": "canvas",
             "events": {
                 "onhover": {
-                    "enable": false,
+                    "enable": true,
+                    "mode": "grab"
                 },
                 "onclick": {
                     "enable": false,

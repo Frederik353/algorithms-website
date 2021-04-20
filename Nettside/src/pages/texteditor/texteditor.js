@@ -77,7 +77,7 @@ const initialTexteditorSettings = {
     compile: 0,
     value: "def Fibonacci(n):\n  if n<0:\n    return\n  elif n==1:\n    return 0\n  elif n==2:\n        return 1\n  else:\n    return Fibonacci(n-1)+Fibonacci(n-2)\n\nprint(Fibonacci(30))",
     currentQuestion: initialQuestionState,
-    currentQuestionURl: "fuck",
+    currentQuestionURl: "",
     UpperLeft: 0,
     UpperLeftActive: 0,
 };
