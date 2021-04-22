@@ -41,7 +41,7 @@ export function Questions(){
                                 <a href="#" className="question questions-header" >
                                     {/* <h4>Title</h4> */}
                                     <p>Title</p>
-                                    <p>Category</p>
+                                    <p>Category</p> 
                                     <p>Acceptance</p>
                                     <p>difficulty</p>
                                 </a>

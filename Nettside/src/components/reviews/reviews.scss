@@ -1,0 +1,63 @@
+.review-wrap {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+
+    .reviews-card {
+        position: relative;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        max-width: 300px;
+        padding: 40px;
+        margin: 25px 10px;
+        background: var(--landingpage-secondary-color);
+        color: var(--landingpage-secondary-text-color);
+        -webkit-box-shadow: 0px -5px 0px 0px #890BFF;
+        box-shadow: 0px -5px 0px 0px #890BFF;
+        border-radius: var(--border-radius);
+
+        .name {
+            margin: 10px 0 0;
+        }
+
+        .profile-picture {
+            position: absolute;
+            top: -35px;
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .role {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+
+            .job-status {
+                text-align: center;
+                margin: 10px 0;
+            }
+
+            .institution-logo {
+                border-radius: none;
+                max-width: 100%;
+                max-height: 30px;
+                width: auto;
+                height: auto;
+            }
+        }
+
+        .review-content {
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+            height: 150px;
+            overflow: auto;
+
+            p {
+                margin: 0;
+            }
+        }
+    }
+}
