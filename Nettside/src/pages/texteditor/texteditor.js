@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory ,useLocation } from 'react-router-dom';
 
 // reflex
 import {
@@ -8,13 +9,15 @@ import {
 } from "react-reflex"
 
 import AceEditor from "react-ace";
-
+import  initialQuestionState  from "../../helpers/databaseStructure/questions"
+import { database } from "../../helpers/config";
 import "./texteditor.scss";
 import "react-reflex/styles.css";
 import "../../helpers/screen-size"
 import { RemoteCodeApiRequest } from "../../components/remote_code/remote_code"
 import { EditorNav } from "../../components/editor_nav/editor_nav"
 import { CodeEditor } from "../../components/ace_editor/ace_editor"
+import { Discussion } from "../../components/discussion/discussion"
 
 
 
@@ -71,22 +74,87 @@ const initialTexteditorSettings = {
     highlightActiveLine: true,
     enableSnippets: true,
     showLineNumbers: true,
-    // value: "print(\"Hello\")\nprint(\"World\")",
     compile: 0,
-    value: "def Fibonacci(n):\n  if n<0:\n    return\n  elif n==1:\n    return 0\n  elif n==2:\n    return 1\n  else:\n    return Fibonacci(n-1)+Fibonacci(n-2)\n\nprint(Fibonacci(30))"
+    value: "def Fibonacci(n):\n  if n<0:\n    return\n  elif n==1:\n    return 0\n  elif n==2:\n        return 1\n  else:\n    return Fibonacci(n-1)+Fibonacci(n-2)\n\nprint(Fibonacci(30))",
+    currentQuestion: initialQuestionState,
+    currentQuestionURl: "",
+    UpperLeft: 0,
+    UpperLeftActive: 0,
 };
 
 
-
-export function Texteditor() {
+export function Texteditor(props) {
     const [settings, set_settings] = useState(initialTexteditorSettings)
+    const [loading, setLoading] = useState([false]);
+    const location = useLocation();
+
+    useEffect(() => {
+        console.log(settings.currentQuestionURl)
+    }, [settings.currentQuestionURl])
+
+
+    useEffect(() => {
+        setLoading(true);
+        let fetchQuestion = async () => {
+            if (props.randomQuestion){
+                    let questionId = props.questionId
+                    var title = database.ref("questions/");
+                        title.on("value", (snapshot) => {
+                            const data = snapshot.val();
+                            let result = [];
+                            for (let i in data){
+                                result.push(data[i]);
+                                break;
+                            }
+                            set_settings({...settings, currentQuestion: result[0] })
+                        });
+
+            }
+            else if (props.location.state) {
+                set_settings({ ...settings, currentQuestion: props.location.state.question })
+                console.log(props.location.state.question )
+            }
+            else {
+                const questionUrl = location.pathname.substring(location.pathname.lastIndexOf('/') + 1)
+                console.log(questionUrl)
+                var title = database.ref("questions/").orderByChild("title").equalTo(questionUrl);
+                title.on("value", (snapshot) => {
+                        let foo
+                        snapshot.forEach(function(childSnapshot) {
+                            foo = childSnapshot.key;
+                        });
+                        const data = snapshot.val();
+                        let result = [];
+                        for (let i in data){
+                            result.push(data[i]);
+                            break;
+                        }
+                        set_settings({...settings, currentQuestion: result[0], currentQuestionURl: foo })
+                    });
+            }
+        }
+        fetchQuestion()
+            setLoading(false);
+    }, [])
 
     function resize_editor() {
         AceEditor.insert("Something cool");
     }
 
+    function BoxNavChange(quadrant,index,e) {
+        e.preventDefault();
+        // console.log(quadrant)
+        if (quadrant === 2){
+            set_settings({ ...settings, UpperLeft: index });
+        }
+    }
+
     function compile() {
         set_settings({ ...settings, compile: settings.compile += 1 });
+    }
+
+    if (loading) {
+        return <h2 className="dark-text">Loading...</h2>;
     }
 
     return (
@@ -97,17 +165,16 @@ export function Texteditor() {
             <div class="modules">
                 {/* venstre */}
                 <ReflexContainer className="change-orientation"   ReflexContainer  orientation="vertical" >
-                    <ReflexElement  className="change-orientation" minSize="100">
+                    <ReflexElement  className="change-orientation" >
                         <ReflexContainer    ReflexContainer  orientation="horizontal">
-                            <ReflexElement  minSize="100" >
+                            <ReflexElement   >
                                 <div class="boxes">
                                     <div class="nav">
-                                        <button>ygysefgy</button>
-                                        <button>ygysefgy</button>
-                                        <button>ygysefgy</button>
+                                        <button className={(settings.UpperLeft === 0) ? "active": null} onClick={(e) => BoxNavChange(2,0, e)}>Promt</button>
+                                        <button className={(settings.UpperLeft === 1) ? "active": null} onClick={(e) => BoxNavChange(2,1, e)}>Discuss</button>
                                     </div>
                                     <div class="box-content">
-                                        <Question></Question>
+                                        <BoxNav listen={settings.UpperLeft} firstChild={<Question/>} secondChild={<Discussion/>}/>
                                     </div>
                                     {/* upper left */}
                                 </div>
@@ -115,7 +182,7 @@ export function Texteditor() {
 
                             <ReflexSplitter className="horizontal" ></ReflexSplitter>
 
-                            <ReflexElement minSize="100">
+                            <ReflexElement >
                                 <div class="boxes">
                                     <div class="nav">
                                         <button>ygysefgy</button>
@@ -136,10 +203,10 @@ export function Texteditor() {
                     <ReflexSplitter className="change-orientation vertical" ></ReflexSplitter>
 
                     {/* høyre */}
-                    <ReflexElement className="change-orientation" minSize="100">
+                    <ReflexElement className="change-orientation" >
                         <ReflexContainer ReflexContainer  orientation="horizontal">
 
-                            <ReflexElement minSize="100">
+                            <ReflexElement >
                                 <div class="boxes"  onresize={resize_editor}>
                                     <div class="nav">
                                         <button class="active">ygysefgy</button>
@@ -148,7 +215,7 @@ export function Texteditor() {
                                         <button class="submit" onClick={compile}>Submit code</button>
                                     </div>
                                     <div class="box-content editor">
-                                        <CodeEditor></CodeEditor>
+                                        <CodeEditor ></CodeEditor>
                                     </div>
 
                                         {/* upper right */}
@@ -157,7 +224,7 @@ export function Texteditor() {
 
                             <ReflexSplitter className="horizontal"></ReflexSplitter>
 
-                            <ReflexElement minSize="100" >
+                            <ReflexElement  >
                                 <div class="boxes">
                                     <div class="nav">
                                         <button>ygysefgy</button>
@@ -179,4 +246,23 @@ export function Texteditor() {
             </EditorContext.Provider>
         </div>
     );
+}
+
+
+
+
+
+function BoxNav(props) {
+    // console.log(props.listen)
+    // useEffect(() => {
+        if (props.listen === 0){
+            return props.firstChild;
+        }
+        else if (props.listen === 1){
+            return props.secondChild;
+        }
+        else if (props.listen === 2){
+            return props.thirdChild;
+        }
+    // }, [props.listen])
 }

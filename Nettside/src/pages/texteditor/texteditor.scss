@@ -42,6 +42,9 @@
 .reflex-container{
     height: calc(100vh -((2 * 15px) + var(--navbar-height))) !important;
     overflow: hidden !important;
+    &>.reflex-element {
+        overflow-x: hidden !important;
+    }
     .reflex-splitter {
         &.vertical{
             width: 15px !important;
@@ -66,9 +69,9 @@
     background:var(--boxcolor); 
     height: 100%;
     border-radius: var(--border-radius);
-    overflow: hidden;
+    overflow-y: hidden;
     display: flex;
-    
+    overflow-x: hidden;
     .box-content {
         &:not(.editor){
             padding: calc(var(--navbar-height) + 20px ) 20px 20px 20px; 
@@ -79,6 +82,7 @@
         overflow: auto;
         flex: 0 1 auto;
         width: 100%;
+        min-width: 200px;
         height: 100%;
         display: flex;
         flex-direction: column;

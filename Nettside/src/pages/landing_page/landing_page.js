@@ -6,6 +6,7 @@ import { GradientCanvas } from "../../components/gradient_canvas/gradient_canvas
 import { Link } from 'react-router-dom';
 import { Texteditor } from "../texteditor/texteditor"
 import { Footer } from "../../components/footer/footer"
+import { Reviews } from "../../components/reviews/reviews"
 
 
 // languages
@@ -357,14 +358,13 @@ export function Landing_page(){
             <div className="section-content-wrapper texteditor">
                 <div className="section-content">
                     <div className="secondary-color-section section-six flex-column">
-                        <Texteditor></Texteditor>
+                        <Texteditor randomQuestion={true}></Texteditor>
                     </div>
                 </div>
             </div>
         </div>
         <div className="section-seven flex-column">
-            <h1>Reviews</h1>
-                <p  className="landing-page-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea excepturi tenetur amet iusto, cumque autem inventore non error consectetur repudiandae? Quam sint maiores magni obcaecati voluptatibus, veritatis eveniet qui tenetur esse.</p>
+            <Reviews />
         </div>
         <Footer></Footer>
     </div>

@@ -3,20 +3,29 @@ import "./test_cases.scss"
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/ext-language_tools.js"
 import "ace-builds/src-noconflict/mode-jsx";
-
+import { EditorContext} from "../../pages/texteditor/texteditor"
+import React, { useContext, useEffect } from "react";
 
 export function TestCases(){
+    const { settings} = useContext(EditorContext);
+    let testCaseArray = [];
+    let testCaseCounter = 1;
+    let testCases = settings.currentQuestion.testCases;
+    for (let i in testCases){
+        testCaseArray.push(testCases[i]);
+    }
+
     return(
-        <div class="test">
-            <h2>Test case 1</h2>
-            <Editor value= "{
-                    Input: [ 0, 1, 1, 2, 3, 5, 13, 18, 31, 49],
-                    Output: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                }"></Editor>
-        </div>
+        <>
+            {testCaseArray.map(testCase => (
+                <div key={testCase}  className="test-case">
+                    <h2>Test case {testCaseCounter++}</h2>
+                    <Editor value={testCase} ></Editor>
+                </div>
+            ))}
+        </>
     )
 }
-
 
 function Editor(props) {
     // console.log(props.value)

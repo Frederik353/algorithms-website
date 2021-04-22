@@ -5,10 +5,11 @@ import { Questions } from "./pages/questions/questions";
 import About from './pages/About';
 import { AuthProvider } from "./helpers/authentication-context";
 import { AccountInfo } from "./pages/account/AccountInfo/AccountInfo";
-import { UpdateAccountInfo } from "./pages/account/UpdateAccountInfo/UpdateAccountInfo";
+// import { UpdateAccountInfo } from "./pages/account/UpdateAccountInfo/UpdateAccountInfo";
 import { ResetPassword } from "./pages/account/ResetPassword/ResetPassword";
 import { PrivateRoute } from "./pages/account/RouteOption/RouteOption";
 import { SignUpPage } from "./pages/account/SignUpPage/SignUpPage";
+import { Storage } from "./components/storage/storage";
 
 
 
@@ -20,6 +21,7 @@ function App() {
 		<BrowserRouter>
 			<AuthProvider>
 				<Switch>
+					<Route path="/storage" component={ Storage } />
 					<Route path="/signIn" component={ SignUpPage } />
 					<PrivateRoute path="/account" component={ AccountInfo } />
 					<Route path="/reset-password" component={ ResetPassword } />

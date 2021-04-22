@@ -3,6 +3,8 @@ import "./reviews.scss"
 import React, { useContext, useEffect, useState } from "react";
 import { EditorContext } from "../../pages/texteditor/texteditor"
 import { database } from "../../helpers/config";
+import { storage } from "../../helpers/config";
+
 
 
 export function Reviews() {
@@ -12,22 +14,21 @@ export function Reviews() {
 
     useEffect(() => {
         async function fetchReviews(){
-        setLoading(true)
-        var title = await database.ref("reviews/");
-                title.on("value", (snapshot) => {
-                    const data = snapshot.val();
-                    let result = [];
-                    for (let i in data){
-                        result.push(data[i]);
-                    }
-                    console.log(result);
-                    setReviewsArray(result);
-            });
-        setLoading(false)
+            setLoading(true)
+            var title = await database.ref("reviews/");
+                    title.on("value", (snapshot) => {
+                        const data = snapshot.val();
+                        let result = [];
+                        for (let i in data){
+                            result.push(data[i]);
+                        }
+                        setReviewsArray(result);
+                });
+            setLoading(false)
         }
-        fetchReviews();    
+        fetchReviews();
     },[]);
-    
+
 
     return (
         <div className="review-wrap">
@@ -42,6 +43,8 @@ const Review = ({reviews, loading}) => {
         return <h2>Loading...</h2>;
     }
 
+    // const invertClass = (reviews.invert ? "invert" : "lol");
+
     return(
         <>
             {reviews.map(review => (
@@ -50,7 +53,8 @@ const Review = ({reviews, loading}) => {
                     <h3 className="name">{review.name}</h3>
                     <div className="role">
                         <h4 className="job-status">{review.jobStatus}</h4>
-                        <img className="institution-logo" src={review.logo} alt="company logo"/>
+
+                        <img className={`institution-logo ${(review.invert ? "invert" : "lol")}`} src={review.logo} alt="company logo"/>
                     </div>
                     <div className="review-content">
                         <p>{review.text}</p>

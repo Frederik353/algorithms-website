@@ -60,7 +60,7 @@
 }
 
 
-nav {
+.main-nav {
     position: absolute;
     text-align: left;
     top: 100%;
@@ -148,7 +148,7 @@ nav {
         justify-content: space-between;
     }
 
-    nav {
+    .main-nav {
         // all: unset; /* this causes issues with Edge, since it's unsupported */
         
         /* the following lines are not from my video, but add Edge support */
