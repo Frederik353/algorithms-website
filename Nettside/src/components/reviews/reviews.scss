@@ -1,8 +1,15 @@
 .review-wrap {
+    width: 900px;
     display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
+    flex-flow: column nowrap;
+    // justify-content: center;
+    align-items: center;
+    justify-content: stretch;
 
+    h1 {
+        width: 100px;
+        margin-bottom: 30px;
+    }
     .reviews-card {
         img {
             object-fit: cover;
@@ -11,7 +18,7 @@
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
-        max-width: 300px;
+        width: 300px;
         padding: 40px;
         margin: 25px 10px;
         background: var(--landingpage-secondary-color);
@@ -23,25 +30,29 @@
         .name {
             margin: 10px 0 0;
         }
-
+    
         .profile-picture {
             position: absolute;
             top: -35px;
             height: 70px;
             width: 70px;
             border-radius: 50%;
+            background-color: aliceblue;
+            display: flex;
+            align-items: center;
+            text-align: center;
         }
-
+    
         .role {
             display: flex;
             flex-flow: column nowrap;
             align-items: center;
-
+    
             .job-status {
                 text-align: center;
                 margin: 10px 0;
             }
-
+    
             .institution-logo {
                 border-radius: none;
                 max-width: 100%;
@@ -54,16 +65,26 @@
                 }
             }
         }
-
+    
         .review-content {
             border-radius: var(--border-radius);
             margin-top: 20px;
             height: 150px;
             overflow: auto;
-
+    
             p {
                 margin: 0;
             }
         }
     }
+}
+.BrainhubCarouselItem {
+    height: 420px;
+    max-width: 300px !important;
+    min-width: 300px !important;
+    width: 300px !important;
+}
+
+.BrainhubCarousel .BrainhubCarousel__trackContainer .BrainhubCarousel__track {
+    overflow: visible !important;
 }

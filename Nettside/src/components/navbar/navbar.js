@@ -17,7 +17,7 @@ export function NavBar(){
                 <ul>
                     <li><NavLink activeClassName="active" exact to="/">Home</NavLink></li>
                     <li><NavLink activeClassName="active" exact to="/about">About</NavLink></li>
-                    <li><NavLink activeClassName="active" exact to="/texteditor">Texteditor</NavLink></li>
+                    <li><NavLink activeClassName="active" exact to="/texteditor/Merge Unsorted Array">Texteditor</NavLink></li>
                     <li><NavLink activeClassName="active" exact to="/questions">Questions</NavLink></li>
                     <li> </li>
                 </ul>

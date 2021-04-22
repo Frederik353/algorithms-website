@@ -8,6 +8,8 @@ import { Texteditor } from "../texteditor/texteditor"
 import { Footer } from "../../components/footer/footer"
 import { Reviews } from "../../components/reviews/reviews"
 
+import Upload from './svg/006-upload.svg';
+import Server from "./svg/038-server.svg";
 
 // languages
 import Python from './logos/python.svg';
@@ -50,7 +52,7 @@ export function Landing_page(){
                             <h1 class="Hero_Header" data-js-target-list="HomepageHeroHeader.title">
                                 A New Way to Learn Programming
                             </h1>
-                            <GradientCanvas></GradientCanvas>
+                            <GradientCanvas/>
                             <div class="Hero_Header Hero_Header_overlay HomepageHeroHeader__title--burn" data-js-target-list="HomepageHeroHeader.title">
                                 A New Way to Learn Programming
                             </div>
@@ -74,7 +76,6 @@ export function Landing_page(){
                         <div>
                             <img classname=""src="https://via.placeholder.com/300" alt=""></img>
                         </div>
-                            
                         <div>
                             <h1>Lorem Ipsum</h1>
                             <p className="landing-page-paragraph">
@@ -84,13 +85,13 @@ export function Landing_page(){
                         </div>
                         
                         <div className="box">
-                            <img classname=""src="https://via.placeholder.com/300x200" alt=""></img>
+                            <img src={ Upload } alt=""></img>
                             <h2>Lorem, ipsum dolor</h2>
                             <p className="landing-page-paragraph">
                                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste, repellat. Mollitia, corporis cupiditate qui illo voluptatibus sed delectus voluptatem incidunt omnis aspernatur beatae nesciunt est dolore eius obcaecati nihil dolor consequuntur veritatis provident nemo dicta quidem enim laboriosam! Quibusdam quidem quae, obcaecati iusto mollitia ducimus?</p>
                         </div>
                         <div className="box">
-                            <img classname=""src="https://via.placeholder.com/300x200" alt=""></img>
+                            <img src={ Server } alt=""></img>
                             <h2>Lorem, ipsum dolor</h2>
                             <p className="landing-page-paragraph">  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem, cum laudantium? Tempore temporibus provident minima, culpa similique optio at perferendis, autem totam enim ducimus. Tempora illum vitae temporibus iusto deserunt.
                             </p>
@@ -349,10 +350,7 @@ export function Landing_page(){
             </div>
         </div>
         <div className="section-five flex-column">
-            <h1>Suported languages</h1>
-                <p  className="landing-page-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea excepturi tenetur amet iusto, cumque autem inventore non error consectetur repudiandae? Quam sint maiores magni obcaecati voluptatibus, veritatis eveniet qui tenetur esse.</p>
-                <p  className="landing-page-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea excepturi tenetur amet iusto, cumque autem inventore non error consectetur repudiandae? Quam sint maiores magni obcaecati voluptatibus, veritatis eveniet qui tenetur esse.</p>
-                <Link className="landingpage-button" to="/questions">Questions ➜</Link>
+            <h1>? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? ? </h1>
         </div>
         <div className="section-skew ">
             <div className="section-content-wrapper texteditor">
