@@ -10,6 +10,7 @@ import { ResetPassword } from "./pages/account/ResetPassword/ResetPassword";
 import { PrivateRoute } from "./pages/account/RouteOption/RouteOption";
 import { SignUpPage } from "./pages/account/SignUpPage/SignUpPage";
 import { Storage } from "./components/storage/storage";
+import { WriteReview } from './components/writeReview/writeReview.js';
 
 
 
@@ -21,6 +22,7 @@ function App() {
 		<BrowserRouter>
 			<AuthProvider>
 				<Switch>
+					<PrivateRoute path="/write-review" component={ WriteReview } />
 					<Route path="/storage" component={ Storage } />
 					<Route path="/signIn" component={ SignUpPage } />
 					<PrivateRoute path="/account" component={ AccountInfo } />

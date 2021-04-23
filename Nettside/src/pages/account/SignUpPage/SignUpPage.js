@@ -1,4 +1,4 @@
-// import React, { useRef, useState } from "react";
+
 import "./SignUpPage.scss";
 
 // import { useAuth } from "../../../helpers/authentication-context";

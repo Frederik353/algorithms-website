@@ -31,7 +31,7 @@ export function Reviews() {
                                     "name" : "You",
                                     "photoURL" : "https://firebasestorage.googleapis.com/v0/b/it-prosjekt-2-d23c1.appspot.com/o/images%2Favatar-icon.png?alt=media&token=a4badf05-b8ed-4e36-93bd-2f2ecf838e06",
                                     "text" : "Your success story",
-                                    "submit" : "/storage",
+                                    "link" : "/write-review",
                                     "uid" : "JYgt39LVKSgJVi62CYIhtu7pf162"
                                 })
                         setReviewsArray(result);
@@ -53,44 +53,49 @@ export function Reviews() {
 
 const Review = ({reviews, loading}) => {
     const [value, setValue] = useState(0);
+    console.log(reviews)
+    // const invertClass = (reviews.invert ? "invert" : "lol");
+    function onChange(value) {
+        if (value < (reviews.length / 3)){
+            setValue(value);
+        }
+    }
+    
     if (loading) {
         return <h2>Loading...</h2>;
     }
-
-    // const invertClass = (reviews.invert ? "invert" : "lol");
-    function onChange(value) {
-        setValue(value);
+    else{
+        return(
+            <>
+                <Carousel
+                value={value}
+            onChange={onChange}
+            arrows
+            infinite
+            slidesPerPage={3}
+                >
+                    {reviews.map(review => (
+                        <div className="reviews-card">
+                            <img className="profile-picture" src={review.photoURL} alt="profile picture"/>
+                            <h3 className="name">{review.name}</h3>
+                            <div className="role">
+                                <h4 className="job-status">{review.jobStatus}</h4>
+    
+                                <img className={`institution-logo ${(review.invert ? "invert" : "lol")}`} src={review.logo} alt="company logo"/>
+    
+                            </div>
+                            <div className="review-content">
+                                <p>{review.text}</p>
+                                {review.link ? <Link exact to={review.link}>Submit review</Link> : ""}
+                                
+                            </div>
+                        </div>
+                    ))}
+                </Carousel>
+                <Dots value={value} onChange={onChange} number={(reviews.length / 3)} />
+            </>
+        );
     }
-    return(
-        <>
-            <Carousel
-            value={value}
-        onChange={onChange}
-        arrows
-        infinite
-        slidesPerPage={3}
-            >
-                {reviews.map(review => (
-                    <div className="reviews-card">
-                        <img className="profile-picture" src={review.photoURL} alt="profile picture"/>
-                        <h3 className="name">{review.name}</h3>
-                        <div className="role">
-                            <h4 className="job-status">{review.jobStatus}</h4>
-
-                            <img className={`institution-logo ${(review.invert ? "invert" : "lol")}`} src={review.logo} alt="company logo"/>
-
-                        </div>
-                        <div className="review-content">
-                            <p>{review.text}</p>
-                            {review.submit ? <Link exact to={review.submit}>Submit review</Link> : ""}
-                            
-                        </div>
-                    </div>
-                ))}
-            </Carousel>
-            <Dots value={value} onChange={onChange} number={(reviews.length / 3)} />
-        </>
-    );
 }
 
 

@@ -1,0 +1,49 @@
+
+
+
+.writeReview-wrapper{
+    .login-wrapper{
+        height: 100%;
+        .form-container{
+            background-color: #fff;
+            border-radius: var(--big-button-border-radius);
+            box-shadow: var(--box-shadow-3d);
+            position: relative;
+            overflow: hidden;
+            max-width: 100%;
+            width: var(--content-width);
+            height: 100%;
+            margin: 100px 0;
+            h2{
+                margin:10px;
+                padding-bottom:10px;
+                width:200px;
+                // color:#78788c;
+                border-bottom:3px solid #78788c;
+            }
+            input{
+                width:100%;
+                padding:10px;
+                box-sizing: border-box;
+                background:none;
+                outline:none;
+                resize:none;
+                border:0;
+                border-bottom:2px solid #bebed2;
+                &:focus{
+                    border-bottom:2px solid #78788c;
+                }
+            }
+            p:before{
+                content:attr(type);
+                display:block;
+                margin:28px 0 0;
+                font-size:14px;
+                // color:#5a5a5a
+            }
+            
+            
+
+        }
+    }
+}

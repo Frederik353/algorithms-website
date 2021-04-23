@@ -170,10 +170,6 @@ const Posts = ({ posts, loading, offset}) => {
 
 
 
-
-
-
-
 function Particles({ children }) {
     return (
         <div style={{ position: 'relative' }}>
