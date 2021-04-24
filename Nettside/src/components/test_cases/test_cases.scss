@@ -7,8 +7,9 @@
     position: relative;
     top: -40px;
     margin:40px 0;
+}
 
-    .ace_editor{
+    .ace_editor.no-write-editor {
         position: relative;
         top: -30px;
         overflow: hidden !important;
@@ -28,4 +29,3 @@
             display: none !important;
         }
     }
-}

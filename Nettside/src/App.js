@@ -9,8 +9,10 @@ import { AccountInfo } from "./pages/account/AccountInfo/AccountInfo";
 import { ResetPassword } from "./pages/account/ResetPassword/ResetPassword";
 import { PrivateRoute } from "./pages/account/RouteOption/RouteOption";
 import { SignUpPage } from "./pages/account/SignUpPage/SignUpPage";
-import { Storage } from "./components/storage/storage";
-import { WriteReview } from './components/writeReview/writeReview.js';
+// import { Storage } from "./components/storage/storage";
+import { AdminSubmit } from './pages/adminSubmit/adminSumbit';
+import { WriteReview } from './pages/writeReview/writeReview';
+import { SubmitQuestion } from './pages/submitQuestion/submitQuestion';
 
 
 
@@ -22,13 +24,15 @@ function App() {
 		<BrowserRouter>
 			<AuthProvider>
 				<Switch>
+					<PrivateRoute path="/submit-question" component={ SubmitQuestion } />
 					<PrivateRoute path="/write-review" component={ WriteReview } />
-					<Route path="/storage" component={ Storage } />
+					<PrivateRoute path="/admin" component={ AdminSubmit } />
+					{/* <Route path="/storage" component={ Storage } /> */}
 					<Route path="/signIn" component={ SignUpPage } />
 					<PrivateRoute path="/account" component={ AccountInfo } />
 					<Route path="/reset-password" component={ ResetPassword } />
 					<Route path="/questions" component={ Questions } />
-					<Route path="/texteditor" component={ Texteditor } />
+					<PrivateRoute path="/texteditor" component={ Texteditor } />
 					<Route path="/about" component={ About } />
 					<Route exact path="/" component={ Landing_page } />
 				</Switch>

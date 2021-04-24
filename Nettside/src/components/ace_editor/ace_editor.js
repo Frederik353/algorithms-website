@@ -36,8 +36,9 @@ export function CodeEditor() {
 
     // bug callback
     useEffect(() => {
-        set_settings({ ...settings, value: settings.currentQuestion.funtions.[settings.mode] });
-    },[settings.mode])
+        set_settings({ ...settings, value: settings.currentQuestion.functions.[settings.mode] });
+    },[settings.mode]);
+
         return (
 
             <AceEditor

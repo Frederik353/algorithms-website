@@ -86,7 +86,7 @@ const Review = ({reviews, loading}) => {
                             </div>
                             <div className="review-content">
                                 <p>{review.text}</p>
-                                {review.link ? <Link exact to={review.link}>Submit review</Link> : ""}
+                                {review.link ? <Link className="submit-review-link" exact to={review.link}>Submit review</Link> : ""}
                                 
                             </div>
                         </div>

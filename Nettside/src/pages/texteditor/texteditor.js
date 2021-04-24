@@ -23,7 +23,7 @@ import { Discussion } from "../../components/discussion/discussion"
 
 import "../../helpers/screen-size";
 import{ Question } from "../../components/promt/promt"
-import{ TestCases } from "../../components/test_cases/test_cases"
+import{ TestCases, Editor } from "../../components/test_cases/test_cases"
 
 
 // Create context container in a global scope so it can be visible by every component
@@ -97,7 +97,6 @@ export function Texteditor(props) {
         setLoading(true);
         let fetchQuestion = async () => {
             if (props.randomQuestion){
-                    let questionId = props.questionId
                     var title = database.ref("questions/");
                         title.on("value", (snapshot) => {
                             const data = snapshot.val();
@@ -174,7 +173,19 @@ export function Texteditor(props) {
                                         <button className={(settings.UpperLeft === 1) ? "active": null} onClick={(e) => BoxNavChange(2,1, e)}>Discuss</button>
                                     </div>
                                     <div class="box-content">
-                                        <BoxNav listen={settings.UpperLeft} firstChild={<Question/>} secondChild={<Discussion/>}/>
+                                        <BoxNav listen={settings.UpperLeft} firstChild={
+                                            <>
+                                                <Question/>
+                                                <h2>Hint:</h2>
+                                                <div className="test-case">
+                                                    <Editor value={settings.currentQuestion.hints} />
+                                                </div>
+                                                <h2>Optimal space and time complexity:</h2>
+                                                <div className="test-case">
+                                                    <Editor value={settings.currentQuestion.complexity} />
+                                                </div>
+                                            </>
+                                            } secondChild={<Discussion/>}/>
                                     </div>
                                     {/* upper left */}
                                 </div>

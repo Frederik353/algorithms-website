@@ -20,21 +20,21 @@ export function TestCases(){
             {testCaseArray.map(testCase => (
                 <div key={testCase}  className="test-case">
                     <h2>Test case {testCaseCounter++}</h2>
-                    <Editor value={testCase} ></Editor>
+                    <Editor value={testCase} />
                 </div>
             ))}
         </>
     )
 }
 
-function Editor(props) {
+export function Editor(props) {
     // console.log(props.value)
     return(
         <AceEditor
             mode="javascript"
             theme="monokai"
-            name="sefokp"
-            className="test-case"
+            name="ace"
+            className="test-case no-write-editor"
             value={props.value}
             fontSize={18}
             showPrintMargin={false}

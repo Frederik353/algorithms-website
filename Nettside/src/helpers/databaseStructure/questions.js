@@ -9,9 +9,12 @@ export default {
     "hints": {
         "hint": ""
         },
-    "funtions": {
+    "functions": {
         "python": "",
-        "javascript": ""
+        "javascript": "",
+        "golang": "",
+        "java": "",
+        "c_pp": "",
 },
     "testCases": {
         "test": "",

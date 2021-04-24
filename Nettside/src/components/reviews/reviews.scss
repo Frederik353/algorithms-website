@@ -70,7 +70,10 @@
             margin-top: 20px;
             height: 150px;
             overflow: auto;
-    
+            .submit-review-link {
+                color: aqua;
+                margin: 10px 0;
+            }
             p {
                 margin: 0;
             }

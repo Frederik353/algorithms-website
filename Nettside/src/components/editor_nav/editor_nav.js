@@ -5,9 +5,10 @@ import React, { useContext } from "react";
 
 import "./editor_nav.scss"
 
+import { BackButton }  from "../backButton/backButton"
 import { Darkmode }  from "../darkmode/darkmode"
 import{ Timer } from "../timer/timer"
-import {Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 
@@ -33,7 +34,7 @@ export function EditorNav() {
     return(
 
         <div class="toolbar" >
-            <Link to="/">❮ Back</Link>
+            <BackButton>❮ Back</BackButton>
                     <div className="field">
                             <span className="select">
                                 <select
@@ -50,7 +51,7 @@ export function EditorNav() {
                             </span>
                     </div>
 
-                    <div  iv className="field">
+                    <div className="field">
                             <span className="select">
                                 <select
                                     name="Theme"
