@@ -1,7 +1,7 @@
 
 import React, { useRef, useState } from "react"
 import { useAuth } from "../../../helpers/authentication-context"
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { SignUpWith } from "../SignUpWith/SignUpWith"
 
 
@@ -25,7 +25,7 @@ export function SignUp() {
             setError("")
             setLoading(true)
             await signup(emailRef.current.value, passwordRef.current.value)
-            history.push("/")
+            history.goBack();
         } catch {
             setError("Failed to create an account")
         }

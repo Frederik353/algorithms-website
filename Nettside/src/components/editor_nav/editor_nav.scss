@@ -26,13 +26,22 @@
     select {
         background: var(--green);
         height: var(--navbar-height);
-        font-size: var(--font-size);
         border: none;
         border-radius: 0 0 0 var(--border-radius);
         flex: 1;
         padding: 0 var(--navbar-height);
         color: #fff;
         cursor: pointer;
+        font-size: var(--font-size);
+
+        option {
+            font-size: var(--font-size);
+        }
+        }
+
+        .editor-back-button {
+            font-weight: 900;
+            font-size: var(--font-size);
     }
 
     .select {

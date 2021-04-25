@@ -79,23 +79,23 @@
     form {
         max-width: 225px;
     }
-}
+    input {
+        background-color: #eee;
+        border: none;
+        outline: none;
+        padding: 12px 15px;
+        margin: 8px 0;
+        width: 225px;
+        font-family: inherit;
+        border-radius: var(--border-radius);
 
-input {
-    background-color: #eee;
-    border: none;
-    outline: none;
-    padding: 12px 15px;
-    margin: 8px 0;
-    width: 225px;
-    font-family: inherit;
-    border-radius: var(--border-radius);
-
-    &:autofill,
-    &:-webkit-autofill {
-        background: var(--input-autofill);
+        &:autofill,
+        &:-webkit-autofill {
+            background: var(--input-autofill);
+        }
     }
 }
+
 
 .login-container {
     background-color: #fff;

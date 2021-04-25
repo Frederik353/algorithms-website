@@ -28,12 +28,13 @@ export function TestCases(){
 }
 
 export function Editor(props) {
+    const { settings} = useContext(EditorContext);
     // console.log(props.value)
     return(
         <AceEditor
             mode="javascript"
-            theme="monokai"
-            name="ace"
+            theme={settings.theme}
+            name="sefkop"
             className="test-case no-write-editor"
             value={props.value}
             fontSize={18}

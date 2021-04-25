@@ -15,6 +15,7 @@ export function SubmitQuestion() {
     const [data, set_data] = useState({
             uid: currentUser.uid,
             name: currentUser.displayName,
+            createdAt: new Date().getTime(),
             acceptance: {
                 cleared: Math.floor(Math.random() * 3000),
                 failed: Math.floor(Math.random() * 2000),

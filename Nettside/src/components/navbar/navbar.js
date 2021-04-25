@@ -51,7 +51,7 @@ function AccountButton() {
 
     return (
         <div>
-            <NavLink className="sign-in-button" to="/account"><img src={currentUser.photoURL} className="account-img"></img>Account ➜</NavLink>
+            <NavLink className="sign-in-button" to="/account"> {currentUser.photoURL ? <img src={currentUser.photoURL} className="account-img"></img> : "" } Account ➜</NavLink>
         </div>
     )
 }

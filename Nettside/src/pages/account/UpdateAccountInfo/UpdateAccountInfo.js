@@ -30,7 +30,7 @@ export function UpdateAccountInfo() {
 
         Promise.all(promises)
             .then(() => {
-                history.push("/")
+                history.goBack();
             })
             .catch(() => {
                 setError("Failed to update account")

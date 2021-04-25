@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useHistory ,useLocation } from 'react-router-dom';
 
 // reflex
@@ -40,9 +40,51 @@ export const languages = [
     "c_cpp"
 ];
 
-export const themes = [
+
+
+const lightmodeThemes = [
+    "github",
+    "tomorrow",
+    "kuroir",
+    "xcode",
+];
+
+
+const darkmodeThemes = [
+    "chaos",
+    "monokai",
+    "gob",
+    "ambiance",
+    "katzenmilch",
+    "twilight",
+    "textmate",
+    "solarized_dark",
+    "solarized_light",
+    "terminal",
+    "chrome",
+    "clouds",
+    "cobalt",
+    "dawn",
+    "dracula",
+    "dreamweaver",
+    "eclipse",
+    "gruvbox",
+    "iplastic",
+    "kr_theme",
+    "merbivore",
+    "mono_industrial",
+    "nord_dark",
+    "pastel_on_dark",
+    "sqlserver",
+    "textmate",
+    "tomorrow",
+];
+
+// const themes = darkmodeThemes.concat(lightmodeThemes);
+let themes = [
     "monokai",
     "github",
+    "chaos",
     "tomorrow",
     "kuroir",
     "twilight",
@@ -50,8 +92,38 @@ export const themes = [
     "textmate",
     "solarized_dark",
     "solarized_light",
-    "terminal"
+    "terminal",
+    "ambiance",
+    "chrome",
+    "clouds",
+    "cobalt",
+    "dawn",
+    "dracula",
+    "dreamweaver",
+    "eclipse",
+    "gob",
+    "gruvbox",
+    "iplastic",
+    "katzenmilch",
+    "kr_theme",
+    "merbivore",
+    "mono_industrial",
+    "nord_dark",
+    "pastel_on_dark",
+    "sqlserver",
+    "textmate",
+    "tomorrow",
 ];
+// "clouds-midnight",
+// "crimson-editor",
+// "idle-fingers",
+// "merbivore-soft",
+// "one_dark",
+// "tomorrow-night",
+// "tomorrow-night-blue",
+// "tomorrow-night-bright",
+// "tomorrow-night-eighties",
+// "vibrant",
 
 languages.forEach(lang => {
     require(`ace-builds/src-noconflict/mode-${lang}`);
@@ -65,6 +137,8 @@ themes.forEach(theme => require(`ace-builds/src-noconflict/theme-${theme}`));
 const initialTexteditorSettings = {
     placeholder: "Write some code",
     theme: "monokai",
+    themes: darkmodeThemes,
+    darkmode: true,
     mode: "python",
     enableBasicAutocompletion: false,
     enableLiveAutocompletion: false,
@@ -75,7 +149,7 @@ const initialTexteditorSettings = {
     enableSnippets: true,
     showLineNumbers: true,
     compile: 0,
-    value: "def Fibonacci(n):\n  if n<0:\n    return\n  elif n==1:\n    return 0\n  elif n==2:\n        return 1\n  else:\n    return Fibonacci(n-1)+Fibonacci(n-2)\n\nprint(Fibonacci(30))",
+    // value: "def Fibonacci(n):\n  if n<0:\n    return\n  elif n==1:\n    return 0\n  elif n==2:\n        return 1\n  else:\n    return Fibonacci(n-1)+Fibonacci(n-2)\n\nprint(Fibonacci(30))",
     currentQuestion: initialQuestionState,
     currentQuestionURl: "",
     UpperLeft: 0,
@@ -86,12 +160,19 @@ const initialTexteditorSettings = {
 export function Texteditor(props) {
     const [settings, set_settings] = useState(initialTexteditorSettings)
     const [loading, setLoading] = useState([false]);
+    const [layoutState, set_layoutState] = useState();
+    const primaryEditor = useRef();
     const location = useLocation();
 
-    useEffect(() => {
-        console.log(settings.currentQuestionURl)
-    }, [settings.currentQuestionURl])
 
+    useEffect(() => {
+        if (settings.darkmode){
+            set_settings({...settings, themes: darkmodeThemes, theme: darkmodeThemes[0] })
+        }
+        else {
+            set_settings({...settings, themes: lightmodeThemes, theme: lightmodeThemes[0] })
+        }
+    }, [settings.darkmode])
 
     useEffect(() => {
         setLoading(true);
@@ -136,12 +217,43 @@ export function Texteditor(props) {
             setLoading(false);
     }, [])
 
+
+
     function resize_editor() {
-        AceEditor.insert("Something cool");
+        window.dispatchEvent(new Event("resize")); //trigrer en resize event som oppdatereer editor størrelsen
     }
 
+    function getLayoutState () {
+
+        const item = window.localStorage.getItem("re-flex-storage-demo")
+
+    if (item) {
+        return JSON.parse(item)
+    }
+
+        return {
+            appPane: {
+                flex: 0.8
+            },
+            rightPane: {
+                flex: 0.2
+            }
+        }
+    }
+
+    function onResizePane (event) {
+        const { name, flex } = event.target.props
+        this.layoutState[name].flex = flex
+
+        window.localStorage.setItem("re-flex-storage-demo", JSON.stringify(this.layoutState))
+    }
+
+
+
+
     function BoxNavChange(quadrant,index,e) {
-        e.preventDefault();
+        console.log(settings)
+        // e.preventDefault();
         // console.log(quadrant)
         if (quadrant === 2){
             set_settings({ ...settings, UpperLeft: index });
@@ -166,7 +278,7 @@ export function Texteditor(props) {
                 <ReflexContainer className="change-orientation"   ReflexContainer  orientation="vertical" >
                     <ReflexElement  className="change-orientation" >
                         <ReflexContainer    ReflexContainer  orientation="horizontal">
-                            <ReflexElement   >
+                            <ReflexElement name="upper-left" >
                                 <div class="boxes">
                                     <div class="nav">
                                         <button className={(settings.UpperLeft === 0) ? "active": null} onClick={(e) => BoxNavChange(2,0, e)}>Promt</button>
@@ -193,7 +305,7 @@ export function Texteditor(props) {
 
                             <ReflexSplitter className="horizontal" ></ReflexSplitter>
 
-                            <ReflexElement >
+                            <ReflexElement name="lower-left">
                                 <div class="boxes">
                                     <div class="nav">
                                         <button>ygysefgy</button>
@@ -217,8 +329,8 @@ export function Texteditor(props) {
                     <ReflexElement className="change-orientation" >
                         <ReflexContainer ReflexContainer  orientation="horizontal">
 
-                            <ReflexElement >
-                                <div class="boxes"  onresize={resize_editor}>
+                            <ReflexElement name="upper-right" onResize={resize_editor}>
+                                <div class="boxes">
                                     <div class="nav">
                                         <button class="active">ygysefgy</button>
                                         <button>ygysefgy</button>
@@ -226,7 +338,7 @@ export function Texteditor(props) {
                                         <button class="submit" onClick={compile}>Submit code</button>
                                     </div>
                                     <div class="box-content editor">
-                                        <CodeEditor ></CodeEditor>
+                                        <CodeEditor />
                                     </div>
 
                                         {/* upper right */}
@@ -235,7 +347,7 @@ export function Texteditor(props) {
 
                             <ReflexSplitter className="horizontal"></ReflexSplitter>
 
-                            <ReflexElement  >
+                            <ReflexElement name="lower-right" >
                                 <div class="boxes">
                                     <div class="nav">
                                         <button>ygysefgy</button>

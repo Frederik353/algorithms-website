@@ -21,6 +21,7 @@ export function RemoteCodeApiRequest() {
     useEffect(() => {
         if (settings.compile !== 0){
             set_render("loading")
+            
             const requestOptions = {
                 method: 'POST',
                 headers: {
@@ -29,7 +30,7 @@ export function RemoteCodeApiRequest() {
                 body: JSON.stringify({
 	                "src": settings.value,
 	                "stdin":"",
-	                "lang":"python3",
+	                "lang": settings.mode,
 	                "timeout":5
                 })
             };

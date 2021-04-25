@@ -31,10 +31,16 @@ export function EditorNav() {
         set_settings({ ...settings, mode: e.target.value });
     }
 
+    // let themes = settings.themes;
+    // for (let i in settings.themes ){
+    //     themes.push(settings.themes[i])
+    // }
+    // console.log(themes)
+
     return(
 
         <div class="toolbar" >
-            <BackButton>❮ Back</BackButton>
+            <BackButton className="editor-back-button" >❮ Back</BackButton>
                     <div className="field">
                             <span className="select">
                                 <select
@@ -58,9 +64,9 @@ export function EditorNav() {
                                     onChange={setTheme}
                                     value={settings.theme}
                                 >
-                                    {themes.map(lang => (
-                                        <option key={lang} value={lang}>
-                                            {lang}
+                                    {settings.themes.map(theme => (
+                                        <option key={theme} value={theme}>
+                                            {theme}
                                         </option>
                                     ))}
                                 </select>

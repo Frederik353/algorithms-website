@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import { useAuth } from "../../../helpers/authentication-context";
-import { Link } from "react-router-dom";
+import { Link, useHistory} from "react-router-dom";
 import "./ResetPassword.scss";
 
 
@@ -12,6 +12,7 @@ export function ResetPassword() {
     const [error, setError] = useState("")
     const [message, setMessage] = useState("")
     const [loading, setLoading] = useState(false)
+    const history = useHistory()
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -22,6 +23,9 @@ export function ResetPassword() {
             setLoading(true)
             await resetPassword(emailRef.current.value)
             setMessage("Check your inbox for further instructions")
+            setTimeout(function(){
+                history.goBack();
+            }, 3000);
         } catch {
             setError("Failed to reset password")
         }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, Fragment } from "react";
+import React, { useState, useEffect, useRef, Fragment, useContext } from "react";
 import ReactParticles from "react-particles-js";
 import particlesConfig from '../../helpers/ParticlesConfig';
 import { Footer } from "../../components/footer/footer"
@@ -11,7 +11,13 @@ import { useAuth } from "../../helpers/authentication-context"
 import { database } from "../../helpers/config";
 import  Question  from "../../helpers/databaseStructure/questions"
 
+
+const QuestionContext = React.createContext(null);
+
+
 export function Questions(){
+
+
     return(
     <div className="wrapper">
         <div className="section-skew questions-navbar">
@@ -69,7 +75,7 @@ export function Pagination() {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState([false]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(10);
+    const [postsPerPage, set_postsPerPage ] = useState(10);
     // const { currentUser, logout } = useAuth();
 
     // fill test db
@@ -88,7 +94,8 @@ export function Pagination() {
         const fetchPosts = async () => {
             setLoading(true);
             // var title = await database.ref("questions").orderByChild("difficulty").equalTo("medium");
-            var title = await database.ref("questions/");
+            // var title = await database.ref("questions/").orderByChild("createdAt").limitToFirst(postsPerPage);
+            var title = await database.ref("questions/").orderByChild("createdAt");
                 title.on("value", (snapshot) => {
                     var result = [];
                     const data = snapshot.val();
@@ -101,7 +108,8 @@ export function Pagination() {
             setLoading(false);
         };
         fetchPosts();
-    }, []);
+    }, [currentPage]);
+
     // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -111,28 +119,46 @@ export function Pagination() {
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
-        <>
+        <QuestionContext.Provider value={{ postsPerPage, set_postsPerPage }}>
             <Posts posts={currentPosts} offset={indexOfFirstPost} loading={loading} />
             <PaginationLine
                 postsPerPage={postsPerPage}
                 totalPosts={posts.length}
                 paginate={paginate}
             />
-        </>
+        </QuestionContext.Provider>
     );
 }
 
 
-const PaginationLine = ({ postsPerPage, totalPosts, paginate }) => {
+const PaginationLine = ({ totalPosts, paginate }) => {
+    const {postsPerPage, set_postsPerPage } = useContext(QuestionContext);;
     const pageNumbers = [];
 
     for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
         pageNumbers.push(i);
     }
 
+    function updatePostsPerPage(e) {
+        set_postsPerPage(e.target.value)
+    }
+
+
     return (
         <nav className="pagination-nav">
-            <div>number of rows</div>
+            <div className="field">
+                <span className="select">
+                    <select
+                        name="difficulty"
+                        onChange={ (e) => updatePostsPerPage(e) }
+                    >
+                        <option value="10" label="10" />
+                        <option value="20" label="20" />
+                        <option value="30" label="30" />
+                        <option value="50" label="50" />
+                    </select>
+                </span>
+            </div>
             <ul className="pagination">
                 {pageNumbers.map(number => (
                     <li key={number} className="page-item">

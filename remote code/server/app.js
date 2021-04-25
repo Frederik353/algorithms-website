@@ -1,5 +1,5 @@
 const express = require("express");
-const app= express();
+const app = express();
 const bodyParser = require('body-parser');
 const cp = require('child_process');
 const fs = require('fs');
@@ -9,17 +9,16 @@ const redis = require('redis');
 const amqp = require('amqp-connection-manager');
 
 
-app.use(cors())
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({extended:true})); // konfigurerer bodyparser som middlevare, trengs for å lese body i en post request
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/public')); //midleware for å sende statiske filer
 
-const client = redis.createClient({
+const client = redis.createClient({ //setter opp redis database
 	host: 'redis-server',
 	port: 6379
 })
 
-client.on('error', (err) => {
+client.on('error', (err) => { // hvis error i redis log error
     console.log("Error " + err)
 });
 
@@ -27,15 +26,17 @@ const extensions = {
     "cpp":"cpp",
     "c": "c",
     "java":"java",
-    "python3":"py"
+    "python3":"py",
+    "javascript":"js"
 };
 
-function random(size) {
+function random(size) { //genererer string for navn på folder
     return require("crypto").randomBytes(size).toString('hex');
 }
+
 app.post("/submit", (req, res) => {
 
-    let data= {
+    let data= { // req.body er body objektet motat i post requesten
         'src':req.body.src,
         'input':req.body.stdin,
         'lang':req.body.lang,
@@ -44,30 +45,30 @@ app.post("/submit", (req, res) => {
     }
 
     sendMessage(data);
-    res.status(202).send('http://localhost:7000/results/'+data.folder);
+    res.status(202).send("http://localhost:7000/results/" + data.folder);
 
 });
 
+
+
 app.get("/results/:id", (req, res) => {
-    
     let key = req.params.id;
     client.get(key, (err, status) => {
-        if (status==null) 
-        {
+        if (status == null){
             res.status(202).send('{"status":"Queued"}');
         }
-        else if(status=='{"status":"Processing"}')
-        {
+        else if(status=='{"status":"Processing"}') {
             res.status(202).send('{"status":"Processing"}');
         }
-        else 
+        else{
             res.status(200).send(status);
+        }
     });
     
 });
 
 
-var QUEUE_NAME = 'judge'
+var QUEUE_NAME = "judge"
 
 // Create a connetion manager
 var connection = amqp.connect(['amqp://rabbitmq:5672']);
@@ -87,8 +88,8 @@ var channelWrapper = connection.createChannel({
     }
 });
 
-// Send messages until someone hits CTRL-C or something goes wrong...
-var sendMessage = function(data) {
+
+var sendMessage = function(data) { // Send messages until someone hits CTRL-C or something goes wrong...
     channelWrapper.sendToQueue(QUEUE_NAME, data)
     .then(function() {
         console.log("Message sent");

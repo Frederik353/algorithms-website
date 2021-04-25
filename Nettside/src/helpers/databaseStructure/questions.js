@@ -23,8 +23,12 @@ export default {
     "posts": {
         "post": {
             "sender": "",
-            "content": ""
-            }
+            "content": "",
+            },
+        },
+    "acceptance": {
+        "cleared": 0,
+        "failed": 0,
         }
     }
 

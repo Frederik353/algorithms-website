@@ -8,19 +8,19 @@
     --red: #f5365c;
     --orange: #fb6340;
     --yellow: #ffd600;
-    --green: linear-gradient(0deg,#389466,#42b883);
+    // --green: linear-gradient(0deg,#389466,#42b883);
+    --green: #424279; //endret noen farger sent i prosessen og orsket ikke endre variabler
+    --info: #00acbc;
     --teal: #11cdef;
     --cyan: #2bffc6;
     --gray: #6c757d;
-    --gray-dark: #32325d;
     --light: #ced4da;
     --lighter: #e9ecef;
     --primary: #e14eca;
     --secondary: #f4f5f7;
     --success: #00f2c3;
-    --submit: #008529;
-    --submit-hover: #00621e;
-    --info: #1d8cf8;
+    --submit: #7d87f2;
+    --submit-hover: #056854;
     --warning: #ff8d72;
     --danger: #fd5d93;
     --light: #adb5bd;
@@ -91,8 +91,8 @@ body {
 }
 
 .light {
-    --background_gradient: linear-gradient(#e0e0e0,#d6d6d6);
-    --boxcolor: #fff;
+    --background_gradient: linear-gradient(#d5dde9, #c6d2e4);
+    --boxcolor: #f8faff;
     --test-case-boxcolor: #dadada;
     --gutter: rgb(221, 221, 221);
     --active-gutter: rgb(204, 204, 204);
@@ -100,12 +100,12 @@ body {
     --light-text: #000000b3;
     --text-color: #000000;
     --default: #f6f9fc;
-    --hover1: linear-gradient(0deg,#e14eca,#ba54f5,#e14eca);
+    --hover1: linear-gradient(0deg, #245f7f, #245f7f, #245f7f);
     --invert: 0;
 }
 
 .dark {
-    --background_gradient: linear-gradient(#1e1e2f,#1e1e24);
+    --background_gradient: linear-gradient(#1e1e2f, #141424);
     --boxcolor: #27293d;
     --test-case-boxcolor: #44466b;
     --gutter: #1f2030;
@@ -114,7 +114,7 @@ body {
     --light-text: #ffffffb3;
     --text-color: #fff;
     --default: #344675;
-    --hover1: linear-gradient(0deg,#e14eca,#ba54f5,#e14eca);
+    --hover1: linear-gradient(0deg, #245f7f, #245f7f, #245f7f);
     --invert: 1;
 }
 

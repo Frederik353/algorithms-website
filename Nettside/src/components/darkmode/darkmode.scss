@@ -1,14 +1,15 @@
 
+
+
 .btn_wrapper{
     padding: 0 !important;
     .btn-darkmode{
         background-repeat: no-repeat;
         background-position: center;
         background-size: 38px 100%;
-        width: calc(50px + (2 * 15px));
+        width: calc(50px + (2 * 15px)); //bakgrunn teller ikke mot content width så dette er for å ikke få en veldig smal knapp
         height: 40px;
         border: none;
-        z-index: 10;
         background-color: #0000;
         &.dark_svg{
             background-image: url(./moon.svg);

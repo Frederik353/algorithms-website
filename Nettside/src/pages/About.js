@@ -1,9 +1,9 @@
 import React from 'react';
-
+import { BackButton }  from "../components/backButton/backButton"
 const About = () => {
     return (
         <div>
-            About
+            <BackButton>❮ Back</BackButton>
         </div>
     )
 }

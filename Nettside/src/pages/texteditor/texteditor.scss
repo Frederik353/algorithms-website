@@ -1,6 +1,8 @@
 
 
 
+
+
 .ace_editor{
     background-color: var(--boxcolor) !important;
     position: relative;
@@ -30,8 +32,10 @@
 
 
 .nav_spacer{
-        flex-grow: 1;
-        background: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    flex-grow: 1;
+    background: none !important;
 }
 
 .modules{

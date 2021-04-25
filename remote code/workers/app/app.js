@@ -17,11 +17,12 @@ const extensions = {
     "cpp":"cpp",
     "c": "c",
     "java":"java",
-    "python3":"py"
+    "python3":"py",
+    "javascript":"js"
 };
 
-function runCode(apiBody,ch,msg)
-{   
+function runCode(apiBody,ch,msg) {
+    console.log(apiBody)
 
     client.set(apiBody.folder.toString(),'{"status":"Processing"}');
     const { exec } = require('child_process');   
@@ -56,8 +57,8 @@ function runCode(apiBody,ch,msg)
                     'submission_id':apiBody.folder
                 }
                 
-                console.log(result);
-                console.log(apiBody);
+                // console.log(result);
+                // console.log(apiBody);
                 rimraf("../temp/"+apiBody.folder,function(err){
                     if(err)
                     console.log(err);

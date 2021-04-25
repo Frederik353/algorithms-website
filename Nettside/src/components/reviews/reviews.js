@@ -53,7 +53,6 @@ export function Reviews() {
 
 const Review = ({reviews, loading}) => {
     const [value, setValue] = useState(0);
-    console.log(reviews)
     // const invertClass = (reviews.invert ? "invert" : "lol");
     function onChange(value) {
         if (value < (reviews.length / 3)){

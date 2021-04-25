@@ -1,7 +1,7 @@
 
 import React, { useRef, useState } from "react"
 import { useAuth } from "../../../helpers/authentication-context"
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import "./SignUpWith.scss"
@@ -36,7 +36,7 @@ export function SignUpWithGoogle() {
             setError("")
             setLoading(true)
             await firebase.auth().signInWithPopup(provider);
-            history.push("/")
+            history.goBack();
         } catch {
             setError("Failed to log in")
         }
@@ -66,7 +66,8 @@ export function SignUpWithGithub() {
             setError("")
             setLoading(true)
             await firebase.auth().signInWithPopup(provider);
-            history.push("/")
+            console.log(history)
+            history.goBack();
         } catch {
             setError("Failed to log in")
         }
@@ -95,7 +96,7 @@ export function SignUpWithFacebook() {
             setError("")
             setLoading(true)
             await firebase.auth().signInWithPopup(provider);
-            history.push("/")
+            history.goBack();
         } catch {
             setError("Failed to log in")
         }
