@@ -83,7 +83,7 @@ export function Landing_page(){
                             </p>
                             <Link className="landingpage-button" to="/questions">Questions ➜</Link>
                         </div>
-                        
+
                         <div className="box">
                             <img src={ Upload } alt=""></img>
                             <h2>Lorem, ipsum dolor</h2>

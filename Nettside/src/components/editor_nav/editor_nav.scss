@@ -50,7 +50,6 @@
         display: flex;
         width: 100%;
         line-height: var(--navbar-height);
-        background: #2c3e50;
         border: none;
         &::after {
             content: '\25BC';
@@ -58,8 +57,8 @@
             top: 0;
             right: -4px;
             padding: 0 1em;
-            background: #34495e;
-            color: #4aaf06;
+            color: #04C09A;
+            background: #0078AC;
             cursor: pointer;
             pointer-events: none;
             transition: .25s all ease;
@@ -67,7 +66,8 @@
         }
         /* Transition */
         &:hover::after {
-            color: #f39912;
+            background: #0092B2;
+            color: #66FBD2;
         }
     }
 }

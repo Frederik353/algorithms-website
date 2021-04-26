@@ -5,16 +5,14 @@ const question = {
     "difficulty": "",
     "category": "",
     "question": "",
-    "hints": {
-        "hint": ""
-        },
+    "hints": "",
     "functions": {
         "python": "",
         "javascript": "",
         "golang": "",
         "java": "",
         "c_pp": "",
-},
+    },
     "testCases": {
         "test": "",
         },

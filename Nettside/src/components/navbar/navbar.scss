@@ -13,10 +13,6 @@
     z-index: 10000;
     width: 100%;
 }
-
-
-/* changed this from the tutorial video to
-     allow it to gain focus, making it tabbable */
 .nav-toggle {
     position: absolute !important;
     top: -9999px !important;
@@ -123,7 +119,6 @@
         &.active::after {
             transform: scale(1,1);
         }
-    
     }
 }
 
@@ -136,7 +131,7 @@
     transition: opacity 250ms ease-in-out 250ms;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 780px) {
     .nav-toggle-label {
         display: none;
     }

@@ -18,6 +18,12 @@
     .ace_active-line{
         background-color: var(--active-line) !important;
     }
+    .ace_marker-layer {
+
+        .ace_selection {
+            background: var(--marker-color);
+        }
+    }
 }
 
 
@@ -93,6 +99,9 @@
         align-items: stretch;
         justify-content: stretch;
     }
+        h2 {
+            color: var(--text-color)
+        }
     .nav{
         position: absolute;
         top: 0px;

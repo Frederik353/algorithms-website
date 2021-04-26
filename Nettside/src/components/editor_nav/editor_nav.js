@@ -1,7 +1,7 @@
 
 
 import { EditorContext, languages } from "../../pages/texteditor/texteditor"
-import React, { useContext } from "react";
+import { useContext } from "react";
 
 import "./editor_nav.scss"
 

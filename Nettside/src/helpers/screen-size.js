@@ -1,36 +1,45 @@
+import { EditorContext } from "../pages/texteditor/texteditor"
+import { useContext, useEffect } from "react";
 
 
-
-
-
-
-
-function resizeFn() {
-    // var height = parseInt(window.innerHeight);
-    var width = parseInt(window.innerWidth);
-    console.log(width)
-    var element = document.getElementsByClassName("change-orientation");
-
-    if (width <= 500) {
-        for(var i = 0; i < element.length; i++){
-                element[i].classList.add("horizontal");
-                element[i].classList.remove("vertical");
-        }
-        // document.getElementById("horizontal").classList.remove("vertical")
-    }
-    else if(width > 500) {
-        for( i = 0; i < element.length; i++){
-                element[i].classList.remove("horizontal");
-                element[i].classList.add("vertical");
-        }
-    }
+function debounce(fn, ms) {
+    let timer
+    return _ => {
+        clearTimeout(timer)
+        timer = setTimeout(_ => {
+            timer = null
+            fn.apply(this, arguments)
+        }, ms)
+    };
 }
 
 
 
 
-window.onload = resizeFn;
+export function ResizeFunction() {
+    const { settings, set_settings } = useContext(EditorContext);
 
-window.onresize = resizeFn();
+    useEffect(() => {
+        set_settings({ ...settings, screenHeight: window.innerHeight, screenWidth: window.innerWidth });
+    },[]);
+
+    useEffect(() => {
+
+        const slowerHandleResize = debounce(function () {
+            set_settings({ ...settings,
+                screenHeight: window.innerHeight,
+                screenWidth: window.innerWidth
+            });
+        }, 500);
+
+        window.addEventListener('resize', slowerHandleResize)
+
+        return _ => {
+            window.removeEventListener('resize', slowerHandleResize)
+        }
+    })
+
+    return <div>Rendered at {settings.screenWidth} x {settings.screenHeight}</div>
+}
 
 

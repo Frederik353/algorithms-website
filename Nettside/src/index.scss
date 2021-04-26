@@ -92,7 +92,7 @@ body {
 
 .light {
     --background_gradient: linear-gradient(#d5dde9, #c6d2e4);
-    --boxcolor: #f8faff;
+    --boxcolor: rgb(255, 255, 255);
     --test-case-boxcolor: #dadada;
     --gutter: rgb(221, 221, 221);
     --active-gutter: rgb(204, 204, 204);
@@ -102,6 +102,7 @@ body {
     --default: #f6f9fc;
     --hover1: linear-gradient(0deg, #245f7f, #245f7f, #245f7f);
     --invert: 0;
+    --marker-color: #b7c2ff;
 }
 
 .dark {
@@ -116,6 +117,7 @@ body {
     --default: #344675;
     --hover1: linear-gradient(0deg, #245f7f, #245f7f, #245f7f);
     --invert: 1;
+    --marker-color: #08091d;
 }
 
 

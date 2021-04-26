@@ -11,8 +11,13 @@ export function TestCases(){
     let testCaseArray = [];
     let testCaseCounter = 1;
     let testCases = settings.currentQuestion.testCases;
-    for (let i in testCases){
-        testCaseArray.push(testCases[i]);
+    if (typeof testCases === "object"){
+        for (let i in testCases){
+            testCaseArray.push(testCases[i]);
+        }
+    }
+    else {
+        testCaseArray.push(testCases);
     }
 
     return(

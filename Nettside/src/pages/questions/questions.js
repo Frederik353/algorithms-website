@@ -105,11 +105,13 @@ export function Pagination() {
                     }
                     console.log(result)
                     setPosts(result);
+                    window.dispatchEvent(new Event("resize")); //trigrer resize event som tvinger particles reflow
             });
             setLoading(false);
         };
         fetchPosts();
     }, [currentPage]);
+
 
     // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
@@ -149,6 +151,7 @@ const PaginationLine = ({ totalPosts, paginate }) => {
         <nav className="pagination-nav">
             <div className="field">
                 <span className="select">
+                    Questions per page
                     <select
                         name="difficulty"
                         onChange={ (e) => updatePostsPerPage(e) }
@@ -188,7 +191,7 @@ const Posts = ({ posts, loading, offset}) => {
                     <p>{post.category}</p>
                     {post.acceptance ? <p>{Math.floor(post.acceptance.cleared / post.acceptance.failed)}%</p> : "0%"}
                     <div className="difficulty large">
-                        <span className={post.difficulty}  ></span>
+                        <span className={post.difficulty}></span>
                     </div>
                 </Link>
             ))}

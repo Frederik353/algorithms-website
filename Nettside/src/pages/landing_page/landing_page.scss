@@ -42,23 +42,6 @@
         }
     }
 }
-
-
-@media screen and (max-width: 375px) {
-    .section-skew{
-        .section-content{
-            .header{
-                grid-template-columns: repeat(1,1fr);
-                img{
-                    display: none;
-                }
-            }
-        }
-    }
-}
-
-
-
 .section-content-wrapper{
     display: flex;
     justify-content: center;
@@ -219,12 +202,6 @@ h1,h2,h3,p{
     align-items: center;
     flex-direction: column;
 }
-
-
-
-
-
-
 .boxgrid{
     display: flex;
     flex-flow: row wrap;
@@ -332,7 +309,38 @@ h1,h2,h3,p{
     color: var(--landingpage-secondary-color);
 }
 
+.section-six {
+    .texteditor-wrapper {
+        max-height: 100 !important;
+    }
+}
+
 .section-seven{
     margin-top: 150px;
     color: var(--landingpage-secondary-color);
+}
+
+@media screen and (max-width: 840px) {
+    .section-two {
+
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        margin-bottom: calc(-100vw + 450px); //backgrunnen gror med teksten i boksen
+    }
+
+
+}
+
+@media screen and (max-width: 375px) {
+    .section-skew {
+        .section-content {
+            .header {
+                grid-template-columns: repeat(1, 1fr);
+
+                img {
+                    display: none;
+                }
+            }
+        }
+    }
 }

@@ -13,11 +13,11 @@ import  initialQuestionState  from "../../helpers/databaseStructure/questions"
 import { database } from "../../helpers/config";
 import "./texteditor.scss";
 import "react-reflex/styles.css";
-import "../../helpers/screen-size"
 import { RemoteCodeApiRequest } from "../../components/remote_code/remote_code"
 import { EditorNav } from "../../components/editor_nav/editor_nav"
 import { CodeEditor } from "../../components/ace_editor/ace_editor"
 import { Discussion } from "../../components/discussion/discussion"
+import { ResizeFunction } from "../../helpers/screen-size"
 
 
 
@@ -44,9 +44,19 @@ export const languages = [
 
 const lightmodeThemes = [
     "github",
-    "tomorrow",
     "kuroir",
     "xcode",
+    "katzenmilch",
+    "solarized_light",
+    "textmate",
+    "chrome",
+    "clouds",
+    "dawn",
+    "dreamweaver",
+    "eclipse",
+    "iplastic",
+    "sqlserver",
+    "tomorrow",
 ];
 
 
@@ -55,75 +65,21 @@ const darkmodeThemes = [
     "monokai",
     "gob",
     "ambiance",
-    "katzenmilch",
-    "twilight",
-    "textmate",
-    "solarized_dark",
-    "solarized_light",
-    "terminal",
-    "chrome",
-    "clouds",
-    "cobalt",
-    "dawn",
     "dracula",
-    "dreamweaver",
-    "eclipse",
+    "twilight",
+    "solarized_dark",
+    "terminal",
+    "cobalt",
     "gruvbox",
-    "iplastic",
     "kr_theme",
     "merbivore",
     "mono_industrial",
     "nord_dark",
     "pastel_on_dark",
-    "sqlserver",
-    "textmate",
-    "tomorrow",
 ];
 
-// const themes = darkmodeThemes.concat(lightmodeThemes);
-let themes = [
-    "monokai",
-    "github",
-    "chaos",
-    "tomorrow",
-    "kuroir",
-    "twilight",
-    "xcode",
-    "textmate",
-    "solarized_dark",
-    "solarized_light",
-    "terminal",
-    "ambiance",
-    "chrome",
-    "clouds",
-    "cobalt",
-    "dawn",
-    "dracula",
-    "dreamweaver",
-    "eclipse",
-    "gob",
-    "gruvbox",
-    "iplastic",
-    "katzenmilch",
-    "kr_theme",
-    "merbivore",
-    "mono_industrial",
-    "nord_dark",
-    "pastel_on_dark",
-    "sqlserver",
-    "textmate",
-    "tomorrow",
-];
-// "clouds-midnight",
-// "crimson-editor",
-// "idle-fingers",
-// "merbivore-soft",
-// "one_dark",
-// "tomorrow-night",
-// "tomorrow-night-blue",
-// "tomorrow-night-bright",
-// "tomorrow-night-eighties",
-// "vibrant",
+let themes = darkmodeThemes.concat(lightmodeThemes); // for å importere dependencies for hvert theme
+
 
 languages.forEach(lang => {
     require(`ace-builds/src-noconflict/mode-${lang}`);
@@ -136,10 +92,10 @@ themes.forEach(theme => require(`ace-builds/src-noconflict/theme-${theme}`));
 
 const initialTexteditorSettings = {
     placeholder: "Write some code",
-    theme: "monokai",
+    theme: "chaos",
     themes: darkmodeThemes,
     darkmode: true,
-    mode: "python",
+    mode: "",
     enableBasicAutocompletion: false,
     enableLiveAutocompletion: false,
     fontSize: 14,
@@ -149,7 +105,6 @@ const initialTexteditorSettings = {
     enableSnippets: true,
     showLineNumbers: true,
     compile: 0,
-    // value: "def Fibonacci(n):\n  if n<0:\n    return\n  elif n==1:\n    return 0\n  elif n==2:\n        return 1\n  else:\n    return Fibonacci(n-1)+Fibonacci(n-2)\n\nprint(Fibonacci(30))",
     currentQuestion: initialQuestionState,
     currentQuestionURl: "",
     UpperLeft: 0,
@@ -174,6 +129,16 @@ export function Texteditor(props) {
     // eslint-disable-next-line
     }, [settings.darkmode])
 
+    let OrientationVertical;
+    let OrientationHorizontal;
+    useEffect(() => {
+        OrientationVertical  = (settings.screenWidth < 800 ? "horizontal" : "vertical"); //ved default bredde / stor skjerm skal være vertikal
+        OrientationHorizontal  = (settings.screenWidth < 800 ? "vertical" : "horizontal"); //motsatt
+        console.log("horizontal:", OrientationHorizontal, "vertical:", OrientationVertical)
+    }, [settings.screenWidth])
+
+
+
     useEffect(() => {
         setLoading(true);
         let fetchQuestion = async () => {
@@ -186,12 +151,14 @@ export function Texteditor(props) {
                                 result.push(data[i]);
                                 break;
                             }
-                            set_settings({...settings, currentQuestion: result[0] })
+                            console.log(JSON.stringify(settings.currentQuestion.hints))
+                            console.log(settings.currentQuestion.complexity)
+                            set_settings({...settings, currentQuestion: result[0], mode: "python"})
                         });
 
             }
             else if (props.location.state) {
-                set_settings({ ...settings, currentQuestion: props.location.state.question })
+                set_settings({ ...settings, currentQuestion: props.location.state.question, mode: "python" })
                 console.log(props.location.state.question )
             }
             else {
@@ -209,7 +176,7 @@ export function Texteditor(props) {
                             result.push(data[i]);
                             break;
                         }
-                        set_settings({...settings, currentQuestion: result[0], currentQuestionURl: foo })
+                        set_settings({...settings, currentQuestion: result[0], currentQuestionURl: foo, mode: "python"})
                     });
             }
         }
@@ -256,8 +223,6 @@ export function Texteditor(props) {
 
     function BoxNavChange(quadrant,index,e) {
         console.log(settings)
-        // e.preventDefault();
-        // console.log(quadrant)
         if (quadrant === 2){
             set_settings({ ...settings, UpperLeft: index });
         }
@@ -271,6 +236,8 @@ export function Texteditor(props) {
         return <h2 className="dark-text">Loading...</h2>;
     }
 
+    
+
     return (
         <div className="texteditor-wrapper">
             <EditorContext.Provider value={{ settings, set_settings }}>
@@ -278,9 +245,11 @@ export function Texteditor(props) {
 
             <div className="modules">
                 {/* venstre */}
-                <ReflexContainer className="change-orientation"   ReflexContainer  orientation="vertical" >
-                    <ReflexElement  className="change-orientation" >
-                        <ReflexContainer    ReflexContainer  orientation="horizontal">
+                <ResizeFunction/>
+                {/* {(settings.screenWidth < 800) ? <ReflexContainer orientation="vertical"> : <ReflexContainer orientation="horizontal"> } */}
+                <ReflexContainer orientation={OrientationVertical} className={OrientationVertical}>
+                    <ReflexElement>
+                        <ReflexContainer orientation={OrientationHorizontal}>
                             <ReflexElement name="upper-left" >
                                 <div className="boxes">
                                     <div className="nav">
@@ -293,11 +262,11 @@ export function Texteditor(props) {
                                                 <Question/>
                                                 <h2>Hint:</h2>
                                                 <div className="test-case">
-                                                    <Editor value={JSON.stringify(settings.currentQuestion.hints)} />
+                                                    <Editor value={ settings.currentQuestion.hints } />
                                                 </div>
                                                 <h2>Optimal space and time complexity:</h2>
                                                 <div className="test-case">
-                                                    <Editor value={JSON.stringify(settings.currentQuestion.complexity)} />
+                                                    <Editor value={ settings.currentQuestion.complexity } />
                                                 </div>
                                             </>
                                             } secondChild={<Discussion/>}/>
@@ -306,7 +275,7 @@ export function Texteditor(props) {
                                 </div>
                             </ReflexElement>
 
-                            <ReflexSplitter className="horizontal" ></ReflexSplitter>
+                            <ReflexSplitter  className={OrientationHorizontal}/>
 
                             <ReflexElement name="lower-left">
                                 <div className="boxes">
@@ -326,11 +295,11 @@ export function Texteditor(props) {
                     </ReflexElement>
 
                     {/* midtsplitter */}
-                    <ReflexSplitter className="change-orientation vertical" ></ReflexSplitter>
+                    <ReflexSplitter className={OrientationVertical} ></ReflexSplitter>
 
                     {/* høyre */}
-                    <ReflexElement className="change-orientation" >
-                        <ReflexContainer ReflexContainer  orientation="horizontal">
+                    <ReflexElement >
+                        <ReflexContainer ReflexContainer  orientation={OrientationHorizontal} >
 
                             <ReflexElement name="upper-right" onResize={resize_editor}>
                                 <div className="boxes">
@@ -348,7 +317,7 @@ export function Texteditor(props) {
                                 </div>
                             </ReflexElement>
 
-                            <ReflexSplitter className="horizontal"></ReflexSplitter>
+                            <ReflexSplitter className={OrientationHorizontal}></ReflexSplitter>
 
                             <ReflexElement name="lower-right" >
                                 <div className="boxes">
