@@ -101,6 +101,7 @@
 }
 
 .HomepageHeroHeader__title--burn{
+    will-change: opacity; //bug i chrome med kombinasjon av opacity og blend mode
     mix-blend-mode: color-burn;
     opacity: 1;
 }

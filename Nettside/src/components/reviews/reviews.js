@@ -1,13 +1,12 @@
 
 import "./reviews.scss"
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import Carousel, { Dots } from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
-import { EditorContext } from "../../pages/texteditor/texteditor"
+// import { EditorContext } from "../../pages/texteditor/texteditor"
 import { database } from "../../helpers/config";
 
-import { storage } from "../../helpers/config";
 
 
 export function Reviews() {
@@ -75,7 +74,7 @@ const Review = ({reviews, loading}) => {
                 >
                     {reviews.map(review => (
                         <div className="reviews-card">
-                            <img className="profile-picture" src={review.photoURL} alt="profile picture"/>
+                            <img className="profile-picture" src={review.photoURL} alt="profile"/>
                             <h3 className="name">{review.name}</h3>
                             <div className="role">
                                 <h4 className="job-status">{review.jobStatus}</h4>

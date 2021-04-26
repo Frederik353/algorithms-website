@@ -16,6 +16,7 @@ export function WriteReview() {
             uid: currentUser.uid,
             name: currentUser.displayName
         })
+    // eslint-disable-next-line
     },[]);
 
     function handleInputChange(event) {
@@ -38,6 +39,7 @@ export function WriteReview() {
     useEffect(() => {
         var submitTo = database.ref("/reviews");
         submitTo.push(data);
+    // eslint-disable-next-line
     }, [data.logo]);
 
     const handleUpload = (e) => {
@@ -65,7 +67,7 @@ export function WriteReview() {
         <div className="writeReview-wrapper">
             <div className="login-wrapper">
                 <div className="form-container">
-                    <form action="" class="review-form">
+                    <form action="" className="review-form">
                         <h2>Submit a review</h2>
                         <div className="input-wrapper">
                             <h5 type="Job status:">

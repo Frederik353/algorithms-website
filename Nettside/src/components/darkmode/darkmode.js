@@ -26,10 +26,10 @@ export  function Darkmode() {
         }
     }
     return ( // knapp kompopnent
-        <div class="btn_wrapper">
+        <div className="btn_wrapper">
             <button
                 type="button"
-                class="btn-darkmode dark_svg"
+                className="btn-darkmode dark_svg"
                 id="toggle-theme"
                 onClick={ toggle_darkmode }
             > </button>

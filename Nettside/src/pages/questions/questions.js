@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, Fragment, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import ReactParticles from "react-particles-js";
 import particlesConfig from '../../helpers/ParticlesConfig';
 import { Footer } from "../../components/footer/footer"
@@ -7,9 +7,9 @@ import { Link } from "react-router-dom"
 
 
 import "./questions.scss"
-import { useAuth } from "../../helpers/authentication-context"
+// import { useAuth } from "../../helpers/authentication-context"
 import { database } from "../../helpers/config";
-import  Question  from "../../helpers/databaseStructure/questions"
+// import  Question  from "../../helpers/databaseStructure/questions"
 
 
 const QuestionContext = React.createContext(null);
@@ -35,16 +35,17 @@ export function Questions(){
                         <div className="questions-info">
                             <h1>Questions</h1>
                             <div className="difficulty-info">
-                                <h3>Easy: <span class="difficulty easy large"></span></h3>
-                                <h3>Medium: <span class="difficulty medium large"></span></h3>
-                                <h3>Hard: <span class="difficulty hard large"></span></h3>
-                                <h3>Very Hard: <span class="difficulty very-hard large"></span></h3>
+                                <h3>Easy: <span className="difficulty easy large"></span></h3>
+                                <h3>Medium: <span className="difficulty medium large"></span></h3>
+                                <h3>Hard: <span className="difficulty hard large"></span></h3>
+                                <h3>Very Hard: <span className="difficulty very-hard large"></span></h3>
                             </div>
                             <div className="questions-filters">
                                 <input type="text" id="search-bar" placeholder="Search question titles"></input>
                             </div>
                         </div>
                         <div className="questions">
+                            {/* eslint-disable-next-line */}
                                 <a href="#" className="question questions-header" >
                                     {/* <h4>Title</h4> */}
                                     <p>Title</p>
@@ -162,6 +163,7 @@ const PaginationLine = ({ totalPosts, paginate }) => {
             <ul className="pagination">
                 {pageNumbers.map(number => (
                     <li key={number} className="page-item">
+                        {/* eslint-disable-next-line */}
                         <a href="#" className="page-link" onClick={() => paginate(number)}>
                             {number}
                         </a>

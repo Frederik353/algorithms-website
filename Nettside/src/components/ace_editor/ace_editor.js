@@ -33,7 +33,9 @@ export function CodeEditor() {
 
 
     useEffect(() => { // bug med callback funksjon
-        set_settings({ ...settings, value: settings.currentQuestion.functions.[settings.mode] }); // oppdaterer startgunksjonen ved endring av språk
+        set_settings({ ...settings, value: settings.currentQuestion.functions.[ settings.mode ] }); // oppdaterer startgunksjonen ved endring av språk
+        
+        // eslint-disable-next-line
     },[settings.mode]);
 
         return (

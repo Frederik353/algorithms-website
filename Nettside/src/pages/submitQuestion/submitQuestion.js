@@ -2,10 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import "./submitQuestion.scss"
-import { storage, database } from "../../helpers/config";
 import { useAuth } from "../../helpers/authentication-context"
 import { BackButton } from "../../components/backButton/backButton"
-
+import { database } from "../../helpers/config";
 
 
 
@@ -49,9 +48,10 @@ export function SubmitQuestion() {
                 set_categories(result);
         });
     }, []);
-    let i = 0;
+    
+    // let i = 0;
     function handleInputChange(event) {
-        i++;
+        // i++;
         let split = event.target.name.split(".");
         let objectCopy = data.[split[0]];
         if (split.length > 1){
@@ -83,7 +83,7 @@ export function SubmitQuestion() {
         <div className="writeReview-wrapper">
             <div className="login-wrapper">
                 <div className="form-container">
-                    <form action="" class="review-form">
+                    <form action="" className="review-form">
                         <h2>Create a question</h2>
                         <div className="input-wrapper">
                             <h5 type="Title:">
@@ -131,6 +131,7 @@ export function SubmitQuestion() {
                                 <textarea rows="10" type="text" value={data.testCases} onChange={e => handleInputChange(e)}  placeholder="write youre tests here" name="testCases" required></textarea>
                             </h5>
                             <h3>Start functions</h3>
+                            {/* eslint-disable-next-line */}
                             <h5 type="Javascript:">
                                 <textarea rows="10" type="text" value={data.functions.javascript} onChange={e => handleInputChange(e)}  placeholder="Javascript function" name="functions.javascript" required></textarea>
                             </h5>

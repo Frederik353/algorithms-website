@@ -63,7 +63,7 @@ export function AccountInfo() {
                         <h2>Profile</h2>
                         {error && <div variant="danger">{error}</div>}
                         <strong>Name:</strong>{currentUser.displayName}
-                        <img src={currentUser.photoURL} className="account-img"></img>
+                        <img src={currentUser.photoURL} className="account-img" alt="profile" />
                         <strong>last Login:</strong>{currentUser.lastLoginAt}
                         <strong>Email:</strong>{currentUser.email}
                         <strong>Valid Since:</strong>{currentUser.validSince}

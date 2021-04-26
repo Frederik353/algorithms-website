@@ -1,6 +1,6 @@
 
 
-import { EditorContext, languages, themes } from "../../pages/texteditor/texteditor"
+import { EditorContext, languages } from "../../pages/texteditor/texteditor"
 import React, { useContext } from "react";
 
 import "./editor_nav.scss"
@@ -8,7 +8,7 @@ import "./editor_nav.scss"
 import { BackButton }  from "../backButton/backButton"
 import { Darkmode }  from "../darkmode/darkmode"
 import{ Timer } from "../timer/timer"
-import { Link } from "react-router-dom";
+
 
 
 
@@ -31,7 +31,6 @@ export function EditorNav() {
         set_settings({ ...settings, mode: e.target.value });
     }
 
-    // let themes = settings.themes;
     // for (let i in settings.themes ){
     //     themes.push(settings.themes[i])
     // }

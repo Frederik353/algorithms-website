@@ -4,7 +4,7 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/ext-language_tools.js"
 import "ace-builds/src-noconflict/mode-jsx";
 import { EditorContext} from "../../pages/texteditor/texteditor"
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 
 export function TestCases(){
     const { settings} = useContext(EditorContext);

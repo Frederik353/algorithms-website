@@ -49,14 +49,14 @@ export function Landing_page(){
                     <NavBar />
                     <div className="header">
                         <div className="header-wrap">
-                            <h1 class="Hero_Header" data-js-target-list="HomepageHeroHeader.title">
+                            <h1 className="Hero_Header" data-js-target-list="HomepageHeroHeader.title">
                                 A New Way to Learn Programming
                             </h1>
                             <GradientCanvas/>
-                            <div class="Hero_Header Hero_Header_overlay HomepageHeroHeader__title--burn" data-js-target-list="HomepageHeroHeader.title">
+                            <div className="Hero_Header Hero_Header_overlay HomepageHeroHeader__title--burn" data-js-target-list="HomepageHeroHeader.title">
                                 A New Way to Learn Programming
                             </div>
-                            <div class="Hero_Header Hero_Header_overlay" data-js-target-list="HomepageHeroHeader.title">
+                            <div className="Hero_Header Hero_Header_overlay" data-js-target-list="HomepageHeroHeader.title">
                                 A New Way to Learn Programming
                             </div>
                             <p className="landing-page-paragraph">

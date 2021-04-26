@@ -2,7 +2,7 @@ import React from 'react';
 import './navbar.scss';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from "../../helpers/authentication-context"
-import { Route, Redirect } from "react-router-dom"
+import { Route } from "react-router-dom"
 
 
 
@@ -11,8 +11,8 @@ import { Route, Redirect } from "react-router-dom"
 export function NavBar(){
     return(
         <header className="navbar-header">
-            <h1 class="navbar-logo">Logo</h1>
-            <input type="checkbox" id="nav-toggle" class="nav-toggle"></input>
+            <h1 className="navbar-logo">Logo</h1>
+            <input type="checkbox" id="nav-toggle" className="nav-toggle"></input>
             <nav className="main-nav">
                 <ul>
                     <li><NavLink activeClassName="active" exact to="/">Home</NavLink></li>
@@ -24,7 +24,7 @@ export function NavBar(){
                 <SignInButton/>
                 {/* <NavLink className="sign-in-button" to="/signIn">Sign in ➜</NavLink> */}
             </nav>
-            <label for="nav-toggle" class="nav-toggle-label">
+            <label htmlFor="nav-toggle" className="nav-toggle-label">
                 <span></span>
             </label>
         </header>
@@ -51,7 +51,7 @@ function AccountButton() {
 
     return (
         <div>
-            <NavLink className="sign-in-button" to="/account"> {currentUser.photoURL ? <img src={currentUser.photoURL} className="account-img"></img> : "" } Account ➜</NavLink>
+            <NavLink className="sign-in-button" to="/account"> {currentUser.photoURL ? <img src={currentUser.photoURL} className="account-img" alt="profile" /> : "" } Account ➜</NavLink>
         </div>
     )
 }

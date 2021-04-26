@@ -9,15 +9,15 @@ import "./promt.scss"
 export function Question(props) {
     const { settings} = useContext(EditorContext);
     return(
-        <div class="currentQuestion">
-            <div class="info-box">
-                <div class="info">
+        <div className="currentQuestion">
+            <div className="info-box">
+                <div className="info">
                     <span>Difficulty:</span>
                     <div className="difficulty">
                         <span className={settings.currentQuestion.difficulty}  ></span>
                     </div>
                 </div>
-                <div class="info">
+                <div className="info">
                     <span>Category:</span>
                     <span>{settings.currentQuestion.category}</span>
                 </div>

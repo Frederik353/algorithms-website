@@ -1,6 +1,6 @@
 
-import React, { useRef, useState } from "react"
-import { useAuth } from "../../../helpers/authentication-context"
+import React, { useState } from "react"
+// import { useAuth } from "../../../helpers/authentication-context"
 import { useHistory } from "react-router-dom"
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -24,8 +24,8 @@ export const SignUpWith = () => {
 
 
 export function SignUpWithGoogle() {
-    const [error, setError] = useState("")
-    const [loading, setLoading] = useState(false)
+    const [ setError] = useState("")
+    const [ setLoading] = useState(false)
     const history = useHistory()
 
     async function signIn(e) {
@@ -54,8 +54,8 @@ export function SignUpWithGoogle() {
 
 
 export function SignUpWithGithub() {
-    const [error, setError] = useState("")
-    const [loading, setLoading] = useState(false)
+    const [setError] = useState("")
+    const [setLoading] = useState(false)
     const history = useHistory()
 
     async function signIn(e) {
@@ -84,8 +84,8 @@ export function SignUpWithGithub() {
 };
 
 export function SignUpWithFacebook() {
-    const [error, setError] = useState("")
-    const [loading, setLoading] = useState(false)
+    const [ setError] = useState("")
+    const [ setLoading] = useState(false)
     const history = useHistory()
 
     async function signIn(e) {

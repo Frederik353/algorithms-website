@@ -34,11 +34,17 @@ export const Footer = () => (
                                     </a>
                                 </div>
                                 <div className="footer-nav">
+                                    {/* eslint-disable-next-line */}
                                     <a href="#">About</a>
+                                    {/* eslint-disable-next-line */}
                                     <a href="#">Terms of Use</a>
+                                    {/* eslint-disable-next-line */}
                                     <a href="#">FAQ</a>
+                                    {/* eslint-disable-next-line */}
                                     <a href="#">Contact Us</a>
+                                    {/* eslint-disable-next-line */}
                                     <a href="#">Blog</a>
+                                    {/* eslint-disable-next-line */}
                                     <a href="#">Privacy Policy</a>
                                 </div>
                             </div>

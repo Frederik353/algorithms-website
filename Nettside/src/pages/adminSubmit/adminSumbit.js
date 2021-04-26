@@ -26,7 +26,7 @@ export function AdminSubmit() {
         <div className="writeReview-wrapper">
             <div className="login-wrapper">
                 <div className="form-container">
-                        <form class="review-form">
+                        <form className="review-form">
                             <h2>Submit to db</h2>
                             <div className="input-wrapper">
                                 <h5 type="To:">

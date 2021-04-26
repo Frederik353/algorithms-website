@@ -1,7 +1,6 @@
-import { languages } from "../../pages/texteditor/texteditor"
 
 
-export default {
+const question = {
     "title": "",
     "difficulty": "",
     "category": "",
@@ -32,6 +31,7 @@ export default {
         }
     }
 
+export default question
 
 // languages
     // lang
