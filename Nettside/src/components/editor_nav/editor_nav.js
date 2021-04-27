@@ -87,9 +87,9 @@ export function EditorNav() {
                                 </select>
                             </span>
                     </div>
-                    <Darkmode></Darkmode>
+                    <Darkmode />
                     <div class="nav_spacer"></div>
-                    <Timer></Timer>
+                    <Timer />
                 </div>
         )
 }

@@ -116,6 +116,10 @@ export function Texteditor(props) {
     const [settings, set_settings] = useState(initialTexteditorSettings)
     const [loading, setLoading] = useState([false]);
     const [layoutState, set_layoutState] = useState();
+    const [orientation, set_orientation] = useState({
+        vertical: "vertical",
+        horizontal: "horizontal"
+    });
     const location = useLocation();
 
 
@@ -126,15 +130,19 @@ export function Texteditor(props) {
         else {
             set_settings({...settings, themes: lightmodeThemes, theme: lightmodeThemes[0] })
         }
-    // eslint-disable-next-line
+        // eslint-disable-next-line
     }, [settings.darkmode])
-
-    let OrientationVertical;
-    let OrientationHorizontal;
+    
+    
     useEffect(() => {
-        OrientationVertical  = (settings.screenWidth < 800 ? "horizontal" : "vertical"); //ved default bredde / stor skjerm skal være vertikal
-        OrientationHorizontal  = (settings.screenWidth < 800 ? "vertical" : "horizontal"); //motsatt
-        console.log("horizontal:", OrientationHorizontal, "vertical:", OrientationVertical)
+        if (settings.screenWidth < 800 ) {
+            set_orientation({...orientation, vertical: "horizontal", horizontal: "vertical" })
+        }
+        else {
+            set_orientation({...orientation, vertical: "vertical", horizontal: "horizontal" })
+        }
+        
+        console.log("horizontal:", orientation.horizontal, "vertical:", orientation.vertical)
     }, [settings.screenWidth])
 
 
@@ -237,7 +245,7 @@ export function Texteditor(props) {
     }
 
     
-
+    if (settings.screenWidth > 800){
     return (
         <div className="texteditor-wrapper">
             <EditorContext.Provider value={{ settings, set_settings }}>
@@ -247,9 +255,9 @@ export function Texteditor(props) {
                 {/* venstre */}
                 <ResizeFunction/>
                 {/* {(settings.screenWidth < 800) ? <ReflexContainer orientation="vertical"> : <ReflexContainer orientation="horizontal"> } */}
-                <ReflexContainer orientation={OrientationVertical} className={OrientationVertical}>
+                <ReflexContainer orientation={orientation.vertical} className={orientation.vertical}>
                     <ReflexElement>
-                        <ReflexContainer orientation={OrientationHorizontal}>
+                        <ReflexContainer orientation="horizontal">
                             <ReflexElement name="upper-left" >
                                 <div className="boxes">
                                     <div className="nav">
@@ -275,7 +283,7 @@ export function Texteditor(props) {
                                 </div>
                             </ReflexElement>
 
-                            <ReflexSplitter  className={OrientationHorizontal}/>
+                            <ReflexSplitter  className="horizontal"/>
 
                             <ReflexElement name="lower-left">
                                 <div className="boxes">
@@ -295,11 +303,11 @@ export function Texteditor(props) {
                     </ReflexElement>
 
                     {/* midtsplitter */}
-                    <ReflexSplitter className={OrientationVertical} ></ReflexSplitter>
+                    <ReflexSplitter className={orientation.vertical} />
 
                     {/* høyre */}
                     <ReflexElement >
-                        <ReflexContainer ReflexContainer  orientation={OrientationHorizontal} >
+                        <ReflexContainer  orientation="horizontal" >
 
                             <ReflexElement name="upper-right" onResize={resize_editor}>
                                 <div className="boxes">
@@ -317,7 +325,7 @@ export function Texteditor(props) {
                                 </div>
                             </ReflexElement>
 
-                            <ReflexSplitter className={OrientationHorizontal}></ReflexSplitter>
+                            <ReflexSplitter className="horizontal" />
 
                             <ReflexElement name="lower-right" >
                                 <div className="boxes">
@@ -341,7 +349,133 @@ export function Texteditor(props) {
             </EditorContext.Provider>
         </div>
     );
+    }
+    else{
+         return (
+        <div className="texteditor-wrapper">
+            <EditorContext.Provider value={{ settings, set_settings }}>
+                <EditorNav set_settings={ set_settings } ></EditorNav>
+
+            <div className="modules">
+                {/* venstre */}
+                <ResizeFunction/>
+                {/* {(settings.screenWidth < 800) ? <ReflexContainer orientation="vertical"> : <ReflexContainer orientation="horizontal"> } */}
+                <ReflexContainer orientation={orientation.vertical} className={orientation.vertical}>
+                    {/* <ReflexElement>
+                        <ReflexContainer orientation="horizontal"> */}
+                            <ReflexElement name="upper-left" >
+                                <div className="boxes">
+                                    <div className="nav">
+                                        <button className={(settings.UpperLeft === 0) ? "active": null} onClick={(e) => BoxNavChange(2,0, e)}>Promt</button>
+                                        <button className={(settings.UpperLeft === 1) ? "active": null} onClick={(e) => BoxNavChange(2,1, e)}>Discuss</button>
+                                    </div>
+                                    <div className="box-content">
+                                        <BoxNav listen={settings.UpperLeft} firstChild={
+                                            <>
+                                                <Question/>
+                                                <h2>Hint:</h2>
+                                                <div className="test-case">
+                                                    <Editor value={ settings.currentQuestion.hints } />
+                                                </div>
+                                                <h2>Optimal space and time complexity:</h2>
+                                                <div className="test-case">
+                                                    <Editor value={ settings.currentQuestion.complexity } />
+                                                </div>
+                                            </>
+                                            } secondChild={<Discussion/>}/>
+                                    </div>
+                                    {/* upper left */}
+                                </div>
+                            </ReflexElement>
+
+                            <ReflexSplitter  className="horizontal"/>
+
+                            <ReflexElement name="lower-left">
+                                <div className="boxes">
+                                    <div className="nav">
+                                        <button>ygysefgy</button>
+                                        <button>ygysefgy</button>
+                                        <button>ygysefgy</button>
+                                    </div>
+                                    <div className="box-content">
+                                        <TestCases />
+                                    </div>
+                                    {/* lower left */}
+                                </div>
+                            </ReflexElement>
+
+                        {/* </ReflexContainer>
+                    </ReflexElement> */}
+
+                    {/* midtsplitter */}
+                    <ReflexSplitter className={orientation.vertical} />
+
+                    {/* høyre */}
+                    {/* <ReflexElement >
+                        <ReflexContainer  orientation="horizontal" > */}
+
+                            <ReflexElement name="upper-right" onResize={resize_editor}>
+                                <div className="boxes">
+                                    <div className="nav">
+                                        <button className="active">ygysefgy</button>
+                                        <button>ygysefgy</button>
+                                        <div className="nav_spacer"></div>
+                                        <button className="submit" onClick={compile}>Submit code</button>
+                                    </div>
+                                    <div className="box-content editor">
+                                        <CodeEditor />
+                                    </div>
+
+                                        {/* upper right */}
+                                </div>
+                            </ReflexElement>
+
+                            <ReflexSplitter className="horizontal" />
+
+                            <ReflexElement name="lower-right" >
+                                <div className="boxes">
+                                    <div className="nav">
+                                        <button>ygysefgy</button>
+                                        <button>ygysefgy</button>
+                                        <button>ygysefgy</button>
+                                    </div>
+                                    {/* lower right */}
+                                    <div className="box-content">
+                                        <RemoteCodeApiRequest></RemoteCodeApiRequest>
+                                    </div>
+                                </div>
+                            </ReflexElement>
+
+                        {/* </ReflexContainer>
+                    </ReflexElement> */}
+
+                </ReflexContainer>
+            </div>
+            </EditorContext.Provider>
+        </div>
+    );
+    }
 }
+
+
+
+function ContainerOrientation (props){
+
+    if (props.orientationHorizontal === "horizontal"){
+
+        return(
+            <>
+
+                    <ReflexContainer orientation="horizontal">
+                        props.right
+                    </ReflexContainer>
+            </>
+        )
+    }
+}
+
+
+
 
 
 

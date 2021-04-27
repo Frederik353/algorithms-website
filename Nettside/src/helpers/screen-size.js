@@ -39,7 +39,8 @@ export function ResizeFunction() {
         }
     })
 
-    return <div>Rendered at {settings.screenWidth} x {settings.screenHeight}</div>
+    return <></>
+    // return <div>Rendered at {settings.screenWidth} x {settings.screenHeight}</div>
 }
 
 
