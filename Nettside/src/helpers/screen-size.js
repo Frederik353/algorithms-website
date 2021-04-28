@@ -21,6 +21,7 @@ export function ResizeFunction() {
 
     useEffect(() => {
         set_settings({ ...settings, screenHeight: window.innerHeight, screenWidth: window.innerWidth });
+        // eslint-disable-next-line
     },[]);
 
     useEffect(() => {

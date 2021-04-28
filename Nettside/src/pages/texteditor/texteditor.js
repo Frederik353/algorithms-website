@@ -115,7 +115,7 @@ const initialTexteditorSettings = {
 export function Texteditor(props) {
     const [settings, set_settings] = useState(initialTexteditorSettings)
     const [loading, setLoading] = useState([false]);
-    const [layoutState, set_layoutState] = useState();
+    // const [layoutState, set_layoutState] = useState();
     const [orientation, set_orientation] = useState({});
     const location = useLocation();
 
@@ -140,6 +140,7 @@ export function Texteditor(props) {
                 set_orientation({...orientation, vertical: "vertical", horizontal: "horizontal" })
             }
         }
+        // eslint-disable-next-line
     }, [settings.screenWidth])
 
 
@@ -455,20 +456,20 @@ export function Texteditor(props) {
 
 
 
-function ContainerOrientation (props){
+// function ContainerOrientation (props){
 
-    if (props.orientationHorizontal === "horizontal"){
+//     if (props.orientationHorizontal === "horizontal"){
 
-        return(
-            <>
+//         return(
+//             <>
 
-                    <ReflexContainer orientation="horizontal">
-                        props.right
-                    </ReflexContainer>
-            </>
-        )
-    }
-}
+//                     <ReflexContainer orientation="horizontal">
+//                         props.right
+//                     </ReflexContainer>
+//             </>
+//         )
+//     }
+// }
 
 
 

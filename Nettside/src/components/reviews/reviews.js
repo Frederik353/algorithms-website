@@ -42,7 +42,6 @@ export function Reviews() {
         <div className="review-wrap">
             <h1>Reviews</h1>
             <Review reviews={reviewsArray} loading={loading} />
-        
         </div>
     );
 }
@@ -57,10 +56,6 @@ const Review = ({reviews, loading}) => {
             setValue(value);
         }
     }
-    useEffect(() => {
-        onChange(1);
-        onChange(0);
-    }, [])
     if (loading) {
         return <h2>Loading...</h2>;
     }
