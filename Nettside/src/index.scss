@@ -1,7 +1,7 @@
 
 :root{
     --link: #1890ff;
-    --blue: #5e72e4;
+    --blue: #4c92e2;
     --indigo: #5603ad;
     --purple: #8965e0;
     --pink: #f3a4b5;
@@ -75,6 +75,7 @@ body {
     --test1: 1;
     --test2: 0;
     --back-button-color: #0000ff;
+    --blue-gradient: linear-gradient(0deg, #2197bb, #2b5a8f, #242d7f);
 }
 
 @media only screen and (max-width: 1080px) {
@@ -100,7 +101,7 @@ body {
     --light-text: #000000b3;
     --text-color: #000000;
     --default: #f6f9fc;
-    --hover1: linear-gradient(0deg, #245f7f, #245f7f, #245f7f);
+    --hover1: var(--blue-gradient);
     --invert: 0;
     --marker-color: #b7c2ff;
 }
@@ -115,7 +116,7 @@ body {
     --light-text: #ffffffb3;
     --text-color: #fff;
     --default: #344675;
-    --hover1: linear-gradient(0deg, #245f7f, #245f7f, #245f7f);
+    --hover1: var(--blue-gradient);
     --invert: 1;
     --marker-color: #08091d;
 }

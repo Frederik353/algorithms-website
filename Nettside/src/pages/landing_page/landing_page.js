@@ -20,9 +20,11 @@ import Typescript from './logos/typescript.svg';
 import Cpp from './logos/c++.svg';
 import C from './logos/c.svg';
 
-// photoshop bilde
+// photoshop image
 import Photoshop from "./photoshop-bilde.gif";
 
+// header image
+import ReactLogo from "./react.png";
 
 // concepts
 import Graph from './concepts/graph.svg';
@@ -67,7 +69,7 @@ export function Landing_page(){
                             </p>
                             <Link className="landingpage-button" to="/questions">Questions ➜</Link>
                         </div>
-                        <img src="https://via.placeholder.com/300" alt=""></img>
+                        <img src={ ReactLogo } alt=""></img>
                     </div>
                 </div>
             </div>
