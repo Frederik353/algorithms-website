@@ -9,6 +9,10 @@ const redis = require('redis');
 const amqp = require('amqp-connection-manager');
 
 
+app.use(cors({
+    origin: 'http://localhost:3000' // tillater cross origin request fra nettsiden
+}));
+
 app.use(bodyParser.urlencoded({extended:true})); // konfigurerer bodyparser som middlevare, trengs for å lese body i en post request
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public')); //midleware for å sende statiske filer
@@ -26,7 +30,7 @@ const extensions = {
     "cpp":"cpp",
     "c": "c",
     "java":"java",
-    "python3":"py",
+    "python":"py",
     "javascript":"js"
 };
 
@@ -51,26 +55,25 @@ app.post("/submit", (req, res) => {
 
 
 
-app.get("/results/:id", (req, res) => {
+app.get("/results/:id", (req, res) => { // håndterer get request
     let key = req.params.id;
-    client.get(key, (err, status) => {
-        if (status == null){
-            res.status(202).send('{"status":"Queued"}');
+    client.get(key, (err, status) => { // sjekker status i redis database
+        if (status == null){ // hvis id ikke finnes anta at serveren ikke har startet å kjøre koden og at koden står i kø
+            res.status(202).send('{"status":"Queued"}'); // send http status kode 202 (accepted) indikerer akseptert for prosessering
         }
-        else if(status=='{"status":"Processing"}') {
+        else if(status=='{"status":"Processing"}') { //samme som over bare startet men ikke ferdig
             res.status(202).send('{"status":"Processing"}');
         }
-        else{
+        else{ // hvis ikke er det ferdig prosessert, send status objekt som nå inneholder output
             res.status(200).send(status);
         }
     });
-    
 });
 
 
 var QUEUE_NAME = "judge"
 
-// Create a connetion manager
+//håndterer tilkoblinger 
 var connection = amqp.connect(['amqp://rabbitmq:5672']);
 connection.on('connect', function() {
     console.log('Connected!');

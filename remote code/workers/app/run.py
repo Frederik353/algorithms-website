@@ -4,7 +4,7 @@ codes = {200:'success',404:'file not found',400:'error',408:'timeout'}
 
 def compile(file,lang):
 
-    if(lang =='python3'):
+    if(lang =='python'):
         return 200
 
     if (os.path.isfile(file)):
@@ -28,7 +28,7 @@ def run(file,input,timeout,lang):
         cmd += 'java main'
     elif lang=='c' or lang=='cpp':
         cmd += './a.out'
-    elif lang=='python3':
+    elif lang=='python':
         cmd += 'python3 '+ file
     elif lang=='javascript':
         cmd += 'node '+ file

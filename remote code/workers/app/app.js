@@ -17,7 +17,7 @@ const extensions = {
     "cpp":"cpp",
     "c": "c",
     "java":"java",
-    "python3":"py",
+    "python":"py",
     "javascript":"js"
 };
 
@@ -25,9 +25,9 @@ function runCode(apiBody,ch,msg) {
     console.log(apiBody)
 
     client.set(apiBody.folder.toString(),'{"status":"Processing"}');
-    const { exec } = require('child_process');   
+    const { exec } = require('child_process');
     var output;
-    var command = 'python3 run.py ../temp/' + apiBody.folder +'/source.' + extensions[apiBody.lang] + ' ' + apiBody.lang + ' '  + apiBody.timeOut;  
+    var command = 'python3 run.py ../temp/' + apiBody.folder +'/source.' + extensions[apiBody.lang] + ' ' + apiBody.lang + ' '  + apiBody.timeOut;
 
     fs.writeFile('/temp/' + apiBody.folder+  '/output.txt','',function(err){
         if(err)
