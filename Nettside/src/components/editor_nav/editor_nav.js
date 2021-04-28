@@ -111,6 +111,22 @@ function OverflowDropdown (props) {
     }
 
     const { settings } = useContext(EditorContext);
+    if (settings.screenWidth < 520){
+        return(
+        <>
+            <button className="settings-button" onClick={ toggleDisplay } ><img src={ Settings } alt=""/></button>
+            <div className={dropdown_state ? "begone" : "active-settings-nav"} >
+                {props.firstChild}
+                {props.secondChild}
+                {props.thirdChild}
+                {props.forthChild}
+                {props.fifthCild}
+            </div>
+            <div class="nav_spacer"/>
+            {props.timer}
+        </>
+        )
+    }
     if (settings.screenWidth < 790){
         return(
         <>

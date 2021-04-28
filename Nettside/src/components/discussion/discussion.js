@@ -1,6 +1,6 @@
 import "./discussion.scss"
 
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useRef, useState, useEffect} from "react";
 import { EditorContext} from "../../pages/texteditor/texteditor"
 import { database } from "../../helpers/config";
 import { useAuth } from "../../helpers/authentication-context"
@@ -9,40 +9,47 @@ import { useAuth } from "../../helpers/authentication-context"
 
 export function Discussion() {
     const { settings, set_settings} = useContext(EditorContext); // editor state
-    const scrollToRef = useRef(); // skroller nederst ved sending av melding
     const { currentUser } = useAuth();
-    const messagesRef = database.ref("questions/" + settings.currentQuestionURl + "/posts"); // hvor meldingene skal lagres, viktig pga en chat til hver oppgave
+    const messagesRef = database.ref("posts/" + settings.currentQuestionURl); // hvor meldingene skal lagres, viktig pga en chat til hver oppgave
     // const query = messagesRef.orderByChild('createdAt'); // sortere etter når meldingene ble sendt slik at vi får de siste meldingene nederst
     const [formValue, setFormValue] = useState(''); // state for å lagre hva som er skrevet i tekstboks
+    const [messages, setMessages] = useState(''); // state for å lagre hva som er skrevet i tekstboks
 
-    let messages = []; // lager array av meldingene for å kunne mappe til en melding hver
-    for (let i in settings.currentQuestion.posts){
-        messages.push(settings.currentQuestion.posts[i])
-    }
+    useEffect(() => {
+        messagesRef.on("value", snapshot => {
+            let chats = [];
+            snapshot.forEach((snap) => {
+                chats.push(snap.val());
+            });
+            console.log(chats)
+            setMessages(chats);
+        });
+    }, [])
+
+    // for (let i in settings.currentQuestion.posts){
+    //     messages.push(settings.currentQuestion.posts[i])
+    // }
 
 
     const sendMessage = async (e) => { // laster opp ny melding
         e.preventDefault(); // hindrer siden i å reloade siden dette er default for første onclick event inne i en form tag men uønskelig i dette tilfellet
-        const uid = currentUser.uid;
-        const photoURL  = currentUser.photoURL;
+
          // klokken når meldingen blir sendt, ikke optimalt siden dette er basert på den lokale tiden på enheten men burde istedtet settes i backend av server/database
         await messagesRef.push({
             createdAt: new Date().getTime(),
-            uid,
+            uid: currentUser.uid,
             text: formValue,
-            photoURL
+            photoURL: currentUser.photoURL,
         })
-        set_settings({ ...settings, UpperLeft: 1 });
         setFormValue(''); //resetter meldingbox
-        // scrollToRef.current.scrollIntoView({ behavior: 'smooth' });
     }
 
     return (
         <>
-            <div className="messages">
+            <div>
                 {messages && messages.map(msg => <Posts key={msg.id} message={msg} />)}  {/* mapper meldinger array til en melding hver */}
                 {/* <Posts message={messages[0]} /> */}
-                <span ref={scrollToRef}></span> {/* skroll neders onsubmit */}
+                <span className="massages-bottom-spacer" ></span> {/* skroll neders onsubmit */}
             </div>
             <form className="chatform" onSubmit={(e) => sendMessage(e)}>
                 <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="Message" />
@@ -58,7 +65,6 @@ function Posts(props) {
     // console.log(props.message)
     const { createdAt ,photoURL, text, uid,} = props.message; //declarerer variabler fra paramentere
     const { currentUser } = useAuth();
-    console.log(currentUser.uid, uid)
     const messageClass = (uid === currentUser.uid ? "sent" : "received"); // setter melding klasse til sent hvis bruker iden er lik din og received hvis ikke
     return (<>
         <div className={`message ${messageClass}`}>

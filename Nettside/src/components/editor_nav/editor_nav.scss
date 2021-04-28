@@ -7,8 +7,6 @@
     display: flex;
     flex: 0 0 auto;
     margin: 0 15px;
-    // overflow-x: auto;
-    // overflow-y: hidden;
 
     &>* {
         color: #fff;
@@ -44,16 +42,20 @@
         transform-origin: top right;
         height: 70px;
 
-        &>* {
-            border-radius: var(--border-radius);
-            margin: 10px;
-
-            select {
-
-                background-color: var(--marker-color);
-            }
-
+        select,
+        button {
+            color: #fff;
             background-color: var(--marker-color);
+            // margin: 0 25px;
+            padding: 0 20px;
+            // border-radius: 0 0 var(--border-radius) var(--border-radius);
+            border: none;
+            height: var(--navbar-height);
+            border-radius: var(--border-radius);
+        }
+
+        &>* {
+            margin: 10px;
         }
     }
 
@@ -125,5 +127,16 @@
 @media screen and (max-width: 660px) {
     .active-settings-nav {
         height: 210px !important;
+    }
+}
+@media screen and (max-width: 520px) {
+    .active-settings-nav {
+        height: 300px !important;
+    }
+
+    .toolbar {
+        &>* {
+            margin: 0 20px;
+        }
     }
 }
