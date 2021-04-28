@@ -20,6 +20,9 @@ import Typescript from './logos/typescript.svg';
 import Cpp from './logos/c++.svg';
 import C from './logos/c.svg';
 
+// photoshop bilde
+import Photoshop from "./photoshop-bilde.gif";
+
 
 // concepts
 import Graph from './concepts/graph.svg';
@@ -49,14 +52,14 @@ export function Landing_page(){
                     <NavBar />
                     <div className="header">
                         <div className="header-wrap">
-                            <h1 className="Hero_Header" data-js-target-list="HomepageHeroHeader.title">
+                            <h1 className="Hero_Header" >
                                 A New Way to Learn Programming
                             </h1>
                             <GradientCanvas/>
-                            <div className="Hero_Header Hero_Header_overlay HomepageHeroHeader__title--burn" data-js-target-list="HomepageHeroHeader.title">
+                            <div className="Hero_Header Hero_Header_overlay HomepageHeroHeader__title--burn" >
                                 A New Way to Learn Programming
                             </div>
-                            <div className="Hero_Header Hero_Header_overlay" data-js-target-list="HomepageHeroHeader.title">
+                            <div className="Hero_Header Hero_Header_overlay">
                                 A New Way to Learn Programming
                             </div>
                             <p className="landing-page-paragraph">
@@ -64,7 +67,7 @@ export function Landing_page(){
                             </p>
                             <Link className="landingpage-button" to="/questions">Questions ➜</Link>
                         </div>
-                        <img src="https://via.placeholder.com/200" alt=""></img>
+                        <img src="https://via.placeholder.com/300" alt=""></img>
                     </div>
                 </div>
             </div>
@@ -74,7 +77,7 @@ export function Landing_page(){
                 <div className="section-content">
                     <div className="secondary-color-section cross-color-border section-two">
                         <div>
-                            <img classname=""src="https://via.placeholder.com/300" alt=""></img>
+                            <img src={ Photoshop } alt=""></img>
                         </div>
                         <div>
                             <h1>Lorem Ipsum</h1>
