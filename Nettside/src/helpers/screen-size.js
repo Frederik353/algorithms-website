@@ -30,15 +30,12 @@ export function ResizeFunction() {
                 screenHeight: window.innerHeight,
                 screenWidth: window.innerWidth
             });
-        }, 500);
-
+        }, 10);
         window.addEventListener('resize', slowerHandleResize)
-
         return _ => {
             window.removeEventListener('resize', slowerHandleResize)
         }
     })
-
     return <></>
     // return <div>Rendered at {settings.screenWidth} x {settings.screenHeight}</div>
 }

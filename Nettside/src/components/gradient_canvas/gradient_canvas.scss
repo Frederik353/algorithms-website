@@ -8,7 +8,7 @@ canvas{
     z-index: -2;
     position: absolute;
     top: 0px;
-    left: calc( 0px - (100vw - var(--content-width))/2);
+    left: calc(0px - (100vw - var(--content-width)) / 2);
     width: 100vw;
     height: 100%;
 }

@@ -116,10 +116,7 @@ export function Texteditor(props) {
     const [settings, set_settings] = useState(initialTexteditorSettings)
     const [loading, setLoading] = useState([false]);
     const [layoutState, set_layoutState] = useState();
-    const [orientation, set_orientation] = useState({
-        vertical: "vertical",
-        horizontal: "horizontal"
-    });
+    const [orientation, set_orientation] = useState({});
     const location = useLocation();
 
 
@@ -132,17 +129,17 @@ export function Texteditor(props) {
         }
         // eslint-disable-next-line
     }, [settings.darkmode])
-    
-    
+
     useEffect(() => {
-        if (settings.screenWidth < 800 ) {
-            set_orientation({...orientation, vertical: "horizontal", horizontal: "vertical" })
+        if (settings.screenWidth !== undefined) {
+
+            if (settings.screenWidth < 800) {
+                set_orientation({...orientation, vertical: "horizontal", horizontal: "vertical" })
+            }
+            else {
+                set_orientation({...orientation, vertical: "vertical", horizontal: "horizontal" })
+            }
         }
-        else {
-            set_orientation({...orientation, vertical: "vertical", horizontal: "horizontal" })
-        }
-        
-        console.log("horizontal:", orientation.horizontal, "vertical:", orientation.vertical)
     }, [settings.screenWidth])
 
 
@@ -159,11 +156,8 @@ export function Texteditor(props) {
                                 result.push(data[i]);
                                 break;
                             }
-                            console.log(JSON.stringify(settings.currentQuestion.hints))
-                            console.log(settings.currentQuestion.complexity)
                             set_settings({...settings, currentQuestion: result[0], mode: "python"})
                         });
-
             }
             else if (props.location.state) {
                 set_settings({ ...settings, currentQuestion: props.location.state.question, mode: "python" })
@@ -171,7 +165,6 @@ export function Texteditor(props) {
             }
             else {
                 const questionUrl = location.pathname.substring(location.pathname.lastIndexOf('/') + 1)
-                console.log(questionUrl)
                 var title = database.ref("questions/").orderByChild("title").equalTo(questionUrl);
                 title.on("value", (snapshot) => {
                         let foo
@@ -194,6 +187,9 @@ export function Texteditor(props) {
     }, [])
 
 
+    useEffect(() => { //oppdaterer skjermstørrelse state når alt er ferdig lastet som forsikrer at alle komponenter avhengig av skjermstørrelkse får riktig verdi
+        window.dispatchEvent(new Event("resize"));
+    },[settings.currentQuestion])
 
     function resize_editor() {
         window.dispatchEvent(new Event("resize")); //trigrer en resize event som oppdatereer editor størrelsen
@@ -244,8 +240,8 @@ export function Texteditor(props) {
         return <h2 className="dark-text">Loading...</h2>;
     }
 
-    
-    if (settings.screenWidth > 800){
+
+    if (orientation.horizontal === "horizontal"){
     return (
         <div className="texteditor-wrapper">
             <EditorContext.Provider value={{ settings, set_settings }}>
@@ -253,7 +249,6 @@ export function Texteditor(props) {
 
             <div className="modules">
                 {/* venstre */}
-                <ResizeFunction/>
                 {/* {(settings.screenWidth < 800) ? <ReflexContainer orientation="vertical"> : <ReflexContainer orientation="horizontal"> } */}
                 <ReflexContainer orientation={orientation.vertical} className={orientation.vertical}>
                     <ReflexElement>
@@ -288,9 +283,9 @@ export function Texteditor(props) {
                             <ReflexElement name="lower-left">
                                 <div className="boxes">
                                     <div className="nav">
-                                        <button>ygysefgy</button>
-                                        <button>ygysefgy</button>
-                                        <button>ygysefgy</button>
+                                        <button>? ? ? ? ?</button>
+                                        <button>? ? ? ? ?</button>
+                                        <button>? ? ? ? ?</button>
                                     </div>
                                     <div className="box-content">
                                         <TestCases />
@@ -312,8 +307,8 @@ export function Texteditor(props) {
                             <ReflexElement name="upper-right" onResize={resize_editor}>
                                 <div className="boxes">
                                     <div className="nav">
-                                        <button className="active">ygysefgy</button>
-                                        <button>ygysefgy</button>
+                                        <button className="active">? ? ? ? ?</button>
+                                        <button>? ? ? ? ?</button>
                                         <div className="nav_spacer"></div>
                                         <button className="submit" onClick={compile}>Submit code</button>
                                     </div>
@@ -330,9 +325,9 @@ export function Texteditor(props) {
                             <ReflexElement name="lower-right" >
                                 <div className="boxes">
                                     <div className="nav">
-                                        <button>ygysefgy</button>
-                                        <button>ygysefgy</button>
-                                        <button>ygysefgy</button>
+                                        <button>? ? ? ? ?</button>
+                                        <button>? ? ? ? ?</button>
+                                        <button>? ? ? ? ?</button>
                                     </div>
                                     {/* lower right */}
                                     <div className="box-content">
@@ -346,19 +341,19 @@ export function Texteditor(props) {
 
                 </ReflexContainer>
             </div>
+            <ResizeFunction/>
             </EditorContext.Provider>
         </div>
     );
     }
     else{
-         return (
+        return (
         <div className="texteditor-wrapper">
             <EditorContext.Provider value={{ settings, set_settings }}>
                 <EditorNav set_settings={ set_settings } ></EditorNav>
 
             <div className="modules">
                 {/* venstre */}
-                <ResizeFunction/>
                 {/* {(settings.screenWidth < 800) ? <ReflexContainer orientation="vertical"> : <ReflexContainer orientation="horizontal"> } */}
                 <ReflexContainer orientation={orientation.vertical} className={orientation.vertical}>
                     {/* <ReflexElement>
@@ -393,9 +388,9 @@ export function Texteditor(props) {
                             <ReflexElement name="lower-left">
                                 <div className="boxes">
                                     <div className="nav">
-                                        <button>ygysefgy</button>
-                                        <button>ygysefgy</button>
-                                        <button>ygysefgy</button>
+                                        <button>? ? ? ? ?</button>
+                                        <button>? ? ? ? ?</button>
+                                        <button>? ? ? ? ?</button>
                                     </div>
                                     <div className="box-content">
                                         <TestCases />
@@ -417,8 +412,8 @@ export function Texteditor(props) {
                             <ReflexElement name="upper-right" onResize={resize_editor}>
                                 <div className="boxes">
                                     <div className="nav">
-                                        <button className="active">ygysefgy</button>
-                                        <button>ygysefgy</button>
+                                        <button className="active">? ? ? ? ?</button>
+                                        <button>? ? ? ? ?</button>
                                         <div className="nav_spacer"></div>
                                         <button className="submit" onClick={compile}>Submit code</button>
                                     </div>
@@ -435,9 +430,9 @@ export function Texteditor(props) {
                             <ReflexElement name="lower-right" >
                                 <div className="boxes">
                                     <div className="nav">
-                                        <button>ygysefgy</button>
-                                        <button>ygysefgy</button>
-                                        <button>ygysefgy</button>
+                                        <button>? ? ? ? ?</button>
+                                        <button>? ? ? ? ?</button>
+                                        <button>? ? ? ? ?</button>
                                     </div>
                                     {/* lower right */}
                                     <div className="box-content">
@@ -451,6 +446,7 @@ export function Texteditor(props) {
 
                 </ReflexContainer>
             </div>
+            <ResizeFunction/>
             </EditorContext.Provider>
         </div>
     );

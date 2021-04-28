@@ -120,7 +120,9 @@ body {
     --marker-color: #08091d;
 }
 
-
+.invert {
+    filter: invert(1);
+}
 
 *, ::after, ::before {
         box-sizing: border-box;
@@ -150,4 +152,22 @@ select option {
     outline: none;
     font-size: 18px;
     color: var(--back-button-color);
+}
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--blue) var(--boxcolor);
+}
+
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--boxcolor);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--blue);
+    border-radius: 20px;
+    border: 3px solid var(--boxcolor);
 }

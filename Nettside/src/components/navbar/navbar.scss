@@ -74,6 +74,7 @@
         background: #fff;
         border-radius: var(--border-radius);
         li {
+            z-index: 9999999999999;
             padding: .5em;
         }
     }
@@ -137,16 +138,11 @@
     }
 
     .navbar-header {
-        // display: grid;
-        // grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
         display: flex;
         justify-content: space-between;
     }
 
     .main-nav {
-        // all: unset; /* this causes issues with Edge, since it's unsupported */
-        
-        /* the following lines are not from my video, but add Edge support */
         position: relative;
         text-align: left;
         transition: none;
@@ -154,8 +150,6 @@
         background: none;
         top: initial;
         left: initial;
-        /* end Edge support stuff */
-        
         grid-column: 3 / 4;
         display: flex;
 

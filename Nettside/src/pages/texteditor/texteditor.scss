@@ -50,7 +50,7 @@
 
 
 .reflex-container{
-    height: calc(100vh -((2 * 15px) + var(--navbar-height))) !important;
+    height: calc(100vh - ((2 * 15px) + (var(--navbar-height)))) !important;
     overflow: hidden !important;
     &>.reflex-element {
         overflow-x: hidden !important;
@@ -84,7 +84,7 @@
     overflow-x: hidden;
     .box-content {
         &:not(.editor){
-            padding: calc(var(--navbar-height) + 20px ) 20px 20px 20px; 
+            padding: calc(var(--navbar-height) + 20px) 20px 20px 20px;
         }
         &.editor{
             padding-top: calc(var(--navbar-height));
@@ -142,33 +142,9 @@
         }
     }
 }
-
-
-
-* {
-    scrollbar-width: thin;
-    scrollbar-color: var(--blue) var(--boxcolor);
-}
-
-*::-webkit-scrollbar {
-    width: 12px;
-}
-
-*::-webkit-scrollbar-track {
-    background: var(--boxcolor);
-}
-
-*::-webkit-scrollbar-thumb {
-    background-color: var(--blue);
-    border-radius: 20px;
-    border: 3px solid var(--boxcolor);
-}
-
-
 @media only screen and (max-width: 800px) {
-    
     .reflex-container{
-        height: calc(100vh -((2 * 15px) + var(--navbar-height))) !important;
+        height: calc(100vh - ((2 * 15px) + var(--navbar-height))) !important;
         // overflow: hidden;
     }
 }

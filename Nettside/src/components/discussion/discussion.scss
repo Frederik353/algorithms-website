@@ -80,6 +80,7 @@
 .message {
     display: flex;
     align-items: center;
+    position: relative;
 
     p {
         max-width: 500px;
@@ -91,10 +92,11 @@
         color: white;
         text-align: center;
     }
-    
     &.sent {
         flex-direction: row-reverse;
-
+        .timestamp {
+            right: 10px;
+        }
         p {
             color: white;
             background: #0b93f6;
@@ -102,15 +104,29 @@
         }
         }
 
-    &.received p {
-        background: #e5e5ea;
-        color: black;
+    &.received {
+        .timestamp {
+            left: 10px;
+        }
+
+        p {
+            background: #e5e5ea;
+            color: black;
+        }
     }
-    
     img {
         width: 40px;
         height: 40px;
         border-radius: 50%;
         margin: 2px 5px;
+    }
+    .timestamp {
+        font-size: smaller;
+        position: absolute;
+        bottom: -10px;
+        padding: 0;
+        margin: 0;
+        background: #fff0 !important;
+        color: var(--text-color) !important;
     }
     }

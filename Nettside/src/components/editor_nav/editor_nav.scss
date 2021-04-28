@@ -2,6 +2,7 @@
 
 
 .toolbar {
+    position: relative;
     height: var(--navbar-height);
     display: flex;
     flex: 0 0 auto;
@@ -21,11 +22,53 @@
         border: none;
         height: 100%;
     }
+    .begone {
+        display: none;
+        transform: scale(0);
+        // opacity: 0;
+    }
+
+    .active-settings-nav {
+        z-index: 10000;
+        position: absolute;
+        pointer-events: all !important; // siden position absolute tar vekk element fra normal flow vil det gå ann å trykke gjennom elementet dette hindrer det
+        border-radius: var(--border-radius);
+        top: 45px;
+        right: 0;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-end;
+        pointer-events: none;
+        transform: scale(1);
+        transition: transform .2s;
+        transform-origin: top right;
+        height: 70px;
+
+        &>* {
+            border-radius: var(--border-radius);
+            margin: 10px;
+
+            select {
+
+                background-color: var(--marker-color);
+            }
+
+            background-color: var(--marker-color);
+        }
+    }
+
+    .settings-button {
+        img {
+            filter: invert(100%);
+            max-width: 30px;
+        }
+    }
 
     .field {
         padding: 0 !important;
     }
     select {
+        font-size: var(--font-size);
         background: var(--green);
         height: var(--navbar-height);
         border: none;
@@ -34,7 +77,6 @@
         padding: 0 var(--navbar-height);
         color: #fff;
         cursor: pointer;
-        font-size: var(--font-size);
 
         option {
             font-size: var(--font-size);
@@ -71,5 +113,17 @@
             background: #0092B2;
             color: #66FBD2;
         }
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .active-settings-nav {
+        height: 140px !important;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .active-settings-nav {
+        height: 210px !important;
     }
 }

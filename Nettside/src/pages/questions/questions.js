@@ -27,39 +27,44 @@ export function Questions(){
                 </div>
             </div>
         </div>
-        <div className="spacer"></div>
-        <div className="section-skew questions-background">
-            <Particles>
-                <div className="section-content-wrapper questions-page">
-                    <div className="section-content">
-                        <div className="questions-info">
-                            <h1>Questions</h1>
-                            <div className="difficulty-info">
-                                <h3>Easy: <span className="difficulty easy large"></span></h3>
-                                <h3>Medium: <span className="difficulty medium large"></span></h3>
-                                <h3>Hard: <span className="difficulty hard large"></span></h3>
-                                <h3>Very Hard: <span className="difficulty very-hard large"></span></h3>
+        <div className="spacer"/>
+            <div className="section-skew questions-background">
+                <Particles>
+                    <div className="section-content-wrapper questions-page">
+                        <div className="section-content">
+                            <div className="questions-info">
+                                <h1>Questions</h1>
+                                <div className="difficulty-info">
+                                    <h3>Easy: <span className="difficulty easy large" /></h3>
+                                    <h3>Medium: <span className="difficulty medium large" /></h3>
+                                    <h3>Hard: <span className="difficulty hard large" /></h3>
+                                    <h3>Very Hard: <span className="difficulty very-hard large"/> </h3>
+                                </div>
+                                <div className="questions-filters">
+                                    <input type="text" id="search-bar" placeholder="Search question titles" />
+                                </div>
                             </div>
-                            <div className="questions-filters">
-                                <input type="text" id="search-bar" placeholder="Search question titles"></input>
+                            <div className="question-info-grid">
+                                <div className="questions">
+                                    {/* eslint-disable-next-line */}
+                                        <a href="#" className="question questions-header" >
+                                            {/* <h4>Title</h4> */}
+                                            <p>Title</p>
+                                            <p>Category</p>
+                                            <p>Acceptance</p>
+                                            <p>difficulty</p>
+                                        </a>
+                                        <Pagination/>
+                                </div>
+                                <div className="submit-question">
+                                    <h4>Want to submit a question</h4>
+                                    <Link className="landingpage-button " to="/submit-question">Submit Question ➜</Link>
+                                </div>
                             </div>
-                        </div>
-                        <div className="questions">
-                            {/* eslint-disable-next-line */}
-                                <a href="#" className="question questions-header" >
-                                    {/* <h4>Title</h4> */}
-                                    <p>Title</p>
-                                    <p>Category</p> 
-                                    <p>Acceptance</p>
-                                    <p>difficulty</p>
-                                </a>
-                                <Pagination/>
-
                         </div>
                     </div>
-                </div>
-            </Particles>
-        </div>
+                </Particles>
+            </div>
         <div className="questions-footer">
         <Footer/>
         </div>
@@ -191,7 +196,7 @@ const Posts = ({ posts, loading, offset}) => {
                     <p>{post.category}</p>
                     {post.acceptance ? <p>{Math.floor(post.acceptance.cleared / post.acceptance.failed)}%</p> : "0%"}
                     <div className="difficulty large">
-                        <span className={post.difficulty}></span>
+                        <span className={post.difficulty} />
                     </div>
                 </Link>
             ))}

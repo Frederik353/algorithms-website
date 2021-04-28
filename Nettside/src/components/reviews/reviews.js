@@ -4,13 +4,11 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import Carousel, { Dots } from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
-// import { EditorContext } from "../../pages/texteditor/texteditor"
 import { database } from "../../helpers/config";
 
 
 
 export function Reviews() {
-    // const { settings, set_settings } = useContext(EditorContext);
     const [loading, setLoading] = useState(false);
     const [reviewsArray, setReviewsArray] = useState([]);
 
@@ -54,11 +52,15 @@ const Review = ({reviews, loading}) => {
     const [value, setValue] = useState(0);
     // const invertClass = (reviews.invert ? "invert" : "lol");
     function onChange(value) {
+        console.log(value)
         if (value < (reviews.length / 3)){
             setValue(value);
         }
     }
-    
+    useEffect(() => {
+        onChange(1);
+        onChange(0);
+    }, [])
     if (loading) {
         return <h2>Loading...</h2>;
     }
@@ -66,11 +68,10 @@ const Review = ({reviews, loading}) => {
         return(
             <>
                 <Carousel
-                value={value}
             onChange={onChange}
+            value={value}
             arrows
-            infinite
-            slidesPerPage={3}
+            slidesPerPage={1}
                 >
                     {reviews.map(review => (
                         <div className="reviews-card">
@@ -78,14 +79,12 @@ const Review = ({reviews, loading}) => {
                             <h3 className="name">{review.name}</h3>
                             <div className="role">
                                 <h4 className="job-status">{review.jobStatus}</h4>
-    
+
                                 <img className={`institution-logo ${(review.invert ? "invert" : "lol")}`} src={review.logo} alt="company logo"/>
-    
                             </div>
                             <div className="review-content">
                                 <p>{review.text}</p>
                                 {review.link ? <Link className="submit-review-link" exact to={review.link}>Submit review</Link> : ""}
-                                
                             </div>
                         </div>
                     ))}
