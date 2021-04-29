@@ -1,6 +1,6 @@
 import "./discussion.scss"
 
-import React, { useContext, useRef, useState, useEffect} from "react";
+import React, { useContext, useState, useEffect} from "react";
 import { EditorContext} from "../../pages/texteditor/texteditor"
 import { database } from "../../helpers/config";
 import { useAuth } from "../../helpers/authentication-context"
@@ -8,7 +8,7 @@ import { useAuth } from "../../helpers/authentication-context"
 
 
 export function Discussion() {
-    const { settings, set_settings} = useContext(EditorContext); // editor state
+    const { settings} = useContext(EditorContext); // editor state
     const { currentUser } = useAuth();
     const messagesRef = database.ref("posts/" + settings.currentQuestionURl); // hvor meldingene skal lagres, viktig pga en chat til hver oppgave
     // const query = messagesRef.orderByChild('createdAt'); // sortere etter når meldingene ble sendt slik at vi får de siste meldingene nederst
@@ -24,6 +24,7 @@ export function Discussion() {
             console.log(chats)
             setMessages(chats);
         });
+        // eslint-disable-next-line
     }, [])
 
     // for (let i in settings.currentQuestion.posts){

@@ -78,9 +78,7 @@ export function Landing_page(){
             <div className="section-content-wrapper">
                 <div className="section-content">
                     <div className="secondary-color-section cross-color-border section-two">
-                        <div>
-                            <img src={ Photoshop } alt=""></img>
-                        </div>
+                        <img src={ Photoshop } alt=""></img>
                         <div>
                             <h1>Lorem Ipsum</h1>
                             <p className="landing-page-paragraph">

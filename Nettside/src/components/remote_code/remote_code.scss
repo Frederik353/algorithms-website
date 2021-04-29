@@ -108,3 +108,13 @@
         stroke-dashoffset: 0;
     }
 }
+@media only screen and (max-width: 500px) {
+    .center {
+
+        svg,
+        #loading-svg {
+            transform: scale(0.6);
+        }
+    }
+
+}

@@ -340,6 +340,10 @@ h1,h2,h3,p{
                     display: none;
                 }
             }
+            img {
+
+                max-width: var(--content-width);
+            }
         }
     }
 }
