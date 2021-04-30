@@ -11,6 +11,7 @@ const amqp = require('amqp-connection-manager');
 
 app.use(cors({
     origin: 'http://localhost:3000' // tillater cross origin request fra nettsiden
+    origin: 'https://frederik-it.netlify.app/' // tillater cross origin request fra nettsiden
 }));
 
 app.use(bodyParser.urlencoded({extended:true})); // konfigurerer bodyparser som middlevare, trengs for å lese body i en post request
