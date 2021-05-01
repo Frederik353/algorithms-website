@@ -24,6 +24,7 @@ export const SignUpWith = () => {
 
 
 export function SignUpWithGoogle() {
+    // eslint-disable-next-line
     const [ error , setError] = useState("")
     const history = useHistory()
 
@@ -50,6 +51,7 @@ export function SignUpWithGoogle() {
 
 
 export function SignUpWithGithub() {
+    // eslint-disable-next-line
     const [error ,setError] = useState("")
     const history = useHistory()
 
@@ -76,6 +78,7 @@ export function SignUpWithGithub() {
 };
 
 export function SignUpWithFacebook() {
+    // eslint-disable-next-line
     const [error , setError] = useState("")
     const history = useHistory()
 

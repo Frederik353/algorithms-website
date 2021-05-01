@@ -47,18 +47,16 @@ export function WriteReview() {
         let urls = [];
         for (let i in images){
             // imageArray.push(images[i]);
-            const uploadTo = storage.ref(`review-images/${images[i].name}`).put(images[i]);
-            uploadTo.on("state_changed", (snapshot) => {
-                    const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-                    setProgress(progress);
-                },
-                storage.ref("review-images").child(images[i].name).getDownloadURL()
-                .then(url => {
+            const uploadTo = storage.ref(`review-images/${images[i].name}`);
+            uploadTo.put(images[i]).on("state_changed", (snapshot) => {
+                const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                setProgress(progress);
+                uploadTo.getDownloadURL().then( url => {
                     urls.push(url)
-                    console.log(urls[0], urls[1])
-                    set_data({ ...data, photoURL: urls[0], logo: urls[1]})
-                })
-            );
+                    console.log(url)
+                });
+                set_data({ ...data, photoURL: urls[0], logo: urls[1]})
+            });
         }
     }
 
