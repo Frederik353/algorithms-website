@@ -1,4 +1,25 @@
-.temp {
-    // top: 300px;
-    position: relative !important;
+.account-info {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+
+    &>* {
+        margin: 10px 0;
+
+        & :nth-child(even) {
+            margin-bottom: 20px;
+        }
+    }
+
+    .submit-button {
+        margin: 20px 0 !important;
+    }
+
+    .update-account {
+        margin-top: 30px;
+    }
+
+    .logout {
+        width: 150px;
+    }
 }

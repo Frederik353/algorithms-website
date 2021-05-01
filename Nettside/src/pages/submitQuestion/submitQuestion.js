@@ -118,11 +118,11 @@ export function SubmitQuestion() {
                                     </span>
                                 </div>
                             </h5>
-                            <h5 type="Space & Time complexity:">
-                                <textarea rows="4" type="text" value={data.complexity} onChange={e => handleInputChange(e)}  placeholder="Optimal space and time complexity " name="complexity" required></textarea>
-                            </h5>
                             <h5 type="Question:">
                                 <textarea rows="25" value={data.question} onChange={e => handleInputChange(e)} placeholder="Write your question here" type="text"  name="question" required></textarea>
+                            </h5>
+                            <h5 type="Space & Time complexity:">
+                                <textarea rows="4" type="text" value={data.complexity} onChange={e => handleInputChange(e)}  placeholder="Optimal space and time complexity " name="complexity" required></textarea>
                             </h5>
                             <h5 type="Hints:">
                                 <textarea rows="10" type="text" value={data.hints} onChange={e => handleInputChange(e)}  placeholder="Do you have any hints" name="hints" required></textarea>

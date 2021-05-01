@@ -36,7 +36,6 @@ function App() {
 			</AuthProvider>
 		</BrowserRouter>
 
-			<script src="https://unicons.iconscout.com/release/v3.0.6/script/monochrome/bundle.js"/>
 		</div>
 	);
 }

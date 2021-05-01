@@ -15,13 +15,11 @@
     a:hover {
         opacity: 0.5;
     }
-    .upper-footer{
-        // height: 100%;
+    .upper-footer {
         width: 100%;
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
-        // justify-content: center;
         margin-bottom: 50px;
         :first-child { margin-right: auto; }
         :last-child { margin-left: auto;  }
@@ -46,8 +44,20 @@
         font-size: medium;
         color: var(--landingpage-secondary-text-color);
         a {
-            // color: var(--light-text);
             margin: 0 10px;
+        }
+    }
+}
+@media only screen and (max-width: 736px) {
+    .footer {
+        height: 950px;
+    }
+
+    .footer-section .upper-footer {
+        flex-flow: column nowrap;
+
+        &>* {
+            margin: 20px 0 !important;
         }
     }
 }

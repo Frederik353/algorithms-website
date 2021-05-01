@@ -1,0 +1,44 @@
+{
+    "categories" : {
+        "-MZ3jbOzdLqGO7iyEIiT" : "Strings",
+        "-MZ3jfVCBKl82P1nTTbQ" : "Arrays",
+        "-MZ3jzet3mwYJ0STrRVv" : "Dynamic Programming",
+        "-MZ3k0vonkhWHpMEkYYv" : "Math",
+    },
+    "posts" : {
+        "oppgave 1" : {
+            "melding 1" : {
+                "createdAt" : 1619645946423,
+                "text" : "hei",
+                "uid" : "vhYfPS2FwqhCQxXF3AArWRdmYPh1"
+            },
+        },
+    },
+    "questions" : {
+        "oppgave 1" : {
+            "category" : "Arrays",
+            "complexity" : "O(n logn) time and O(1) memory/constant space",
+            "createdAt" : 0,
+            "difficulty" : "medium",
+            "functions" : {
+                "javascript" : "var sortList = function(head) {\n\n};",
+                "python" : "def Fibonacci(n):\n    if n<0:\n        return\n    elif n==1:\n        return 0\n    elif n==2:\n        return 1\n    else:\n        return Fibonacci(n-1)+Fibonacci(n-2)\n\nprint(Fibonacci(30))"
+            },
+            "hints" : "try divide and conqer",
+            "question" : "Given the head of a linked list, return the list after sorting it in ascending order.",
+            "testCases" : {
+                "test 1" : "Input: head = [-1,5,3,4,0]\nOutput: [-1,0,3,4,5]",
+            },
+            "title" : "Merge Unsorted Array"
+        }
+    },
+    "reviews" : [ null, {
+        "jobStatus" : "Software Engeneer",
+        "logo" : "https://google logo",
+        "name" : "Frederik",
+        "photoURL" : "https://lh3.googleusercontent.com/-gReAWblgJuU/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucmw0XeHtfbH4BiKUjeLt4dDVzHXnw/s96-c/photo.jpg",
+        "text" : "Lorem ipsum dolor sit amet.",
+        "uid" : "user id"
+        }
+    ]
+}

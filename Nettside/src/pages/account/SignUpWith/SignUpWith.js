@@ -24,8 +24,7 @@ export const SignUpWith = () => {
 
 
 export function SignUpWithGoogle() {
-    const [ setError] = useState("")
-    const [ setLoading] = useState(false)
+    const [ error , setError] = useState("")
     const history = useHistory()
 
     async function signIn(e) {
@@ -34,14 +33,11 @@ export function SignUpWithGoogle() {
         firebase.auth().useDeviceLanguage();
         try {
             setError("")
-            setLoading(true)
             await firebase.auth().signInWithPopup(provider);
             history.goBack();
         } catch {
             setError("Failed to log in")
         }
-
-        setLoading(false)
     }
 
     return (
@@ -54,8 +50,7 @@ export function SignUpWithGoogle() {
 
 
 export function SignUpWithGithub() {
-    const [setError] = useState("")
-    const [setLoading] = useState(false)
+    const [error ,setError] = useState("")
     const history = useHistory()
 
     async function signIn(e) {
@@ -64,15 +59,12 @@ export function SignUpWithGithub() {
         firebase.auth().useDeviceLanguage();
         try {
             setError("")
-            setLoading(true)
             await firebase.auth().signInWithPopup(provider);
             console.log(history)
             history.goBack();
         } catch {
             setError("Failed to log in")
         }
-
-        setLoading(false)
     };
 
     return (
@@ -84,8 +76,7 @@ export function SignUpWithGithub() {
 };
 
 export function SignUpWithFacebook() {
-    const [ setError] = useState("")
-    const [ setLoading] = useState(false)
+    const [error , setError] = useState("")
     const history = useHistory()
 
     async function signIn(e) {
@@ -94,14 +85,11 @@ export function SignUpWithFacebook() {
         firebase.auth().useDeviceLanguage();
         try {
             setError("")
-            setLoading(true)
             await firebase.auth().signInWithPopup(provider);
             history.goBack();
         } catch {
             setError("Failed to log in")
         }
-
-        setLoading(false)
     }
 
     return (

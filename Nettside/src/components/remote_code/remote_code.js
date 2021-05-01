@@ -30,7 +30,7 @@ export function RemoteCodeApiRequest() {
                 body: JSON.stringify({
 	                "src": settings.value,
 	                "stdin":"",
-	                "lang": "python",
+	                "lang": settings.mode,
 	                "timeout":5
                 })
             };

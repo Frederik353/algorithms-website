@@ -22,7 +22,6 @@ export function NavBar(){
                     <li> </li>
                 </ul>
                 <SignInButton/>
-                {/* <NavLink className="sign-in-button" to="/signIn">Sign in ➜</NavLink> */}
             </nav>
             <label htmlFor="nav-toggle" className="nav-toggle-label">
                 <span></span>

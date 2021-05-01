@@ -83,8 +83,6 @@ export function WriteReview() {
                             <h5 type="The logo of your company or institution :">
                                 <input type="file" onChange={ handleChange } name="logo" required />
                             </h5>
-                            {/* {url}
-                            <img src={url || "http://via.placeholder.com/300"} alt="firebase-image" /> */}
                             <progress value={progress} max="100" />
                         </div>
                         <div className="form-nav">

@@ -31,7 +31,7 @@ export function Login() {
     return (
         <div className="form">
 
-            {error && <div variant="danger">{error}</div>}
+            {error && <div className="error">{error}</div>}
             <h1>Log In</h1>
             <SignUpWith/>
 

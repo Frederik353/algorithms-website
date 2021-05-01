@@ -11,7 +11,7 @@ import { Reviews } from "../../components/reviews/reviews"
 import Upload from './svg/006-upload.svg';
 import Server from "./svg/038-server.svg";
 
-// languages
+// language images
 import Python from './logos/python.svg';
 import Javascript from './logos/javascript.svg';
 import Go from './logos/go.svg';
@@ -26,7 +26,7 @@ import Photoshop from "./photoshop-bilde.gif";
 // header image
 import ReactLogo from "./react.png";
 
-// concepts
+// concept images
 import Graph from './concepts/graph.svg';
 import LinkedList from './concepts/linked-list.svg';
 import Array from './concepts/array.svg';
@@ -359,7 +359,7 @@ export function Landing_page(){
             <div className="section-content-wrapper texteditor">
                 <div className="section-content">
                     <div className="secondary-color-section section-six flex-column">
-                        <Texteditor randomQuestion={true}></Texteditor>
+                        <Texteditor randomQuestion={true} />
                     </div>
                 </div>
             </div>
@@ -367,7 +367,7 @@ export function Landing_page(){
         <div className="section-seven flex-column">
             <Reviews />
         </div>
-        <Footer></Footer>
+        <Footer />
     </div>
 )};
 

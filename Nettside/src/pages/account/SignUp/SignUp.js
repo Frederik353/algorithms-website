@@ -36,7 +36,7 @@ export function SignUp() {
     return (
         <div className="form">
 
-            {error && <div variant="danger">{error}</div>}
+            {error && <div className="error">{error}</div>}
             <h1>Sign Up</h1>
             <SignUpWith/>
 
