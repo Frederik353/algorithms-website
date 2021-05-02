@@ -11,6 +11,8 @@ import { database } from "../../helpers/config";
 export function SubmitQuestion() {
     const [categories, set_categories] = useState([]);
     const { currentUser } = useAuth();
+    const [hints, set_hints] = useState()
+    const [testCases, set_testCases] = useState()
     const [data, set_data] = useState({
             uid: currentUser.uid,
             name: currentUser.displayName,
@@ -49,26 +51,33 @@ export function SubmitQuestion() {
         });
     }, []);
     
-    // let i = 0;
     function handleInputChange(event) {
-        // i++;
         let split = event.target.name.split(".");
+        if (event.target.name === "testCases" || event.target.name === "hints" ){
+            if (event.target.name === "testCases"){
+                set_testCases(event.target.value);
+            }
+            else if (event.target.name === "hints"){
+                set_hints((event.target.value));
+            }
+            let object = event.target.value.split("\"\"\"");
+            for (let i in object) {
+                object[i] = object[i].replace(/^\n+|\n+$/g, '');
+            }
+            object = Object.assign({}, object); 
+            set_data({ ...data, [split[0]]: object });
+            console.log(data)
+            return;
+        }
         let objectCopy = data.[split[0]];
         if (split.length > 1){
             objectCopy.[split[1]] = event.target.value;
-            // if (split[1] !== ""){
-            // }
-            // else {
-            //     objectCopy.[i] = event.target.value;
-            // }
         }
         else {
             objectCopy = event.target.value
         }
 
         set_data({ ...data, [split[0]]: objectCopy });
-        console.log(event.target.name, event.target.value);
-        console.log(data)
     }
 
 
@@ -125,10 +134,10 @@ export function SubmitQuestion() {
                                 <textarea rows="4" type="text" value={data.complexity} onChange={e => handleInputChange(e)}  placeholder="Optimal space and time complexity " name="complexity" required></textarea>
                             </h5>
                             <h5 type="Hints:">
-                                <textarea rows="10" type="text" value={data.hints} onChange={e => handleInputChange(e)}  placeholder="Do you have any hints" name="hints" required></textarea>
+                                <textarea rows="10" type="text" value={hints} onChange={e => handleInputChange(e)}  placeholder="If you have multiple hints separate them with three Quotation marks &#13;&#13;For example:&#13;&#13;hint 1&#13;&quot;&quot;&quot;&#13;Hint 2&#13;&quot;&quot;&quot;&#13;Hint 3" name="hints" required></textarea>
                             </h5>
                             <h5 type="Test Cases:">
-                                <textarea rows="10" type="text" value={data.testCases} onChange={e => handleInputChange(e)}  placeholder="write youre tests here" name="testCases" required></textarea>
+                                <textarea rows="10" type="text" value={testCases} onChange={e => handleInputChange(e)}  placeholder="If you have multiple testCases separate them with three Quotation marks &#13;&#13;For example:&#13;&#13;Testcase 1&#13;&quot;&quot;&quot;&#13;Testcase 2&#13;&quot;&quot;&quot;&#13;Testcase 3" name="testCases" required></textarea>
                             </h5>
                             <h3>Start functions</h3>
                             {/* eslint-disable-next-line */}

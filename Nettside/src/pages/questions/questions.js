@@ -195,7 +195,7 @@ const Posts = ({ posts, loading, offset}) => {
                     <p>{offset++}</p>
                     <h4>{post.title}</h4>
                     <p>{post.category}</p>
-                    {post.acceptance ? <p>{Math.floor(post.acceptance.cleared / post.acceptance.failed)}%</p> : ""}
+                    {post.acceptance ? <p>{Math.floor((post.acceptance.cleared / (post.acceptance.failed + post.acceptance.cleared)) * 100)}%</p> : ""}
                     <div className="difficulty large">
                         <span className={post.difficulty} />
                     </div>
