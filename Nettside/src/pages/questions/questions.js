@@ -187,6 +187,7 @@ const Posts = ({ posts, loading, offset}) => {
     if (loading) {
         return <h2>Loading...</h2>;
     }
+    // console.log(posts[1].acceptance.cleared)
     return (
         <>
             {posts.map(post => (
@@ -194,7 +195,7 @@ const Posts = ({ posts, loading, offset}) => {
                     <p>{offset++}</p>
                     <h4>{post.title}</h4>
                     <p>{post.category}</p>
-                    {post.acceptance ? <p>{Math.floor(post.acceptance.cleared / post.acceptance.failed)}%</p> : "0%"}
+                    {post.acceptance ? <p>{Math.floor(post.acceptance.cleared / post.acceptance.failed)}%</p> : ""}
                     <div className="difficulty large">
                         <span className={post.difficulty} />
                     </div>

@@ -23,7 +23,8 @@ import { ResizeFunction } from "../../helpers/screen-size"
 
 import "../../helpers/screen-size";
 import{ Question } from "../../components/promt/promt"
-import{ TestCases, Editor } from "../../components/test_cases/test_cases"
+import{ EditorList } from "../../components/EditorList/EditorList"
+import{ ReadOnlyEditor } from "../../components/ReadOnlyEditor/ReadOnlyEditor"
 
 
 // Create context container in a global scope so it can be visible by every component
@@ -264,13 +265,12 @@ export function Texteditor(props) {
                                         <BoxNav listen={settings.UpperLeft} firstChild={
                                             <>
                                                 <Question/>
-                                                <h2>Hint:</h2>
                                                 <div className="test-case">
-                                                    <Editor value={ settings.currentQuestion.hints } />
+                                                    <EditorList name="Hint" object={ settings.currentQuestion.hints } />
                                                 </div>
                                                 <h2>Optimal space and time complexity:</h2>
                                                 <div className="test-case">
-                                                    <Editor value={ settings.currentQuestion.complexity } />
+                                                    <ReadOnlyEditor value={ settings.currentQuestion.complexity } />
                                                 </div>
                                             </>
                                             } secondChild={<Discussion/>}/>
@@ -289,7 +289,7 @@ export function Texteditor(props) {
                                         <button>? ? ? ? ?</button>
                                     </div>
                                     <div className="box-content">
-                                        <TestCases />
+                                        <EditorList name="Testcase" object={settings.currentQuestion.testCases} />
                                     </div>
                                     {/* lower left */}
                                 </div>
@@ -369,13 +369,12 @@ export function Texteditor(props) {
                                         <BoxNav listen={settings.UpperLeft} firstChild={
                                             <>
                                                 <Question/>
-                                                <h2>Hint:</h2>
                                                 <div className="test-case">
-                                                    <Editor value={ settings.currentQuestion.hints } />
+                                                    <EditorList name="Hint" object={ settings.currentQuestion.hints } />
                                                 </div>
                                                 <h2>Optimal space and time complexity:</h2>
                                                 <div className="test-case">
-                                                    <Editor value={ settings.currentQuestion.complexity } />
+                                                    <ReadOnlyEditor value={ settings.currentQuestion.complexity } />
                                                 </div>
                                             </>
                                             } secondChild={<Discussion/>}/>
@@ -394,7 +393,7 @@ export function Texteditor(props) {
                                         <button>? ? ? ? ?</button>
                                     </div>
                                     <div className="box-content">
-                                        <TestCases />
+                                        <EditorList name="Testcase" object={settings.currentQuestion.testCases} />
                                     </div>
                                     {/* lower left */}
                                 </div>

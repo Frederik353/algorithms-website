@@ -9,7 +9,7 @@ import "./promt.scss"
 export function Question(props) {
     const { settings} = useContext(EditorContext);
     return(
-        <div className="currentQuestion">
+        <div className="question">
             <div className="info-box">
                 <div className="info">
                     <span>Difficulty:</span>
