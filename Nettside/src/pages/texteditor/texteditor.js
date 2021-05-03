@@ -289,7 +289,9 @@ export function Texteditor(props) {
                                         <button>? ? ? ? ?</button>
                                     </div>
                                     <div className="box-content">
-                                        <EditorList name="Testcase" object={settings.currentQuestion.testCases} />
+                                        <div className="test-case">
+                                            <EditorList name="Testcase" object={settings.currentQuestion.testCases} />
+                                        </div>
                                     </div>
                                     {/* lower left */}
                                 </div>
