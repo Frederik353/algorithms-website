@@ -36,7 +36,7 @@ export function RemoteCodeApiRequest() {
                 })
             };
             // fetch("http://127.0.0.1:7000/submit", requestOptions)
-            fetch("https://84.52.233.148:7000/submit", requestOptions)
+            fetch("http://84.52.233.148:7000/submit", requestOptions)
                 .then(response => response.text())
                 .then(data => {
                     let i = 0;
