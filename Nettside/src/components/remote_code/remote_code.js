@@ -10,7 +10,6 @@ const initialApiState = {
     apiOutput: undefined,
     apiStderr: undefined,
     responseStatus: undefined,
-    // render: "not_been_run",
 };
 
 export function RemoteCodeApiRequest() {
@@ -19,9 +18,11 @@ export function RemoteCodeApiRequest() {
     const { settings } = useContext(EditorContext);
 
     useEffect(() => {
+        // if (!settings.value){
+        //     set_apiState({...apiState, noChange: true})
+        // }
         if (settings.compile !== 0){
             set_render("loading")
-            
             const requestOptions = {
                 method: 'POST',
                 headers: {
@@ -34,7 +35,8 @@ export function RemoteCodeApiRequest() {
 	                "timeout":5
                 })
             };
-            fetch("http://127.0.0.1:7000/submit", requestOptions)
+            // fetch("http://127.0.0.1:7000/submit", requestOptions)
+            fetch("http://84.52.233.148:7000/submit", requestOptions)
                 .then(response => response.text())
                 .then(data => {
                     let i = 0;
@@ -54,7 +56,7 @@ export function RemoteCodeApiRequest() {
                             } else{
                                 clearInterval(interval);
                             }
-                        }, 100);
+                        }, 50);
                     })
             // eslint-disable-next-line
             }}, [settings.compile]);
@@ -63,19 +65,16 @@ export function RemoteCodeApiRequest() {
         if (render === "not_been_run"){
             return;
         }
-        else if ( apiState.responseStatus !== 200 ){
-            set_render("gone_wrong")
+        else if ( apiState.responseStatus === 200){
+            set_render("done")
         }
-        else if ( apiState.apiOutput !== (undefined || "" )){
-            set_render("result")
-            console.log( apiState.responseStatus, apiState.apiOutput )
-        }
-        else if ( apiState.apiStderr === (undefined || "") ){
-            set_render("error")
-            // }
+        else if (apiState.noChange){
+            set_render("noChange")
         }
     // eslint-disable-next-line
     },[apiState]);
+
+
 
     if (render === "not_been_run"){
         return(
@@ -93,24 +92,28 @@ export function RemoteCodeApiRequest() {
             </div>
         );
     }
-    else if (render === "gone_wrong"){
+    else if (render === "done"){
+        return (
+            <div>
+                <br/>
+                {apiState.apiOutput}
+                <br/>
+                <br/>
+                {apiState.apiStderr}
+            </div>
+        );
+    }
+    else if (render === "noChange"){
+        return (
+            <div className="center">
+                <p className="before-submit">Try making the code first.</p>
+            </div>
+        );
+    }
+    else {
         return(
             <div className="center">
                 <p className="api-error">Something went wrong</p>
-            </div>
-        );
-    }
-    else if (render === "result"){
-        return (
-            <div>
-                {apiState.apiOutput}
-            </div>
-        );
-    }
-    else if (render === "error"){
-        return (
-            <div>
-                {apiState.apiStderr}
             </div>
         );
     }

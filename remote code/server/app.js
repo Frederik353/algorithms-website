@@ -10,8 +10,8 @@ const amqp = require('amqp-connection-manager');
 
 
 app.use(cors({
-    origin: 'http://localhost:3000' // tillater cross origin request fra nettsiden
-    origin: 'https://frederik-it.netlify.app/' // tillater cross origin request fra nettsiden
+    origin: 'http://localhost:3000', // tillater cross origin request fra nettsiden
+ // tillater cross origin request fra nettsiden
 }));
 
 app.use(bodyParser.urlencoded({extended:true})); // konfigurerer bodyparser som middlevare, trengs for å lese body i en post request
@@ -74,7 +74,7 @@ app.get("/results/:id", (req, res) => { // håndterer get request
 
 var QUEUE_NAME = "judge"
 
-//håndterer tilkoblinger 
+//håndterer tilkoblinger
 var connection = amqp.connect(['amqp://rabbitmq:5672']);
 connection.on('connect', function() {
     console.log('Connected!');

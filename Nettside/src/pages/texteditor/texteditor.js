@@ -13,9 +13,9 @@ import  initialQuestionState  from "../../helpers/databaseStructure/questions"
 import { database } from "../../helpers/config";
 import "./texteditor.scss";
 import "react-reflex/styles.css";
-import { RemoteCodeApiRequest } from "../../components/remote_code/remote_code"
 import { EditorNav } from "../../components/editor_nav/editor_nav"
 import { CodeEditor } from "../../components/ace_editor/ace_editor"
+import { RemoteCodeApiRequest } from "../../components/remote_code/remote_code"
 import { Discussion } from "../../components/discussion/discussion"
 import { ResizeFunction } from "../../helpers/screen-size"
 
@@ -438,7 +438,7 @@ export function Texteditor(props) {
                                     </div>
                                     {/* lower right */}
                                     <div className="box-content">
-                                        <RemoteCodeApiRequest></RemoteCodeApiRequest>
+                                        <RemoteCodeApiRequest />
                                     </div>
                                 </div>
                             </ReflexElement>

@@ -8,7 +8,6 @@ import { EditorContext } from "../../pages/texteditor/texteditor" //editor state
 
 export function CodeEditor() {
     const { settings, set_settings } = useContext(EditorContext); //editor state
-
     function onChange(newValue) {
         set_settings({ ...settings, value: newValue }); // opdaterer editor text
     }
@@ -34,7 +33,6 @@ export function CodeEditor() {
 
     useEffect(() => { // bug med callback funksjon
         set_settings({ ...settings, value: settings.currentQuestion.functions.[ settings.mode ] }); // oppdaterer startgunksjonen ved endring av språk
-        
         // eslint-disable-next-line
     },[settings.mode]);
 
