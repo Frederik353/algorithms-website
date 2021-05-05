@@ -145,7 +145,7 @@ export function SubmitQuestion() {
                                 <textarea rows="10" type="text" value={data.functions.javascript} onChange={e => handleInputChange(e)}  placeholder="Javascript function" name="functions.javascript" required></textarea>
                             </h5>
                             <h5 type="C++:">
-                                <textarea rows="10" type="text" value={data.functions.c_pp} onChange={e => handleInputChange(e)}  placeholder="C++ function" name="functions.c_pp" required></textarea>
+                                <textarea rows="10" type="text" value={data.functions.c_cpp} onChange={e => handleInputChange(e)}  placeholder="C++ function" name="functions.c_cpp" required></textarea>
                             </h5>
                             <h5 type="Python:">
                                 <textarea rows="10" type="text" value={data.functions.python} onChange={e => handleInputChange(e)}  placeholder="Python function" name="functions.python" required></textarea>

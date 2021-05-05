@@ -8,7 +8,6 @@ const cors = require('cors')
 const redis = require('redis');
 const amqp = require('amqp-connection-manager');
 const https = require('https');
-const fs = require('fs')
 
 
 
@@ -17,8 +16,8 @@ const fs = require('fs')
 
 app.use(cors({
     origin: 'http://localhost:3000', // tillater cross origin request fra nettsiden
-    origin: 'https://frederik-it.netlify.app',// tillater cross origin request fra nettsiden
-    origin: 'http://frederik-it.netlify.app'// tillater cross origin request fra nettsiden
+    // origin: 'https://frederik-it.netlify.app',// tillater cross origin request fra nettsiden
+    // origin: 'http://frederik-it.netlify.app'// tillater cross origin request fra nettsiden
 }));
 
 app.use(bodyParser.urlencoded({extended:true})); // konfigurerer bodyparser som middlevare, trengs for å lese body i en post request
@@ -113,8 +112,12 @@ var sendMessage = function(data) { // Send messages until someone hits CTRL-C or
 };
 
 const port = process.env.PORT || 7000;
-https.createServer({
-    key: fs.readFileSync('../../../server.key'),
-    cert: fs.readFileSync('../../../server.cert')
-}, app).listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+
+// https.createServer({
+//     key: fs.readFileSync('../../../server.key'),
+//     cert: fs.readFileSync('../../../server.cert')
+// }, app).listen(port, () => console.log(`Example app listening on port ${port}!`));
 

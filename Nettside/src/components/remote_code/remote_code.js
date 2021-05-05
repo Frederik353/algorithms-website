@@ -21,8 +21,13 @@ export function RemoteCodeApiRequest() {
         // if (!settings.value){
         //     set_apiState({...apiState, noChange: true})
         // }
+        let lang =  settings.mode;
+        if (lang === "c_cpp"){
+            lang = "cpp"
+        }
         if (settings.compile !== 0){
             set_render("loading")
+            
             const requestOptions = {
                 method: 'POST',
                 headers: {
@@ -31,12 +36,12 @@ export function RemoteCodeApiRequest() {
                 body: JSON.stringify({
 	                "src": settings.value,
 	                "stdin":"",
-	                "lang": settings.mode,
+	                "lang": lang,
 	                "timeout":5
                 })
             };
-            // fetch("http://127.0.0.1:7000/submit", requestOptions)
-            fetch("http://84.52.233.148:7000/submit", requestOptions)
+            fetch("http://127.0.0.1:7000/submit", requestOptions)
+            // fetch("http://84.52.233.148:7000/submit", requestOptions)
                 .then(response => response.text())
                 .then(data => {
                     let i = 0;
@@ -56,7 +61,7 @@ export function RemoteCodeApiRequest() {
                             } else{
                                 clearInterval(interval);
                             }
-                        }, 50);
+                        }, 3000);
                     })
             // eslint-disable-next-line
             }}, [settings.compile]);
