@@ -15,6 +15,9 @@ export function Discussion() {
     const [formValue, setFormValue] = useState(''); // state for å lagre hva som er skrevet i tekstboks
     const [messages, setMessages] = useState(''); // state for å lagre hva som er skrevet i tekstboks
 
+
+    
+    
     useEffect(() => {
         messagesRef.on("value", snapshot => {
             let chats = [];

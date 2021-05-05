@@ -149,30 +149,40 @@ export function Texteditor(props) {
     useEffect(() => {
         setLoading(true);
         let fetchQuestion = async () => {
+            const questionUrl = location.pathname.substring(location.pathname.lastIndexOf('/') + 1)
+            var title = database.ref("questions/").orderByChild("title").equalTo(questionUrl);
             if (props.randomQuestion){
                     var RandomTitle = database.ref("questions/");
                         RandomTitle.on("value", (snapshot) => {
+                            let foo
+                            snapshot.forEach(function(childSnapshot) {
+                                foo = childSnapshot.key;
+                            });
                             const data = snapshot.val();
                             let result = [];
                             for (let i in data){
                                 result.push(data[i]);
                                 break;
                             }
-                            set_settings({...settings, currentQuestion: result[0], mode: "python"})
+                            set_settings({...settings, currentQuestion: result[0], mode: "python", currentQuestionURl: foo})
                         });
             }
             else if (props.location.state) {
-                set_settings({ ...settings, currentQuestion: props.location.state.question, mode: "python" })
                 console.log(props.location.state.question )
+                title.on("value", (snapshot) => {
+                    let foo
+                    snapshot.forEach(function(childSnapshot) {
+                        foo = childSnapshot.key;
+                    });
+                    set_settings({ ...settings, currentQuestion: props.location.state.question, mode: "python", currentQuestionURl: foo })
+                });
             }
             else {
-                const questionUrl = location.pathname.substring(location.pathname.lastIndexOf('/') + 1)
-                var title = database.ref("questions/").orderByChild("title").equalTo(questionUrl);
                 title.on("value", (snapshot) => {
-                        let foo
-                        snapshot.forEach(function(childSnapshot) {
-                            foo = childSnapshot.key;
-                        });
+                    let foo
+                    snapshot.forEach(function(childSnapshot) {
+                        foo = childSnapshot.key;
+                    });
                         const data = snapshot.val();
                         let result = [];
                         for (let i in data){
