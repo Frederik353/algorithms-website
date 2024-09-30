@@ -23,14 +23,19 @@ Please keep in mind that this project was primarily created for personal learnin
 - **Create Challenges:** Contribute to the platform by creating new algorithmic challenges for other users to solve.
 - **Test Cases:** Define custom test cases for your challenges to thoroughly evaluate solutions.
 
-
+# Editor
 https://github.com/user-attachments/assets/34bd5a78-6fac-4e65-adba-8601858fbb14
 
-https://github.com/user-attachments/assets/34bd5a78-6fac-4e65-adba-8601858fbb14
 
+# Landing Page
+https://github.com/user-attachments/assets/4f18dc17-7e7e-4421-af9e-9f4288310e0b
+
+# HOme to editor
+https://github.com/user-attachments/assets/62fe5e4b-2222-4d81-b63b-893288ff89c8
+
+# Login
 https://github.com/user-attachments/assets/a942fbf9-5e07-4b84-9811-326e44a5f133
 
-https://github.com/user-attachments/assets/4f18dc17-7e7e-4421-af9e-9f4288310e0b
 
 ## How It Works
 The Algorithms Learning Website is built using a combination of technologies to provide a seamless learning experience:
