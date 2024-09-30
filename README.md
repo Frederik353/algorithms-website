@@ -11,7 +11,7 @@ Please keep in mind that this project was primarily created for personal learnin
 
 # Editor
 https://github.com/user-attachments/assets/34bd5a78-6fac-4e65-adba-8601858fbb14
-
+* many things depricated so was unable to show the code execution but normaly you would get the output of your code in the lower right corner
 
 # Landing Page
 https://github.com/user-attachments/assets/4f18dc17-7e7e-4421-af9e-9f4288310e0b
