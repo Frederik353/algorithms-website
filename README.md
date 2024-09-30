@@ -37,7 +37,7 @@ The Algorithms Learning Website is built using a combination of technologies to 
 - **Self-Imposed Timer:** Utilize the built-in timer in the coding editor to self-impose time limits on your coding challenges, adding an element of time management to your problem-solving process.
 
 ## Get Started
-Please note that a lot of the website backend is not currently running and therfor a lot is broken, i would like to get back to this and get proper hosting up in the future but dont have time for it now.
+Please note that a lot of the websites backend is not currently running and therfor a lot is broken, i would like to get back to this and get proper hosting up in the future but dont have time for it now.
 
 1. Visit the [Algorithms Learning Website](https://frederik-it.netlify.app/) to explore the platform.
 2. Sign in or create an account to access personalized features.
@@ -47,3 +47,6 @@ Please note that a lot of the website backend is not currently running and therf
 
 ## Future Development
 Please note that while some features of the website may currently be disabled or not fully functional, development on this project has temporarily ceased. Since this project was primarily a learning endeavor and does not have any active users, there is no immediate timeline for updates. Nevertheless, the knowledge gained from this project will continue to contribute to future learning and development efforts.
+
+
+
