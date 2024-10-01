@@ -1,4 +1,4 @@
-# Algorithms Learning Website
+# Algorithm Learning Website
 
 ## Overview
 Welcome to the Algorithms Learning Website, a personal project aimed at learning React, Docker, Redis, Firebase, and various web development technologies. This interactive learning environment offers a rich coding experience, discussion boards, and a collaborative community to enhance your algorithmic skills. 
